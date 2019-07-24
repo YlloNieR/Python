@@ -1,5 +1,6 @@
 print("Python-Übungen", '\n',"How to Think Like a Computer Scientist" '\n',"Learning with Python" '\n')
 ##Variables
+print("Variables =",'\n')
 x = 17
 y = "3.2"
 message = "Hello, World!"
@@ -17,8 +18,8 @@ print(z, "=", type(z),'\n')
 print ('\n')
 
 ##Operators and operands
-print("
-print("Operators = \n +,-,*,/, ** = exponentiation \n examples: \n \n hour = 60 \n minute = 59")
+print("Operators and operands =",'\n')
+print("+,-,*,/, ** = exponentiation \n examples: \n \n hour = 60 \n minute = 59")
 hour = 60
 minute = 59
 print("\n 20+32 =", 20+32, '\n', "hour-1 =", hour-1, '\n', "hour*60+minute =", hour*60+minute, '\n', "5**2 =", 5**2, "= exponentiation" '\n', "(5+9)*(15-7) =",(5+9)*(15-7), '\n')
@@ -35,6 +36,7 @@ print("comments with #") #Hier ist ein Kopmmentar
 print ('\n')
 
 ##Functions
+print("Functions =",'\n')
 print("type(32)=", type(32))
 print("type= Funktionsname, (32)= argument von der Funktion,",type(32),"= return value or result")
 
@@ -96,7 +98,8 @@ printTwice('cat')
 print ('\n')
 
 ##The modulus operator
-print('\n'"quotient = int(7 / 3)")
+print("The modulus operator =",'\n')
+print("quotient = int(7 / 3)")
 quotient = int(7 / 3)
 print ("= ", quotient)
 
@@ -108,11 +111,12 @@ print ("= ", remainder)
 print ('\n')
 
 ##Boolean expressions
+print("Boolean expressions =",'\n')
 a = (5 == 5)
-print("5 = 5 ...", a)
+print("5 == 5 ...", a)
 
 b = 5 == 6
-print("5 = 6 ...", b)
+print("5 == 6 ...", b)
 
 print("a =",int(a),", b =",int(b),"a>b = ",a>b)
 ##Ende Boolean expressions
@@ -120,6 +124,7 @@ print("a =",int(a),", b =",int(b),"a>b = ",a>b)
 print ('\n')
 
 ##Conditional execution
+print("Conditional execution")
 c = 5
 if c > 0:
     print('yes')
@@ -130,6 +135,7 @@ print("if ... FIRST STATEMENT",'\n'"  print(...) ... LAST STATEMENT")
 print ('\n')
 
 ##Alternative execution
+print("")
 d = 12
 if d%2 == 0:
     print("Der Rest von", d,"/2", 'ist even 0') #True
@@ -140,6 +146,7 @@ else:
 print ('\n')
 
 ##Chained conditionals
+print("Chained conditionals =",'\n')
 def compare(d,c):
     if d < c:
         print (d, "is less than", c)
@@ -175,6 +182,7 @@ dispatch("S")
 print ('\n')
 
 ##The return statement
+print("The return statement =",'\n')
 import math
 f = 14
 print("f =",f,"ist nicht kleiner gleich 0 -> return",'\n')
@@ -191,6 +199,7 @@ def printLogarithm(f):
 print ('\n')
 
 ##Recursion
+print("Recursion =",'\n')
 print("Countdown")
 def countdown(n):
     if n == 0:
@@ -215,6 +224,7 @@ newLine(1)
 print ('\n')
 
 ##Infinite recursion
+print("Infinite recursion =",'\n')
 def recurse( g ):
     recurse( g+1 )
     
