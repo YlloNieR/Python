@@ -282,20 +282,58 @@ print ('\n')
 
 ##Program development
 
-print("siehe Beispiel für Satz des Pytagoras Auswahl und Berechnungsfunktion.py")
-
+print("siehe Beispiel für Satz des Pytagoras Auswahl und Berechnungsfunktion.py \n -->\n  https://github.com/YlloNieR/Python/blob/master/Beispiel%20f%C3%BCr%20Satz%20des%20Pytagoras%20Auswahl%20und%20Berechnungsfunktion.py")
 
 ##Ende Program development
 
 print ('\n')
 
-##
-##Ende 
+##Composition
+print("Composition =", '\n')
+
+import math
+def area(radius):
+    temp = math.pi * radius**2
+    return temp
+
+print("area = ",area(2))
+
+def distance(xc, yc, xp, yp):
+    dx = xc - xp
+    dy = yc - yp
+    dsquared = dx**2 + dy**2
+    result = math.sqrt(dsquared)
+    return result
+
+print("distance = ",distance(1,2,3,4))
+
+def area2(xc, yc, xp, yp):
+    radius = distance(xc, yc, xp, yp)
+    result = area(radius)
+    return result
+
+print("area2 = ",area2(1,2,3,4))
+
+def area3(xc, yc, xp, yp):
+    return area(distance(xc, yc, xp, yp))
+print("area3 = ",area3(1,2,3,4))
+
+##Ende Composition
 
 print ('\n')
 
-##
-##Ende 
+##Boolean functions
+print("Boolean functions =", '\n')
+
+def isDivisible(x, f):
+    if x % f == 0:
+        return 1 # it’s true
+    else:
+        return 0 # it’s false
+
+print( "is x Divisible of y \n x =",x,"\n f=",f, '\n', isDivisible(x, f) )
+
+##Ende Boolean functions
 
 print ('\n')
 
