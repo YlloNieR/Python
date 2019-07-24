@@ -280,8 +280,12 @@ print("Wenn compare(x1,y1)=(2,12) dann return = ", compare(2,12))
 
 print ('\n')
 
-##
-##Ende 
+##Program development
+
+print("siehe Beispiel für Satz des Pytagoras Auswahl und Berechnungsfunktion.py")
+
+
+##Ende Program development
 
 print ('\n')
 

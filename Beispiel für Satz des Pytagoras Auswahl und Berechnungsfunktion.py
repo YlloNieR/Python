@@ -1,7 +1,5 @@
 import math
-print("Pythagorean theorem",'\n')
-
-print('\n')
+print(2*'\n',"Pythagorean theorem",'\n')
 
 #Auswahlverfahren
 choice = int(input("Bitte wähle aus: \n Möchtest du die Kathete A berechnen wähle die 1 \n Möchtest du die Kathete B berechnen wähle die 2 \n Möchtest du die Hypothenuse C berechnen wähle die 3 \n Möchtest du die Distanz Zweier Koordinaten berechnen wähle die 4 \n Deine Auswahl ist = "))
