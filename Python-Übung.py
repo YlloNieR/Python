@@ -333,16 +333,50 @@ def isDivisible(x, f):
 
 print( "is x Divisible of y \n x =",x,"\n f=",f, '\n', isDivisible(x, f) )
 
+def isBetween(x,y,z):
+    if y <= x <= z:
+        return int(True)
+    else:
+        return int(False)
+
+print('\n', "isBetween" '\n' "y = ",y,",","x = ",x,",","z = ",z,",","Ergebnis =",isBetween(2,1,1))
+
 ##Ende Boolean functions
 
 print ('\n')
 
-##
-##Ende 
+##More recursion
+print("More recursion =")
+def factorial(n):
+    if n == 0:
+        return 1
+    else: 
+        recurse = factorial(n-1)
+        result = n * recurse
+        return result
+    
+print("Die Fakultät von 0! ist", factorial(0))
+print("Die Fakultät von 1! ist", factorial(1))
+print("Die Fakultät von 2! ist", factorial(2))
+print("Die Fakultät von 3! ist", factorial(3))
+print("Die Fakultät von 4! ist", factorial(4))
+
+##Ende More recursion
 
 print ('\n')
 
-##
+##fibonacci
+
+print("fibonacci =")
+
+def fibonacci (n):
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+
+print(fibonacci(0))
+
 ##Ende 
 
 print ('\n')
