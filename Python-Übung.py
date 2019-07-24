@@ -225,11 +225,85 @@ print ('\n')
 
 ##Infinite recursion
 print("Infinite recursion =",'\n')
-def recurse( g ):
-    recurse( g+1 )
+
+print("def recurse( g ):",'\n',"   recurse( g+1 )",'\n','\n',"recurse(0)",'\n')
+
+#def recurse( g ):
+#    recurse( g+1 )
     
-recurse(0)
+#recurse(0)
+
+print("Error:","Traceback (most recent call last):",'\n',"line ..., in <module>",'\n',"line ..., in recurse",'\n',"line ..., in recurse",'\n',"line ..., in recurse",'\n',"[Previous line repeated 993 more times]")
+
 ##Ende Infinite recursion
 
+print ('\n')
 
+##Keyboard input
+print("Keyboard input =", '\n')
+##built-in functions
 
+print("input = raw_input(prompt=message what to input)",'\n')
+
+name = input("What is your name? ")
+
+print (name)
+
+##Ende Keyboard input
+
+print ('\n')
+
+##Fruitful functions
+print("Fruitful functions =", '\n')
+
+def absoluteValueN(n):
+    if n < 0:
+        return -n
+    elif n > 0:
+        return n
+
+print ("Wenn absoluteValueN = 0 = ", absoluteValueN(0))
+print ("Wenn absoluteValueN = 2 = ", absoluteValueN(2),'\n')
+
+print("As an exercise, write a compare function that returns 1 if x > y, 0 if x == y, and -1 if x < y.")
+
+def compare(x1,y1):
+    if x1 > y1:
+        return 1
+    elif x1 == y1:
+        return 0
+    elif x1 < y1:
+        return -1
+
+print("Wenn compare(x1,y1)=(2,12) dann return = ", compare(2,12))
+##Ende Fruitful functions
+
+print ('\n')
+
+##
+##Ende 
+
+print ('\n')
+
+##
+##Ende 
+
+print ('\n')
+
+##
+##Ende 
+
+print ('\n')
+
+##
+##Ende 
+
+print ('\n')
+
+##
+##Ende 
+
+print ('\n')
+
+##
+##Ende 
