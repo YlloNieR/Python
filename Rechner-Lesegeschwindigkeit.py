@@ -5,7 +5,8 @@ print('\t'"#  #  # #    # #    # #####     #####    #      #     # #      #     
 print('\t'"#     # ###### #    # #         #    #   #      #     # #      #      #    # #    #") 
 print('\t'"#     # #    # #    # #         #    #   #      #     # #      #      #    # #    #") 
 print('\t'"#     # #    # #####  ######    #####    #      ####### ###### ######  ####  #    #")
-
+print('\n')
+print('\n')
 print("\n\n\t24 Kapitel & 228 Seiten")
 KapitelJetz = input("\tBitte gib an welches Kapitel du momentan liest = ")
 SeiteJetz = input("\tBitte gib an bei welcher Seite du momentan liest = ")
