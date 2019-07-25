@@ -86,15 +86,60 @@ print('\n')
 
 ##Two-dimensional tables
 print("##Two-dimensional tables =\n")
-
-
+print("multiplication table for the values from 1 to 6")
+i = 1
+while i <= 6:                       # @ 7 loop terminates
+    print(2*i,end="   ")            # each loop 2*i followed by 3 spaces with end=""
+    i = i + 1                       # the value of i increases from 1 to 6, i = counter or loop variable
+    print
 ##Ende Two-dimensional tables
 
 print('\n')
 
-##
+##Encapsulation and generalization
+print("##Encapsulation and generalization =\n")
+print("\t\t\tMultiplication table")
+print("\t\t\t____________________")
 
-##Ende 
-print('\n')
+def printMultiples(n):
+    i = 1
+    while i <= n:                       
+        print("\t\t",i,'\t',2*i,'\t',3*i,'\t',4*i,'\t',5*i,'\t',6*i)                 
+        i = i + 1
+
+print("")
+
+printMultiples(2)
+
+def printMultTable(n):
+    i = 1
+    while i <= n:
+        printMultiples(i)
+        i = i + 1
+
+printMultTable(2)
+
+##Ende Encapsulation and generalization
 ##Ende Iteration
+
+print('\n')
+
+##Strings
+##A compound data type
+print("##Strings = \n")
+print("##A compound data type")
+
+
+
+##Ende A compound data type
+
+print('\n')
+    
+
+print(" = ")
+
+
+
+##Ende String
+
 
