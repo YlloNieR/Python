@@ -1,4 +1,4 @@
-print("Python-Übungen", '\n',"How to Think Like a Computer Scientist" '\n',"Learning with Python" '\n')
+rint("Python-Übungen", '\n',"How to Think Like a Computer Scientist" '\n',"Learning with Python" '\n')
 ##Variables
 print("Variables =",'\n')
 x = 17
@@ -240,8 +240,8 @@ print("Error:","Traceback (most recent call last):",'\n',"line ..., in <module>"
 print ('\n')
 
 ##Keyboard input
-print("Keyboard input =", '\n')
 ##built-in functions
+print("Keyboard input =", '\n')
 
 print("input = raw_input(prompt=message what to input)",'\n')
 
@@ -348,7 +348,11 @@ print ('\n')
 ##More recursion
 print("More recursion =")
 def factorial(n):
-    if n == 0:
+    if type(n) != type(1):
+        return -1
+    elif n < 0:
+        print("Fakultät ist nur definiert für positive integers")
+    elif n == 0:
         return 1
     else: 
         recurse = factorial(n-1)
@@ -375,11 +379,40 @@ def fibonacci (n):
     else:
         return fibonacci(n-1) + fibonacci(n-2)
 
-print(fibonacci(0))
+print("Die fibonacci(0) ist", factorial(0))
+print("Die fibonacci(1) ist", factorial(1))
+print("Die fibonacci(2) ist", factorial(2))
+print("Die fibonacci(3) ist", factorial(3))
+print("Die fibonacci(4) ist", factorial(4))
 
-##Ende 
+##Ende fibonacci
 
 print ('\n')
 
-##
-##Ende 
+##Checking types
+
+def counter(k):
+    if k == 0:
+        return 1
+    else:
+        print ("!",k," = ",1,"*",2,"* ... *",k," = ",int(factorial(k)))
+        
+print ('\n')
+
+def factorialTypes(o):
+    if o == 0:
+        print(o," ist gleich Null")
+    elif type(o) != type(1):
+        print("Fakultät ist nur definiert für",type(1),",",o,"gehört zu", type(o))
+        return print("Darum wurde die Fakultät nicht nicht berechnet.")
+    else:
+        print("Die Fakultät von",o,"ist ",factorial(o),'\n')
+        print(o," ist nicht gleich Null \n deshalb wird ",o," mit Fakultät(n-1) erneut berechnet \n bis ",o,"gleich  Null ist")
+        print("Die Fakultät wird berechnet wie folgt ")
+        counter(o)
+
+factorialTypes(4)
+print ('\n')
+factorialTypes(1.4)
+
+##Ende Checking types
