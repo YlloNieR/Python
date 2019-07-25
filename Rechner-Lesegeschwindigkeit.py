@@ -1,15 +1,32 @@
-print("24 Kapitel")
-KapitelJetz = input("Bitte gib an welches Kapitel du momentan liest = ")
+print('\n\t'" ++"," ++++")
+print('\t'"+  +","+  +")
+print('\t'"+  +","+ +")
+print('\t'"+  +","+  +")
+print('\t'" ++"," +    +")
+
+print("\n\n\t24 Kapitel & 228 Seiten")
+KapitelJetz = input("\tBitte gib an welches Kapitel du momentan liest = ")
+SeiteJetz = input("\tBitte gib an bei welcher Seite du momentan liest = ")
+print("")
+
 import datetime
 z = (datetime.date.today() - datetime.date(2019, 7, 23)).days
-print("begonnen am 23.07.2019, vergangene Tage = ",z)
-TageGelsen = input("Bitte gib an wieviele Tage du schon an diesem Buch gelesen hast ohne Pause = ")
+print("\tbegonnen am 23.07.2019, vergangene Tage = ",z)
+TageGelsen = input("\tBitte gib an wieviele Tage du schon an diesem Buch gelesen hast ohne Pause = ")
 
 KapitelGesamt = 24.0  
+SeitenGesamt = 228
 Rest = float(KapitelGesamt) - float(KapitelJetz)
+Rest2 = float(SeitenGesamt) - float(SeiteJetz)
 LeseD = float(TageGelsen) / float(KapitelJetz)
-RestZeitLese = float(LeseD) * float(Rest) 
-
-print("Du hast noch ",float(Rest),"vor dir.")
-print("Deine Durchschnittliche Lesegeschwindigkeit beträgt = ",float(LeseD),"pro Tag.")
-print("Mit der jetzigen Lesegeschwindikeit brauchst du noch = ",float(RestZeitLese),"Tage.")
+RestZeitLese = float(LeseD) * float(Rest)
+RestZeitLeseSeiten = float(LeseD) * float(Rest2)
+UmrechnungInStunden = float(RestZeitLese)*24
+UmrechnungInMinuten = float(UmrechnungInStunden)*60
+print("")
+print("\t Ergebnis")
+print("_____________________\n")
+print("\tDu hast noch ",int(Rest),"Kapitel vor dir.")
+print("\tUnd noch ",int(Rest2),"Seiten.\n")
+print("\tDeine Durchschnittliche Lesegeschwindigkeit beträgt = ",float(LeseD),"Kapitel pro Tag.")
+print("\tMit der jetzigen Lesegeschwindikeit brauchst du noch = \n",float(RestZeitLese)," Tage \n",UmrechnungInStunden," Stunden \n",UmrechnungInMinuten," Minuten.")
