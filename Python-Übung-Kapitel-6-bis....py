@@ -366,19 +366,245 @@ print("index 4 =",index4,"Suche bob im Bereich array 1 bis 2 (= ob) = nicht vorh
 ##Ende The string module
 
 print('\n')
-    
-##
-print(" = \n")
 
-##Ende
+##Character classification
+print("##Character classification = \n")
+import string
+x = "fruit"
+y = "123"
+index = x.lower()
+index2 = x.upper()
+index3 = x.isdigit()
+index4 = y.isdigit()
+
+print(index,"\t ... x.lower() schreib alles klein")
+print(index2,"\t ... x.upper() schreib alles groß")
+print(index3,"\t ... x.isdigit() besteht es nur aus Zahlen")
+print(index4,"\t ... y.isdigit() besteht es nur aus Zahlen")
+
+print("\nAs an exercise, discuss which version of isLower you think will be fastest. Can you think of other reasons besides speed to prefer one or the other?")
+
+# first string
+firstString = "PYTHON IS AWESOME!"
+
+# second string
+secondString = "PyThOn Is AwEsOmE!"
+
+if(firstString.lower() == secondString.lower()):
+    print("\nThe strings are same.")
+else:
+    print("The strings are not same.")
+
+ch = "FRsIT"
+
+def isLower(ch):
+    return str.islower(ch)
+
+def isLowers(ch):
+    return ch in str.lower(ch)
+
+def isLowerst(ch):
+    return "a" <= ch <= "z"
+
+
+print(isLower(ch))
+print(isLowers(ch))
+print(isLowerst(ch))
+
+##Ende Character classification
+##Ende String
+
+print('\n')
+
+##Lists
+##List values
+print("##List values = \n")
+list1 = list(range(1,10))
+print(list1)
+##Ende ##List values
 
 print('\n')
     
-##
+##Accessing elements
+print("Accessing elements = \n")
+numbers = list(range(1,10))
+#
+print("list1 = numbers(range(1,10))")
+print(numbers)
+#
+print('\n',"list1[1] =")
+print(numbers[1])
+#
+print('\n',"list1[6] =")
+print(numbers[6])
+
+print('\n',"a loop variable as a list index = ")
+horsemen = ("war", "famine", "pestilence", "death")
+i = 0
+while i > 4: 
+    print(horsemen[i])
+    i += 1
+##Ende Accessing elements
+
+print('\n')
+
+##List length
+print("##List length = \n")
+horsemen = ("war", "famine", "pestilence", "death")
+l = 2
+while l < len(horsemen):
+    print(horsemen[l])
+    l = l + 1
+
+print("\nAs an exercise, write a loop that traverses the previous list and prints the length of each element. What happens if you send an integer to len?")
+
+u = ['spam!', 'Text', ['Brie', 'Roquefort', 'Pol le Veq'], [1, 2, 3]]
+
+def listendurchlauf(u):
+    i = 0
+    while i < len(u):
+        print("Das Element ",u[i],"von u beträgt",len (u[i]),"Stellen.")
+        i = i + 1        
+
+print("\n",u,"\n")
+print(listendurchlauf (u))
+##Ende List length
+
 print(" = \n")
+##List membership
+print("##List membership = \n")
+
+print("For Loop List enthält alle Teiler von 3 bis 20\n")
+for number in range(20):
+    if number % 3 == 0:
+        print(number)
+
+print("\n")
+print("For Loop List fügt Dinge die ich gerne esse mit meiner Aussage zusammen\n")
+for fruit in ["banana", "apple", "quince"]:
+    print("I like to eat " + fruit + "s!")
+
+##Ende List membership
+
+print('\n')
+
+##List operations
+print("##List operation = \n")
+
+a = [1, 2, 3]
+b = [4, 5, 6]
+c = a + b
+print(a,"+",b," = ",c)
+print("[0] * 4"," = ",[0] * 4)
+print("[1, 2, 3] * 3"," = ",[1, 2, 3] * 3)
+
+##Ende List operations
+
+print('\n')
+
+##List slices
+print("##List slices = \n")
+print("thislist = ['a', 'b', 'c', 'd', 'e', 'f'] = ")
+thislist = ['a', 'b', 'c', 'd', 'e', 'f']
+print("print ( thislist [ 1 : 3 ] ) = ")
+print(thislist[1:3])
+print("print ( thislist [ : 4 ] ) = ")
+print(thislist[:4])
+print("print ( thislist [ 3 : ] ) = ")
+print(thislist[3:])
+print("print ( thislist [ : ] ) = ")
+print(thislist[:])
+
+##Ende List slices
+
+print('\n')
+
+##Lists are mutable
+print("##Lists are mutable = \n")
+
+fruit = ["banana", "apple", "quince"]
+print("fruit = [banana, apple, quince] ")
+fruit[0] = "pear"
+print("fruit[0] = pear")
+fruit[-1] = "orange"
+print("fruit[-1] = orange\n")
+
+print(fruit)
+
+thislist = ["a", "b", "c", "d", "e", "f"]
+print("thislist = [a, b, c, d, e, f] ")
+
+thislist[1:3] = ["x", "y"]
+print("thislist [ 1 : 3 ] = [x, y]")
+
+print(thislist)
+##Ende Lists are mutable
+
+print('\n')
+
+##List deletion
+print("##List deletion = \n")
+
+a = ["one", "two", "three"]
+print("a = [one, two, three]\n")
+
+print("print(a)\n")
+print(a)
+print("del a[1]\n")
+del a[1]
+print("print(a)")
+print(a)
+print("thislist = [a, b , c , d , e , f ]")
+thislist = ["a", "b", "c", "d", "e", "f"]
+print("del thislist [ 1 : 5 ]\n")
+del thislist[1:5]
+print("print ( thislist )\n")
+print(thislist)
+
+##EndeList deletion
+
+print('\n')
+
+##Objects and values
+
+print("##Objects and values = \n")
+print("An object is something a variable can refer to.")
+a = "banana"
+b = "banana"
+print("a = ",a)
+print("b = ",b)
+
+print("\nidentifier von a =",a," = ", id(a))
+print("\nidentifier von b =",b," = ", id(b)," da gleich wie a beudetet das gleiches object")
+
+a = [1,2,3]
+print("\na enthält Liste wie folgt",a," der identifier dazu", id(a))
+b = [1,2,3]
+print("\na enthält Liste wie folgt",b," der identifier dazu", id(b)," da Nicht gleich wie a beudetet das sind unterschiedliche objects")
+
+##Ende Objects and values
+
+print('\n')
+
+##Aliasing
+print("##Aliasing = \n")
+
+##Ende Aliasing
+
+print('\n')
+
+##
+print("## = \n")
 
 ##Ende
 
-##Ende String
+##
+print("## = \n")
+
+##Ende
+
+##Ende Lists
+
+
 
 

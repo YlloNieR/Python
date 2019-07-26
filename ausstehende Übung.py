@@ -26,4 +26,5 @@ print("Wie oft kommt der Buchstabe ",Buchstabe," ab dem index = ",index," = ", f
 
 print("\nÜbung 2 Looping and counting1 = \nAs an exercise, encapsulate this code in a function named countLetters, and generalize it so that it accepts the string and the letter as parameters. \n")
 
+
  
