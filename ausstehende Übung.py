@@ -26,5 +26,15 @@ print("Wie oft kommt der Buchstabe ",Buchstabe," ab dem index = ",index," = ", f
 
 print("\nÜbung 2 Looping and counting1 = \nAs an exercise, encapsulate this code in a function named countLetters, and generalize it so that it accepts the string and the letter as parameters. \n")
 
+###################################
+print("\nAs an exercise, generate a random number between low and high.")
+
+for i in range(2):
+    x = random.random()
+    x = x*high
+    print(x)
+
+
+print("\nAs an additional exercise, generate a random integer between low and high, including both end points.")
 
  

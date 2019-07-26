@@ -586,25 +586,193 @@ print("\na enthält Liste wie folgt",b," der identifier dazu", id(b)," da Nicht 
 
 print('\n')
 
-##Aliasing
-print("##Aliasing = \n")
+##Cloning lists
 
-##Ende Aliasing
+print("##Cloning lists = \n")
+print("to clone a list")
+
+a = [1, 2, 3]
+print("a = [1, 2, 3]")
+b = a[:]
+print("b = a [ : ]")
+print("damit ist b von a gelcont worden")
+print("b = ",b)
+
+##Ende Cloning lists
 
 print('\n')
 
-##
-print("## = \n")
+##List parameters
+print("##List parameters = \n")
 
-##Ende
+print("numbers = [1,2,3]")
+numbers = [1,2,3]
 
-##
-print("## = \n")
+print("numbers = ", numbers)
+print("def head(list): \n \treturn list[0]")
+def head(list):
+    return list[0]
 
-##Ende
+print("print ( head ( numbers ) ) = ",head(numbers))
+##Ende List parameters
 
+print('\n')
+
+##Nested lists
+print("##Nested lists = \n")
+
+thislist = ["hello", 2.0,5, [10, 20]]
+print("thislist = [hello, 2.0,5, [10, 20]]")
+print("print(thislist[3])")
+print(thislist[3])
+print("elt = thislist[3] \tdelete part 1")
+elt = thislist[3]
+print("elt [0] \t\t\tdelete part 2")
+elt [0]
+print("print(thislist)")
+print("\n", thislist)
+
+print("\nkombinieren der Teile [3] und [1] aus this list:")
+print("print(thislist[3][1]) =", thislist[3][1])
+##Ende Nested lists
+
+print('\n')
+
+##Matrixes
+
+print("##Matrixes = \n")
+print("Matrixes = [ [ 1, 2 , 3 ] , [ 4 ,5 , 6 ] , [ 7 , 8 , 9 ] ] = ")
+Matrixes = [[1,2,3],[4,5,6],[7,8,9]]
+print("\nprint ( Matrixes [ 1 ] ) = ")
+print(Matrixes[1])
+print("\nMatrixes [ 1 ] [ 1 ] = ")
+print(Matrixes[1][1])
+
+##Ende Matrixes
+
+print('\n')
+
+##Strings and lists
+
+print("##Strings and lists = \n")
+import string
+print("song = The rain in Spain...")
+song = "The rain in Spain..."
+print("print(song)")
+print(song,"\n")
+print("print(str.split(song)")
+print(str.split(song),"\n")
+print("print(str.split(song, ai))")
+print(str.split(song, "ai"))
+print("\n join function")
+print("thislist = [ The , rain , in , Spain ]")
+thislist = ["The","rain","in","Spain"]
+print("s = *  * \t\t... Malzeichen sind eigentlich Gänsefüßchen")
+s = " "
+print("print(thislist)")
+print(thislist)
+print("print(s.join(thislist))")
+print(s.join(thislist))
+
+##Ende Strings and lists
 ##Ende Lists
 
+print('\n')
+
+##Tuples
+##Mutability and tuples
+
+print("##Mutability and tuples = \n")
+thisTuple = ("a","b","c","d","e")
+print("thistuple = ", thisTuple)
+
+t1 = ("a",)
+print("Die Klasse von [ t1 = (a , ) ] = ",type(t1))
+t2 = ("a")
+print("Die Klasse von [ t2 = (a ) ] = ",type(t2))
+
+##Ende Mutability and tuples
+
+print('\n')
+
+##Tuples as return values
+print("##Tuples as return values = \n")
+def swap(x,y):
+    return y,x
+
+print("swap",swap(2,3))
+##Ende Tuples as return values
+
+print('\n')
+
+##Random numbers
+print("##Random numbers = \n")
+import random
+
+for i in range(10):
+    x = random.random()
+    print(x)
+    
+##Ende Random numbers
+
+print('\n')
+
+##List of random numbers
+print("##List of random numbers = \n")
+
+def randomList(n):
+    s = [0] * n
+    for i in range(n):
+        s[i] = random.random()
+    return s
+
+##Ende List of random numbers
+##Ende Tuples
+
+print('\n')
+
+##Dictionaries
+eng2sp = {}                 #first assignment
+eng2sp["one"] = "uno"       #second assignment
+eng2sp["two"] = "dos"
+
+print(eng2sp)
+eng2sp = {"one":"uno","two":"dos","three":"tres"}
+print("\n",eng2sp)
+
+print("\n",eng2sp["two"])
+
+##Ende Dictionaries
+
+print("\n")
+
+##Dictionary operations
+
+inventory = {"apples": 430, "bananas": 312, "oranges": 525, "pears": 217}
+print(inventory)
+print ("\nLöschen aus dem Inventar\n")
+del inventory["pears"]
+print(inventory)
+{"oranges": 525, "apples": 430, "bananas": 312}
+print("Wieviele Sorten sind im Inventar = ",len(inventory))
+
+##Ende Dictionary operations
+
+print("\n")
+
+##Dictionary methods
+
+print("eng2sp.keys() = ",eng2sp.keys())
+print("eng2sp.items() = ",eng2sp.items())
+
+##Ende Dictionary methods
+##Dictionary
+
+print("\n")
+
+##Files and exceptions
 
 
 
+##Ende Files and exceptions
+##Ende Dictionaries
