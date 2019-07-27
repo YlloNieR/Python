@@ -187,6 +187,7 @@ for char in fruit:
     print(char)
 
 print('\n')
+print("Prefix + suffix liste Jack & Quack")
 
 prefixes = "NOPQ"
 suffix = "ack"
@@ -732,6 +733,8 @@ def randomList(n):
 print('\n')
 
 ##Dictionaries
+print("##Dictionaries = \n")
+
 eng2sp = {}                 #first assignment
 eng2sp["one"] = "uno"       #second assignment
 eng2sp["two"] = "dos"
@@ -761,6 +764,7 @@ print("Wieviele Sorten sind im Inventar = ",len(inventory))
 print("\n")
 
 ##Dictionary methods
+print("##Dictionary methods = \n")
 
 print("eng2sp.keys() = ",eng2sp.keys())
 print("eng2sp.items() = ",eng2sp.items())
@@ -771,8 +775,214 @@ print("eng2sp.items() = ",eng2sp.items())
 print("\n")
 
 ##Files and exceptions
+##Beginn des Kapitel ohne Namen
+print("\b Each file is identified by a unique name")
+print("\b or a combination of a file name and a directory name")
+print("\nOpening a file creates a file object. The variable f refers to the new file object.")
+
+print("f refers to the new file object = ")
+
+f = open("test.dat","w")
+print("\tf = open(test.dat,w) = ", f)
+print("\topen... Öffnet \n\t(test.dat ...diese Datei\t\t\t\t\t\t= object\n\t,w) ...ich will auf / in die Datei write = schreiben \t= Methode")
+print("\n CAVE")
+print("\t test.dat noch nicht vorhanden ... wird erstellt")
+print("\t test.dat schon vorhanden ... wird ersetzt")
+print("\n Methodenbeispiele")
+print("\tprint f.read(5) ...lies 5 Buchstaben")
+print("\tf.close() ...schließt Datei")
+
+#Liste über Argumente und Methode #called ...Dictionaries...for loop #extract
+#argument to method, Argument und dessen Kurzbeschreibung
+arg2meth = {}                 
+arg2meth["   argument"] = "\tmethod" + " ...Kurzbeschreibung\n"
+arg2meth["\t  w"] = "\t\twrite" + " ...beschreibt Inhalt"
+arg2meth["\t   r"] = "\t\tread" + " ...liest kompletten Inhalt"
+arg2meth["\t   "] = "\t\tclose" + " ...schließt Datei"
+print("")
+print(arg2meth.values())
+print("")
+print("")
+
+for i,z in zip(arg2meth.keys(),arg2meth.values()):
+    print(i,"\t",z)
+
+print("")
+#How to copy a file #extract
+print("\t#How to copy a file ... siehe Quellcode/backend [copyFile(oldFile, newFile)]\n")
+
+def copyFile(oldFile, newFile):
+    f1 = open(oldFile, "r")
+    f2 = open(newFile, "w")
+    while 1:
+        text = f1.read(50)
+        if text == "":
+            break
+        f2.write(text)
+        f1.close()
+        f2.close()
+        return
+
+##Ende Beginn des Kapitel ohne Namen
+
+print("\n")
+
+##Text files
+print("##Text files = siehe Quellcode/backend\n")
+
+f = open("test.dat","w")                    #öffnet zum schreiben
+f.write("line one\nline two\nline three\n") #schreibt 3 Lines
+f.close()                                   #schließt
+
+f = open("test.dat","r")                    #öffnet zum Lesen
+print("f.readline() = ",f.readline())          #zeigt Inhalt, aber nur Line one danach wird alles in strings gesetzt
+print("f.readlines() = ",f.readlines())        #returns all of the remaining lines as a list of strings
+print("f.readline() = ",f.readline())          #readline returns the empty string
+print("f.readlines() = ",f.readlines())        #readlines returns the empty list
+
+print("")
+#Beschreibungen
+#symbol description, Symbol Beschreibung
+symDesc = {}
+symDesc["Symbol"] = "Beschreibung"
+symDesc["\t[]"] = " ... list"
+symDesc["\t{}"] = " ... dict"
+symDesc["\t()"] = " ... tuple"
+
+for i,z in zip(symDesc.keys(),symDesc.values()):
+    print(i,"\t",z)
+        
+print("")
+
+#methods description, Methoden Beschreibung
+methDesc = {}
+methDesc["Methode"] = "Beschreibung"
+methDesc["\tfilterFile"] = "... makes a copy of oldFile, omitting any lines that begin with #:"
+
+for i,z in zip(methDesc.keys(),methDesc.values()):
+    print(i,"\t",z)
+
+print("")
+#statement description, Anweisungsbeschreibung
+stateDesc = {}
+stateDesc["statement"] = "Anweisungsbeschreibung"
+stateDesc["\tcontinue"] = "... ends the current iteration of the loop, but continues looping"
+
+for i,z in zip(stateDesc.keys(),stateDesc.values()):
+    print(i,"\t",z)
+#Ende Beschreibungen
+
+#extract
+#line-processing program filterFile makes a copy of oldFile, 
+#omitting any lines that begin with #:
+def filterFile(oldFile, newFile):
+    f1 = open(oldFile, "r")
+    f2 = open(newFile, "w")
+    while 1:
+        text = f1.readline()
+        if text == "":
+            break
+        if text[0] == "#":
+            continue
+        f2.write(text)
+    f1.close()
+    f2.close()
+    return
+##Ende Text files
+
+print("\n")
+
+##Writing variables
+print("##Writing variables = \n")
+import string
+
+cars = 52
+"%d" % cars
+print(cars)
+
+asd = "%12f" % 6.1
+"%12f" % 6.1
+print(asd)
+
+#andere Form der Listen Erstellung mit dict
+#export
+print("\n \n______________________    \n     Lohnübersicht \n______________________")
+
+wages = {"\n\tmary": 6.23, "\tjoet\t": 5.45, "\tjoshua": 4.25}
+for i,z in zip(wages.keys(),wages.values()):
+    print(i,"\t",z)
+##Ende Writing variables
+
+print("\n")
+
+##Directories
+print("##Directories = \n")
+
+print("f = open(D:/Gemeinsam,r)")
+print("print(f.readline())")
+print("Aasgabe...")
+##Ende Directories
+
+print("\n")
+
+##Pickling
+print("##Pickling = \n")
+
+import pickle
+f = open("test.pck","w")
+
+#to store a data stucture
+print("pickle.dump(12.3, f)")
+print("pickle.dump([1,2,3], f)")
+print("f.close()")
+print("\tf = open(’test.pck’,’r’")
+print("\tx = pickle.load(f)")
+print("\tx")
+print("\t\tAusgabe = 12.3")
+print("\ntype(x)")
+print("\t\t<type ’float’>")
+print("\ny = pickle.load(f)")
+print("y")
+print("\t\tAusgabe = [1, 2, 3]")
+print("type(y)")
+print("\t\tAusgabe = <type ’list’>")
+##Ende Directories
+
+print("\n")
+#Exceptions
+print("Exceptions = \n")
+
+#Error Fehlermeldungen und Beschreibung
+errorReport = {}
+errorReport["\tError"] = "\t\t\t\t\t\t\t\tBeschreibung" + 6*"\t" + "e.g."
+errorReport["\tZeroDivisionError: integer division or modulo"] = "... created an exception" + 4*"\t" + ">>> print 55/0"
+errorReport["\tIndexError: list index out of range"] = 3*"\t" + "... accessing a nonexistent list item" + 2*"\t" + ">>> a = [ ] \n" + 19*"\t" + ">>> print a[5]"
+errorReport["\tKeyError: what"] = 4*"\t" + "... accessing a key that isn’t in the dictionary" + 2*"\t" + ">>> b = {} \n" + 19*"\t" + ">>> print b[’what’]"
 
 
+for i,z in zip(errorReport.keys(),errorReport.values()):
+    print(i,"\t",z)
+
+#überprüft ob Datei schon vorhanden ist
+def exists(filename):
+    try:
+        f = open(filename)
+        f.close()
+        return 1
+    except:         #Wenn Error gibt er False zurück
+        return 0
+
+#Übung
+print("As an exercise, write a function that uses inputNumber to input a number from the keyboard and that handles the BadNumberError exception.")
+
+def inputNumber():
+    x = int(input("Gib Nummer = "))
+    if x == 17:
+        print("BadNumberError"," 17 is a bad number")
+
+##inputNumber() #deaktiviert wegen falscher Fehlermeldung[d.w.f.f.m.]
+##Ende Exceptions
 
 ##Ende Files and exceptions
-##Ende Dictionaries
+
+print("\n")
