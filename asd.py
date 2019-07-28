@@ -21,6 +21,7 @@ blank = Point()
 
 #blank refers to a Point object which contains two attributes
 blank.x = 3.0
+print("\t[blank] = ...\n\t[.] = dot notationdot notation:\n\t[x] = ...\n\t [3.0] = ...")
 
 blank.y = 4.0
 
