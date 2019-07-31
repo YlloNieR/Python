@@ -982,7 +982,43 @@ def inputNumber():
 
 ##inputNumber() #deaktiviert wegen falscher Fehlermeldung[d.w.f.f.m.]
 ##Ende Exceptions
+##Classes and objects
+##User-defined compound types
+print("##Classes and objects \n")
+print("##User-defined compound types = \n")
+import math
 
+class Point: 
+    pass
+
+class str: 
+    pass
+
+blank = Point()
+
+##Ende User-defined compound types
+
+print("\n")
+
+##Attributes
+print("##Attributes = \n")
+blank = Point()
+
+#blank refers to a Point object which contains two attributes
+blank.x = 3.0
+print("\t[blank] = ...\n\t[.] = dot notationdot notation:\n\t[x] = ...\n\t [3.0] = ...")
+print("blank.x =",blank.x)
+blank.y = 4.0
+print("blank.y =",blank.y)
+distanceSquared = blank.x * blank.x + blank.y * blank.y
+print("\n\tblank.x * blank.x + blank.y * blank.y = distanceSquared = ",distanceSquared)
+print("\nblank = ",blank)
+print("\nblank id = ",id(blank))    
+##Ende Attributes
+##Instances as parameters
+print("##Instances as parameters \n blank.x == blank.y",blank.x == blank.y)
+##Ende Instances as parameters
+##Ende Classes and objects
 ##Ende Files and exceptions
 
 print("\n")
