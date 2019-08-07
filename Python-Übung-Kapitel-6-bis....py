@@ -1020,5 +1020,255 @@ print("##Instances as parameters \n blank.x == blank.y",blank.x == blank.y)
 ##Ende Instances as parameters
 ##Ende Classes and objects
 ##Ende Files and exceptions
+print("\n")
+
+##Classes and functions
+print("##Classes and functions")
+##Time
+print("##Time = ")
+
+class Time:
+    pass
+
+time = Time()
+time.hours = 11
+time.minutes = 59
+time.seconds = 30
+
+print("Stunde =",time.hours," Minute = ", time.minutes," Sekunden = ", time.seconds)
+
+print("\nAs an exercise, write a function printTime that takes a Time object as an argument and prints it in the form hours:minutes:seconds.")
+
+def printTime(hh,mm,ss):
+    class Time:
+        pass
+    time = Time()
+    time.hh = hh
+    time.mm = mm
+    time.ss = ss
+    print(time.hh,":",time.mm,":",time.ss," Uhr")
+
+printTime(22,13,12)
+##Ende Time
+
+##Ende Classes and functions
+
+##Ende Files and exceptions
 
 print("\n")
+    
+##Classes and methods
+print("##Classes and methods")
+print("##Object-oriented features")
+##printTime
+print("\n##printTime als Funktion = ")
+
+class Time:
+    pass
+
+def printTime(time): #definiert Funktion mit Objekt
+    print(str(time.hours),":",str(time.minutes),":",str(time.seconds)," Uhr")
+
+currentTime = Time()
+currentTime.hours = 9
+currentTime.minutes = 14
+currentTime.seconds = 30
+
+printTime(currentTime)
+
+print("\n##printTime als Methode = ")
+#previous method definitions here...
+class Time:
+    def printTime(time):
+        print(str(time.hours),":",str(time.minutes),":",str(time.seconds)," Uhr")   
+    pass
+
+currentTime = Time() #definiert Objekt
+currentTime.hours = 9
+currentTime.minutes = 14
+currentTime.seconds = 30
+
+currentTime.printTime()
+##Ende printTime
+
+print("\n")
+ 
+##Optional arguments
+print("Optional arguments = \n")
+
+def find(str, ch, start=0):
+    index = start               #start wird zu index
+    while index < len(str):     #solange ausführen bis index kleiner als Länge des Wortes
+        if str[index] == ch:    #wenn Buchstabe des Wortes = Buchstabe ist
+            return index        #dann gib index zurück bei apple = 1
+        index = index + 1       #ansonsten index +1 
+    return -1                   #bei azure kein p Ausgabe -1
+
+print("\n ohne Index")
+print(find("apple","p"))
+print(find("azure","p"))
+print("\n mit Index")
+print(find("apple","p",1))
+print(find("apple","p",2))
+print(find("apple","p",3))
+##Ende ptional arguments
+
+print("\n")
+##The initialization method
+print("##The initialization method = \n")
+class Time:
+    def printTime(time):
+        print(str(time.hours),":",str(time.minutes),":",str(time.seconds)," Uhr")   
+    pass
+
+    def __init__(self, hours=0, minutes=0, seconds=0):
+        self.hours = hours
+        self.minutes = minutes
+        self.seconds = seconds
+
+currentTime = Time(9,14,30)
+currentTime.printTime()
+
+currentTime = Time()
+currentTime.printTime()
+
+currentTime = Time(9)
+currentTime.printTime()
+
+currentTime = Time (9, 14)
+currentTime.printTime()
+
+currentTime = Time(seconds = 30, hours = 9)
+currentTime.printTime()
+##Ende The initialization method
+
+print("\n")
+
+##Points revisited
+print("##Points revisited = \n")
+class Point:
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+    def __str__(self):
+        return ( "(" + str(self.x) + "," + str(self.y) + ")")
+
+p = Point(3, 4)
+print(str(p))
+##Ende Points revisited
+
+print("\n")
+
+##Operator overloading
+
+print("##Operator overloading = \n")
+class Point:
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+
+    def __str__(self):
+        return ( "(" + str(self.x) + "," + str(self.y) + ")")
+
+    def __add__(self, other):
+        return Point(self.x + other.x, self.y + other.y)
+
+p1 = Point(3, 4)
+p2 = Point(5, 7)
+p3 = p1 + p2
+
+print('''
+p1 = Point(3, 4)
+p2 = Point(5, 7)
+p3 = p1 + p2
+= ''',p3)
+
+print('''\nAs an exercise, add a method sub (self, other) 
+that overloads the subtraction operator, and try it out.''')
+
+class Point:
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+
+    def __str__(self):
+        return ( "(" + str(self.x) + "," + str(self.y) + ")")
+
+    def __add__(self, other):
+        return Point(self.x + other.x, self.y + other.y)
+
+    def __sub__(self, other):
+        return Point(self.x - other.x, self.y - other.y)
+
+    def __mul__(self, other):
+        return Point(self.x * other.x, self.y * other.y)
+
+    def __divi__(self, other):
+        return Point(self.x / other.x, self.y / other.y)
+
+    def __rmul__(self, other):
+        return self.x * other.x + self.y * other.y
+
+
+s1 = Point(3, 4)
+s2 = Point(5, 7)
+s3 = s1 - s2
+
+print('''
+s1 = Point(3, 4)
+s2 = Point(5, 7)
+s3 = s1 - s2
+= ''',s3)
+
+m1 = Point(3, 4)
+m2 = Point(5, 7)
+m3 = m1 * m2
+
+print('''
+m1 = Point(3, 4)
+m2 = Point(5, 7)
+m3 = m1 * m2
+= ''',m3)
+
+d1 = Point(3, 4)
+d2 = Point(5, 7)
+d3 = d1 * d2
+
+print('''
+d1 = Point(3, 4)
+d2 = Point(5, 7)
+d3 = d1 * d2
+= ''',d3)
+
+r1 = Point(3, 4)
+r2 = Point(5, 7)
+r3 = r1 * r2
+
+print('''
+r1 = Point(3, 4)
+r2 = Point(5, 7)
+r3 = r1 * r2
+= ''',d3)
+
+r1 = Point(3, 4)
+r2 = Point(5, 7)
+
+
+print('''
+r1 = Point(3, 4)
+r2 = Point(5, 7)
+
+r1 * r2 = ''',r1 * r2)
+##Operator overloading
+
+print("\n")
+
+##Polymorphism
+print("##Polymorphism = \n")
+def multadd (x, y, z):
+    return x * y + z
+
+print('''multadd(3,2,1) =''', multadd(3,2,1))
+
+##Ende Polymorphism
+##Ende Classes and methods
