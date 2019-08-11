@@ -16,7 +16,44 @@ def pwErstellen():
     else:
         print("Passwörter stimmen nicht überein!")
 
+ 
 
+def numberOfPasswords(gesuchtes_Wort):
+    with open("pwdata.txt","r") as z:
+        nPasswords = sum(1 for gesuchtes_Wort in z)
+        print("\tAnzahl der Passwörter = ",nPasswords)    
+    z.close()
+
+def listOfTimePassword(gesuchtes_Wort):
+    import re
+    print("Liste der Treffer:")
+    with open("pwdata.txt","r") as y:
+        for lin in y:
+            if gesuchtes_Wort in lin:
+                print("\t\t",lin.rstrip('\r\n'))    #nimmt \n weg
+    y.close()
+
+def numberOfHits(gesuchtes_Wort):
+    import re
+    with open("pwdata.txt","r") as file:
+        for line in file:
+            if gesuchtes_Wort in line:
+                print(line)
+            x = 0
+            while re.search(gesuchtes_Wort,file.readline()):
+                x = x + 1
+        print("\tAnzahl der Treffer =", x)
+    file.close()
+
+def pwCheck():
+    print("Du möchtest also ein Passwort abfragen \n")
+    gesuchtes_Wort = input("Welches Passwort soll sich in der pwdata.txt befinden? \n\t= ")
+    #numberOfPasswords(gesuchtes_Wort)
+    numberOfHits(gesuchtes_Wort)##Hier ist noch ein Fehler drin
+    #listOfTimePassword(gesuchtes_Wort) 
+
+breakpoint
+'''
 def pwCheck():
     print("Du möchtest also ein Passwort abfragen \n")
     passwortVorhanden = input("Welches Passwort soll sich in der pwdata.txt befinden? \n\t= ")
@@ -26,7 +63,7 @@ def pwCheck():
     else:
         print("Das Passwort ist nicht gespeichert!")
     textfile.close()
-    
+'''    
 
 while True:
     try:
