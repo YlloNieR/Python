@@ -1,7 +1,7 @@
-print("Passwort Abfrage mit Datensatz")
+print("\n\tPasswort Abfrage mit Datensatz\n")
 
 def pwErstellen():
-    print("Du möchtest also ein Passwort erstellen \n")
+    print("\nDu möchtest also ein Passwort erstellen & der Datenbank hinzufügen\n")
     passwortVorhanden = input("neues Passwort eingeben = ")
     passwortEingabe = input("Passwort wiederholen = ")
 
@@ -17,8 +17,8 @@ def pwErstellen():
         print("Passwörter stimmen nicht überein!")
 
 def pwCheck():
-    print("\nDu möchtest also ein Passwort abfragen \n")
-    gesuchtes_Wort = input("Welches Passwort soll sich in der pwdata.txt befinden? \n\t= ")
+    print("\n\tDu möchtest also ein Passwort abfragen \n")
+    gesuchtes_Wort = input("Welches Passwort soll sich in der pwdata.txt Datenbank befinden? \n\t= ")
     numberOfPasswords(gesuchtes_Wort)
     numberOfHits(gesuchtes_Wort)
     listOfTimePassword(gesuchtes_Wort)  
@@ -61,14 +61,25 @@ breakpoint
 
 while True:
     try:
-        w = input("\tPasswort erstellen [1]\n\tPasswort eingeben [2]\n\t=")
+        w = input("\t[1] neues Passwort der Datenbank hinzufügen\n\t[2] Passwort eingeben & mit Datenbank überprüfen\n\t= ")
         n = int(w)
         break
     except ValueError:
-        print("\nEs sind nur die oben angegebenen Auswahlmöglichkeiten möglich!\n")
+        print("\n\tEs sind nur die oben angegebenen Auswahlmöglichkeiten möglich!\n")
 if n == 1:
     pwErstellen()
 elif n == 2:
     pwCheck()
-
+elif n in range(3, 100):
+    print("\n\tEs sind nur die oben angegebenen Auswahlmöglichkeiten möglich!\n")
+    while True:
+        try:
+            w = input("\tPasswort erstellen [1]\n\tPasswort eingeben [2]\n\t=")
+            n = int(w)
+            break
+        except ValueError:
+            print("\n\tEs sind nur die oben angegebenen Auswahlmöglichkeiten möglich!\n")
+    if n in range(3, 100):
+        print("\n\tVergiss es spiel Tetris Digga!\n")
+        
 
