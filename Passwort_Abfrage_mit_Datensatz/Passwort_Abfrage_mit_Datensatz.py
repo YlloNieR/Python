@@ -16,54 +16,48 @@ def pwErstellen():
     else:
         print("Passwörter stimmen nicht überein!")
 
- 
+def pwCheck():
+    print("\nDu möchtest also ein Passwort abfragen \n")
+    gesuchtes_Wort = input("Welches Passwort soll sich in der pwdata.txt befinden? \n\t= ")
+    numberOfPasswords(gesuchtes_Wort)
+    numberOfHits(gesuchtes_Wort)##Hier ist noch ein Fehler drin
+    listOfTimePassword(gesuchtes_Wort)  
 
 def numberOfPasswords(gesuchtes_Wort):
     with open("pwdata.txt","r") as z:
         nPasswords = sum(1 for gesuchtes_Wort in z)
-        print("\tAnzahl der Passwörter = ",nPasswords)    
+        print("\t\nAnzahl der Passwörter = ",nPasswords)    
     z.close()
 
 def listOfTimePassword(gesuchtes_Wort):
     import re
-    print("Liste der Treffer:")
+    x = 0
+    b = print("\n\tListe der Treffer: \n")
     with open("pwdata.txt","r") as y:
         for lin in y:
             if gesuchtes_Wort in lin:
-                print("\t\t",lin.rstrip('\r\n'))    #nimmt \n weg
+                a = print("\t\t",lin.rstrip('\r\n'))    #nimmt \n weg
+                x = 1
+    if x == 1:
+        b, a    
+    else: 
+        print("Keine Treffer")
     y.close()
 
 def numberOfHits(gesuchtes_Wort):
     import re
+    x = 0
     with open("pwdata.txt","r") as file:
-        for line in file:
+        for line in file:            
             if gesuchtes_Wort in line:
-                print(line)
-            x = 0
-            while re.search(gesuchtes_Wort,file.readline()):
                 x = x + 1
-        print("\tAnzahl der Treffer =", x)
+        if x == 0:
+            print("Das Passwort ist nicht gespeichert!")
+        else:
+            print("\tDas Passwort ist bereits schon",x,"mal in der Datenbank gespeichert!")
     file.close()
 
-def pwCheck():
-    print("Du möchtest also ein Passwort abfragen \n")
-    gesuchtes_Wort = input("Welches Passwort soll sich in der pwdata.txt befinden? \n\t= ")
-    #numberOfPasswords(gesuchtes_Wort)
-    numberOfHits(gesuchtes_Wort)##Hier ist noch ein Fehler drin
-    #listOfTimePassword(gesuchtes_Wort) 
-
 breakpoint
-'''
-def pwCheck():
-    print("Du möchtest also ein Passwort abfragen \n")
-    passwortVorhanden = input("Welches Passwort soll sich in der pwdata.txt befinden? \n\t= ")
-    textfile = open("pwdata.txt", "r")
-    if textfile.read() == passwortVorhanden:
-        print("Das Passwort ist in der Datenbank gespeichert!")
-    else:
-        print("Das Passwort ist nicht gespeichert!")
-    textfile.close()
-'''    
 
 while True:
     try:
@@ -71,7 +65,7 @@ while True:
         n = int(w)
         break
     except ValueError:
-        print("\nEs nur die oben angegebenen Auswahlmöglichkeiten möglich!\n")
+        print("\nEs sind nur die oben angegebenen Auswahlmöglichkeiten möglich!\n")
 if n == 1:
     pwErstellen()
 elif n == 2:
