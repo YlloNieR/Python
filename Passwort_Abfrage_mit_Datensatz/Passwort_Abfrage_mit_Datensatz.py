@@ -20,7 +20,7 @@ def pwCheck():
     print("\nDu möchtest also ein Passwort abfragen \n")
     gesuchtes_Wort = input("Welches Passwort soll sich in der pwdata.txt befinden? \n\t= ")
     numberOfPasswords(gesuchtes_Wort)
-    numberOfHits(gesuchtes_Wort)##Hier ist noch ein Fehler drin
+    numberOfHits(gesuchtes_Wort)
     listOfTimePassword(gesuchtes_Wort)  
 
 def numberOfPasswords(gesuchtes_Wort):
@@ -41,7 +41,7 @@ def listOfTimePassword(gesuchtes_Wort):
     if x == 1:
         b, a    
     else: 
-        print("Keine Treffer")
+        print("Keine Treffer!")
     y.close()
 
 def numberOfHits(gesuchtes_Wort):
