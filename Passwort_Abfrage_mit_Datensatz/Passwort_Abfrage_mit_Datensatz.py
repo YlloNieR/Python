@@ -2,6 +2,7 @@ print("\n\tPasswort Abfrage mit Datensatz\n")
 
 def pwErstellen():
     print("\nDu möchtest also ein Passwort erstellen & der Datenbank hinzufügen\n")
+    username = input("Benutzername = ")
     passwortVorhanden = input("neues Passwort eingeben = ")
     passwortEingabe = input("Passwort wiederholen = ")
 
@@ -10,7 +11,7 @@ def pwErstellen():
         now = strftime("%Y-%m-%d %H:%M:%S", localtime())
         textfile = open("pwdata.txt","a")
         textfile.write(str(now))
-        textfile.write("\t" + passwortEingabe + "\n")    
+        textfile.write("\t" + username + "\t" + passwortEingabe + "\n")    
         textfile.close()
         print("Passwort erfolgreich gespeichert :)")
     else:
@@ -18,7 +19,7 @@ def pwErstellen():
 
 def pwCheck():
     print("\n\tDu möchtest also ein Passwort abfragen \n")
-    gesuchtes_Wort = input("Welches Passwort soll sich in der pwdata.txt Datenbank befinden? \n\t= ")
+    gesuchtes_Wort = input("\tWelcher Benutzer oder welches Passwort soll sich in der pwdata.txt Datenbank befinden? \n\t= ")
     numberOfPasswords(gesuchtes_Wort)
     numberOfHits(gesuchtes_Wort)
     listOfTimePassword(gesuchtes_Wort)  
