@@ -1,21 +1,21 @@
-class Board:
+class Spielbrett:
     def __init__(self):
         self.state = [0, 0, 0, 0, 0, 0, 0, 0, 0]  
 
-    def make_turn(self, cell, player):
-        if self.is_valid_turn(cell):
-            self.state[cell] = player.symbol
+    def Zug(self, zelle, spieler):
+        if self.gueltiger_Zug(zelle):
+            self.state[zelle] = spieler.x_oder_o
             return True
         return False
 
-    def is_valid_turn(self, cell):
-        if self.state[cell] == 0:
+    def gueltiger_Zug(self, zelle):
+        if self.state[zelle] == 0:
             return True
         else:
             return False
 
-    def check_win(self, player):
-        s = player.symbol
+    def ueberpruefe_ob_gewonnen(self, spieler):
+        s = spieler.x_oder_o
         #win waagerecht
         if self.state[0] == s and self.state[1] == s and self.state[2] == s:
             return True
@@ -38,13 +38,13 @@ class Board:
         elif self.state[2] == s and self.state[4] == s and self.state[6] == s:
             return True
 
-    def is_full(self):
+    def spielbrett_ist_Voll(self):
         for i in self.state:
             if i == 0:
                 return False
         return True
 
-    def sign_to_printable(self, sign):
+    def X_Oder_O(self, sign):
         if sign == 0:
             return " "
         elif sign == 1:
@@ -52,43 +52,45 @@ class Board:
         else:
             return "O"
 
-    def print_board(self):
-        print(" " + self.sign_to_printable(self.state[0]) + " | " + self.sign_to_printable(self.state[1]) + " | " + self.sign_to_printable(self.state[2] + " \n" + 
-              " " + self.sign_to_printable(self.state[3]) + " | " + self.sign_to_printable(self.state[4]) + " | " + self.sign_to_printable(self.state[5] + " \n" + 
-              " " + self.sign_to_printable(self.state[6]) + " | " + self.sign_to_printable(self.state[7]) + " | " + self.sign_to_printable(self.state[8] + " \n")       
+    def zeichne_Spielbrett(self):
+        print(" " + self.X_Oder_O(self.state[0]) + " | " + self.X_Oder_O(self.state[1]) + " | " + self.X_Oder_O(self.state[2]) + " \n" + 
+              " " + self.X_Oder_O(self.state[3]) + " | " + self.X_Oder_O(self.state[4]) + " | " + self.X_Oder_O(self.state[5]) + " \n" + 
+              " " + self.X_Oder_O(self.state[6]) + " | " + self.X_Oder_O(self.state[7]) + " | " + self.X_Oder_O(self.state[8]) + " \n")       
 
 
-class Player:
-    def __init__(self, symbol):
-        self.symbol = symbol
+class Spieler:
+    def __init__(self, x_oder_o):
+        self.x_oder_o = x_oder_o
 
     
 if __name__ == "__main__":
-    player_a = Player(1)
-    player_b = Player(-1)
-    board = Board()
-    active_player = player_a
-    while not board.is_full():
-        board.print_board()
+    Spieler_1 = Spieler(1)
+    Spieler_2 = Spieler(-1)
+    spielbrett = Spielbrett()
+    aktive_Spieler = Spieler_1
+    while not spielbrett.spielbrett_ist_Voll():
+        spielbrett.zeichne_Spielbrett()
         try:
-            cell = int(input("Wo möchtest du deine Markierung machen? [1-9] "))
-        except ValueError:
+            zelle = int(input("Wo möchtest du deine Markierung machen? [1-9] "))
+        except ValueError and IndexError:
             continue
-        cell = cell - 1
-        if cell < 0 and cell > 8:
+        
+        zelle = zelle - 1
+        if zelle < 0 and zelle > 8:
             print("Bitte gib eine Nummer zwischen 1 und 9 ein ")
             continue
-        if not board.make_turn(cell, active_player):
+        if not spielbrett.Zug(zelle, aktive_Spieler):
             print("ungültiger Zug!")
             continue
 
-        if board.check_win(active_player):
+        if spielbrett.ueberpruefe_ob_gewonnen(aktive_Spieler):
+            spielbrett.zeichne_Spielbrett()
             print("Du hast gewonnen! :D")
             break
 
-        if active_player == player_a:
-            active_player = player_b
+        if aktive_Spieler == Spieler_1:
+            aktive_Spieler = Spieler_2
         else: 
-            active_player = player_a
-    print("Unentschieden :/")
+            aktive_Spieler = Spieler_1
+    print("Falls bis jetzt keiner gewonnen hat, ist es ein Unetschieden!") #muss noch geändert werden
 
