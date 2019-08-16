@@ -1074,7 +1074,7 @@ currentTime.hours = 9
 currentTime.minutes = 14
 currentTime.seconds = 30
 
-printTime(currentTime)
+print(Time(currentTime))
 
 print("\n##printTime als Methode = ")
 #previous method definitions here...
