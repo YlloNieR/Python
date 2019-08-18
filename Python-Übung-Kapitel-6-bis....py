@@ -390,6 +390,12 @@ def f(L=None):
 print(somemodule.funk2())
 
 '''
+
+'''
+if __name__ == "__main__": #Wenn diese Datei z.b. somemodule.py aufgerufen wird führe nur diesen dort angegebenen Code aus
+    print("hello")
+'''
+
 ##Ende Weitere Module
 
 print('\n')
@@ -1044,6 +1050,45 @@ print("\nblank id = ",id(blank))
 ##Instances as parameters
 print("##Instances as parameters \n blank.x == blank.y",blank.x == blank.y)
 ##Ende Instances as parameters
+
+'''
+class MeineClass
+    definiert statements Beispiele:
+        x = 42
+        y = "String"
+
+        Funktionen:
+        def tu_etwas(self, z):
+            self.x = z    #self. bedeutet greife innerhalb dieser Klasse auf definiertes x zu (=42) und ändere diese auf z
+
+    Weitere statements
+    weitere Funktionen
+    weitere Classes
+
+ebene = MeineClass() #erstellt Instanz "ebene"
+ebene.tu_etwas()
+'''
+
+'''
+Konstruktoren
+= Funktionen bzw. Methoden welche etwas erstellen sollen
+class MeineClass
+    definiert statements Beispiele:
+        x = 42
+        y = "String"
+
+        def __init__(self, buchstabe="a")
+            self.buchstabe = buchstabeneu
+
+instanz = MeineClass("z")
+print(instanz.buchstabe)
+>>> z 
+
+instanz = MeineClass()
+print(instanz.buchstabe)
+>>> a #default
+'''
+
 ##Ende Classes and objects
 ##Ende Files and exceptions
 print("\n")

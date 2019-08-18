@@ -8,19 +8,42 @@ Croupier
 bis zu sieben Spieler 
 
 '''
-blattDiamonds = ["Diamond"]
-blattHearts = {"Heart"}
-blattSpades = {"Spade"}
-blattSquares = {"Square"}
+print("")
 
-number = {"Diamond":2,"Diamond":3,"Diamond":4,"Diamond":5,"Diamond":6,"Diamond":7,"Diamond":8,"Diamond":9,"Diamond":10,"Diamond":"J","Diamond":"Q","Diamond":"K","Diamond":"A"}
-numbers = [2,3,4,5,6,7,8,9,10,"J","Q","K","A"]
+class Kartendeck:
+    numbers = [2,3,4,5,6,7,8,9,10,"J","Q","K","A"]
+    blattDiamonds = ["Diamond"]
+    blattHearts = ["Heart"]
+    blattSpades = ["Spade"]
+    blattSquares = ["Square"]
+    check = 0
 
-for i in range(2,14):
-    print(*numbers)
+    def diamond(self):
+        for i in self.numbers:
+            print(*self.blattDiamonds,self.numbers[self.check])
+            self.check += 1
+                            
 
-#print(*numbers, sep = "\n") 
+    def hearts(self):
+        for i in self.numbers:
+            print(*self.blattHearts,self.numbers[self.check])
+            self.check += 1
+
+    def spades(self):
+        for i in self.numbers:
+            print(*self.blattSpades,self.numbers[self.check])
+            self.check += 1
+
+    def squares(self):
+        for i in self.numbers:
+            print(*self.blattSquares,self.numbers[self.check])
+            self.check += 1
 
 
-#Versuch 2: two_dimensional_lists_arrays
+class Spieler:
+    def __init__(self, Nummer):
+        self.Nummer = Nummer
+
+
+print(Kartendeck().diamond())
 
