@@ -368,6 +368,32 @@ print("index 4 =",index4,"Suche bob im Bereich array 1 bis 2 (= ob) = nicht vorh
 
 print('\n')
 
+##Weitere Module
+'''
+>>>somemodule.py: Datei 1
+
+def func():
+    print("hello world")
+
+def funk2():
+    return 42
+-------------------------
+>>>workdat.py: Datei 2
+
+import somemodule
+def f(L=None):
+    if L is None:
+        L = []
+    L.apend(42)
+    return L
+
+print(somemodule.funk2())
+
+'''
+##Ende Weitere Module
+
+print('\n')
+
 ##Character classification
 print("##Character classification = \n")
 import string
