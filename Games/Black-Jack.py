@@ -1,4 +1,4 @@
-print("\t Black Jack")
+print("\n\n\t Black Jack")
 '''
 312 Karten
 52 Blatt 13 Karten
@@ -103,38 +103,138 @@ class Kartendeck:
             Punkte = WertRandomKarte
         elif WertRandomKarte == 11 or 12 or 13:
             Punkte = 10
+
+def punkteDealer():
+    infile = open('zwischenspeicher1.txt', 'r')
+    numbers = [int(line) for line in infile.readlines()]
+    Punkte = sum(numbers)
+    print(Punkte)
+    if Punkte < 21:
+        print("\tEine geht noch!")
         
+    elif Punkte == 21:
+        print("\tDer Dealer hat bereits Gewonnen!!")
+        textfile = open("zwischenspeicher1.txt","w")
+        textfile2 = open("zwischenspeicher2.txt","w")
+        textfile.close()
+        textfile2.close()
+        exit()
+
+    elif Punkte > 21:
+        print("\tDer Dealer hat bereits Verloren!")
+        textfile = open("zwischenspeicher1.txt","w")
+        textfile2 = open("zwischenspeicher2.txt","w")
+        textfile.close()
+        textfile2.close()
+        exit()
+
+
+def punkteSpieler():
+    infile = open('zwischenspeicher2.txt', 'r')
+    numbers = [int(line) for line in infile.readlines()]
+    Punkte = sum(numbers)
+    print(Punkte)
+    if Punkte < 21:
+        print("\tEine geht noch!")
         
+    elif Punkte == 21:
+        print("\tDer Spieler hat bereits Gewonnen!!")
+        textfile = open("zwischenspeicher1.txt","w")
+        textfile2 = open("zwischenspeicher2.txt","w")
+        textfile.close()
+        textfile2.close()
+        exit()
+        
+    elif Punkte > 21:
+        print("\tDer Spieler hat bereits Verloren!")
+        textfile = open("zwischenspeicher1.txt","w")
+        textfile2 = open("zwischenspeicher2.txt","w")
+        textfile.close()
+        textfile2.close()
+        exit()
+
+def ersterZugDealer():
+    print("Der Dealer beginnt seinen ersten Zug ...")
+    textfile = open("zwischenspeicher1.txt","a")
+    y = Kartendeck().get_list()
+    z = Punkte
+    textfile.write(str(z) + "\n")
+    textfile.close()
+    punkteDealer()
+    spielDealer()
+
+def ersterZugSpieler():
+    textfile = open("zwischenspeicher2.txt","a")
+    y = Kartendeck().get_list()
+    z = Punkte
+    textfile.write(str(z) + "\n")
+    textfile.close()
+    punkteSpieler()
+        
+def spielDealer(): 
+    x = input("\n Dealer - Möchtest du eine Karte j/n ? ")     
+    if x == "j":
+        textfile = open("zwischenspeicher1.txt","a")
+        y = Kartendeck().get_list()
+        z = Punkte
+        textfile.write(str(z) + "\n")
+        textfile.close()
+        punkteDealer()
+        spielDealer()
+    else:
+        infile = open('zwischenspeicher1.txt', 'r')
+        numbers = [int(line) for line in infile.readlines()]
+        PunkteDealer = sum(numbers)
+        print("\n Punktestand Dealer = ", PunkteDealer,"\n") 
+        print("\n Dann ist als nächstes der Spieler dran ... \n")       
+        spielSpieler()    
+
+def punkteAll():
+    fileDealer = open('zwischenspeicher1.txt', 'r')
+    numbers = [int(line) for line in fileDealer.readlines()]
+    PunkteDealer = sum(numbers)
+    print("\n\tPunktestand Dealer = ", PunkteDealer)
+    fileSpieler = open('zwischenspeicher2.txt', 'r')
+    numbers = [int(line) for line in fileSpieler.readlines()]
+    PunkteSpieler = sum(numbers)
+    print("\tPunktestand Spieler = ", PunkteSpieler)
+
+    if PunkteSpieler > PunkteDealer:
+        print("\n\tSpieler hat gewonnen!")
+    if PunkteSpieler == PunkteDealer:
+        print("\n\tSpieler hat gewonnen!")
+    elif PunkteSpieler < PunkteDealer:
+        print("\n\tDealer hat gewonnen!")
 
 
-##
-'''
-class CountedInput(object):
-    def __init__(self):
-        self.counter = 0
-    def input(self, *args):
-        self.counter += 1
-        return input(*args)
+def spielSpieler():
+    x = input("\n Spieler - Möchtest du eine Karte j/n ? ")     
+    if x == "j":
+        textfile = open("zwischenspeicher2.txt","a")
+        y = Kartendeck().get_list()
+        z = Punkte
+        textfile.write(str(z) + "\n")
+        textfile.close()
+        punkteSpieler()
+        spielSpieler()
+        
+    else:        
+        punkteAll()
 
-counted_input = CountedInput()
-'''
-########################################
+    z = input("\nerneut Spielen j/n ? ")     
 
-Spiel = Kartendeck()     
-Spiel.get_list()
-
-
-list.append(Punkte)
-
-
-'''
-def dealer():
-    Kartendeck()
-    return WertRandomKarte
-
+    if z == "j":
+        textfile = open("zwischenspeicher1.txt","w")
+        textfile2 = open("zwischenspeicher2.txt","w")
+        textfile.close()
+        textfile2.close()
+        spielDealer()
+    else:
+        textfile = open("zwischenspeicher1.txt","w")
+        textfile2 = open("zwischenspeicher2.txt","w")
+        textfile.close()
+        textfile2.close()
+        exit()
 
 
-
-
-dealer()
-'''
+ersterZugDealer()

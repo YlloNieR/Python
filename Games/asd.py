@@ -21,10 +21,16 @@ class Kartendeck:
     def kartenzug(self):
             global WertRandomKarte
             from random import randint
-            Kartenstapel = randint(1,1)
+            Kartenstapel = randint(1,4)
             RandomKarte = randint(1, 15)
             if Kartenstapel == 1:
                 self.diamond(RandomKarte)
+            elif Kartenstapel == 2:
+                self.hearts(RandomKarte)
+            elif Kartenstapel == 3:
+                self.spades(RandomKarte)
+            elif Kartenstapel == 4:
+                self.squares(RandomKarte)
             WertRandomKarte = RandomKarte
 
     def get_list(self):    
@@ -52,7 +58,6 @@ def punkte():
     
 
 def Spiel():
-    punkte()
     x = input("\nMöchtest du eine Karte j/n ? ")     
     if x == "j":
         textfile = open("zwischenspeicher.txt","a")
@@ -60,12 +65,14 @@ def Spiel():
         z = Punkte
         textfile.write(str(z) + "\n")
         textfile.close()
-
-    Ende = input("\nEnde j/n ? ")
-    if Ende == "j":
-        textfile = open("zwischenspeicher.txt","w")
-        textfile.close()
-    else:
+        punkte()
         Spiel()
+    else:        
+        Ende = input("\nEnde j/n ? ")
+        if Ende == "j":
+            textfile = open("zwischenspeicher.txt","w")
+            textfile.close()
+        else:
+            Spiel()
 
 Spiel()
