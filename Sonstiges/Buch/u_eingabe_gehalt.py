@@ -1,4 +1,4 @@
-print("\t Umrechner für Bruttolohn in Nettolohn")
-x = float(input("\t Wieviel Bruttolohn in Euro bekommst du: "))
-ergebnis = x * 0.18 # 18%
-print("Es ergibt sich ein Steuerertrag von",ergebnis, "Euro")
+print("Berechnung des monatlich zu zahlenden Steuerbetrages vom Bruttolohn")
+bruttolohn = float(input("Wieviel Bruttolohn in EURO bekommen Sie: "))
+ergebnis = bruttolohn * 0.18 # 18%
+print("Von",bruttolohn,"EURO Ihres Bruttolohnes, ergibt sich bei 18 % -iger Versteuerung, ein Steuerbetrag in Höhe von",ergebnis, "EURO.")
