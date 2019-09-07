@@ -1,25 +1,30 @@
 import random
-print("\tCalculator Game")
+print("Kopfrechnen")
 
-# Aufgabe und Variablen
+# Zufallsgenerator
+random.seed()
+
+# Werte und Berechnung
 a = random.randint(1, 10)
+b = random.randint(1, 10)
+c = a + b
+print("Die Aufgabe: ", a, "+", b)
 
-c = random.randint(1, 10)
-versucheN = 1
+# Eingabe
+print("Bitte iene Zahl eingeben: ")
+z = input()
+zahl = int(z)
 
+# Mehrfache Verzweigung, logische Operatoren
+# Bedingungen mit mehreren Vergleichsoperatoren
+if zahl == c:
+    print(zahl, "ist richtig")
+elif zahl < 0 or zahl > 100:
+    print(zahl, "ist ganz falsch")
+elif c-1 <= zahl <= c+1:
+    print(zahl, "ist ganz nahe dran")
+else:
+    print(zahl, "ist falsch")
 
-def aufgabe():
-    print("\tWieviel ist", a, "+", c, "? ")
-    eingabe = int(input("\tBitte eine Zahl eingeben:\n"))
-    ergebnis = a + c
-
-    if eingabe == ergebnis:
-        print("\t",eingabe, "ist richtig")
-        print("\tAnzahl der Versuche", versucheN)
-    else:
-        print("\t",eingabe, "ist falsch")
-        print("\tErgebnis: ", ergebnis)
-        versucheN + 1
-
-
-aufgabe()
+# Ende
+print("Ergebnis: ", c)
