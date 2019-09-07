@@ -11,7 +11,7 @@ c = a + b
 print("Die Aufgabe: ", a, "+", b)
 
 # Eingabe
-print("Bitte iene Zahl eingeben: ")
+print("Bitte eine Zahl eingeben: ")
 z = input()
 zahl = int(z)
 
