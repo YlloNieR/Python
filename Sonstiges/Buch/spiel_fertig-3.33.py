@@ -42,7 +42,8 @@ for aufgabe in range(1, anzahl+1):
 
     # 7: Sonderfall Division
     elif(opzahl == 4):
-        a = random.randint(1, 10)
+        # a und b werden angezeigt, ich gebe c an
+        c = random.randint(1, 10)
         b = random.randint(1, 10)
         op = "/"
         a = c * b
