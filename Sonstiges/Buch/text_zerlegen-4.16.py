@@ -4,7 +4,7 @@ print("Text: ", test)
 print("")
 
 # Beginn mit startswith, Ende mit endswith
-print("startswith","endswith")
+print("startswith", "endswith")
 if test.startswith("Das"):
     print("Text beginnt mit Das")
 if not test.endswith("Das"):
@@ -40,4 +40,3 @@ print("Element: ", wliste2)
 
 for i in range(0, 2):
     print("Element: ", i, wliste2[i])
-
