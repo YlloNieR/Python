@@ -30,7 +30,7 @@ print()
 # Elemente / Items = View der Items des Dictionarys
 i = alter.items()
 print("items")
-alter["Franz"]=35
+alter["Franz"] = 35
 print("Anzahl Items: ", len(i))
 for x in i:
     print(x)
