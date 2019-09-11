@@ -10,7 +10,7 @@ print("Kopie: ", s2)
 s1.add("abc")
 print("Element hinzu: ", s1)
 
-# Element entnehmen 
+# Element entnehmen
 s1.discard("x")
 print("Element entnommen: ", s1)
 

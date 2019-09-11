@@ -1,6 +1,7 @@
 # Sets
 s1 = set([8, 2, 5])
-s2 = set([2, 8])            # alle Werte von s2 sind in s1 enthalten = s2 echte Teilmenge von s1
+# alle Werte von s2 sind in s1 enthalten = s2 echte Teilmenge von s1
+s2 = set([2, 8])
 s3 = set([2, 5, 8])
 
 print("s1: ", s1)
