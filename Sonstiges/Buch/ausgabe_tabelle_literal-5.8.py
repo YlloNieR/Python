@@ -1,4 +1,4 @@
-# Formatierung vonZeichenketten
+# Formatierung von Zeichenketten
 print(f"{'dez':>4}{'dual':>9}{'oct':>4}{'hex':>4}")
 
 # Formatierung ganzer Zahlen
@@ -11,7 +11,14 @@ artname = {23: " Apfel", 8: " Banane", 42: " Pfirsich"}
 anzahl = {23: 1, 8: 3, 42: 5}
 epreis = {23: 2.95, 8: 1.45, 42: 3.05}
 
-# > = rechtsbündige Ausgabe
+#Dezimalzahl (Formatierungszeichen d, hier in der Gesamtbreite 4)
+#Dualzahl (Formatierungszeichen b, hier in der Gesamtbreite 9)
+#Oktazahl (Formatierungszeichen o, hier in der Gesamtbreite 4)
+#Hexadezimalzahl (Formatierungszeichen x, hier in der Gesamtbreite 4)
+
+# > = rechtsbündige Ausgabe bei strings
+# < = linksbündige Ausgabe bei strings
+
 print(f"{'Nr':>4}{'Name':>12}{'Anz':>4}{'EP':>13}{'GP':>13}")
 for x in 23, 8, 42:
     print(f"{x:04d}{artname[x]:12}{anzahl[x]:4d}"
