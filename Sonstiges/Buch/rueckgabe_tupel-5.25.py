@@ -18,5 +18,5 @@ x = kreis(3)
 print("Fläche: ", x[0])
 print("Umfang: ", x[1])
 
-# Fehler
+# Fehler, c ist ein Wert zu viel
 # a,b,c = kreis(3)
