@@ -10,12 +10,13 @@ def show():
     for i in range(5):
         counter += 1
         print(i, id, counter)
-        
+
         # Division durch 0
         if counter == 5:
             erg = 1/0
         time.sleep(1.5)
     return
+
 
 # Hauptprogramm
 id = threading.get_ident()
