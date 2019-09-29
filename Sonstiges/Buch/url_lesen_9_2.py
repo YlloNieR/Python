@@ -4,7 +4,7 @@ import urllib.request
 
 # Verbindung zu einer URL
 try:
-    u = urllib.request.urlopen("http://localhost/Python36/url_lesen_9_1.htm")
+    u = urllib.request.urlopen("http://localhost/Projekte/Python/Sonstiges/Buch/url_lesen_9_1.htm")
 
 except:
     print("Fehler")
