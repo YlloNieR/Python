@@ -1,4 +1,4 @@
-import urllib.request,urllib.parse
+import urllib.request, urllib.parse
 
 # Eingabedaten
 pnn = input("Bitte den Nachnamen eingeben: ")

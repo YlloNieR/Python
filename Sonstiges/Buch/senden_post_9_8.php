@@ -6,7 +6,7 @@
 </head>
 
 <body>
-    <p><b>Bitte senden Sie Ihre Daten:</b></p>
+    <p><b>Ihre Daten wurden registriert:</b></p>
     <?php
     echo "Nachname: " . $_POST["nn"] . "<br />";
     echo "Vorname: " . $_POST["vn"];
