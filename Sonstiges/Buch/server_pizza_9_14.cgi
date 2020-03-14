@@ -5,8 +5,6 @@ import cgi
 import cgitb
 
 # Allgemeine Check-Funktion
-
-
 def chk(element):
     global form
     if element in form:
@@ -25,7 +23,6 @@ form = cgi.FieldStorage()
 # HTML-Dokument mit Variablen
 print("Content-type: text/html")
 print()
-
 print("<!DOCTYPE html><html>")
 print("<head><meta charset:'utf8'></head>")
 print("<body>")
@@ -41,12 +38,12 @@ print("<p>Ihre Adresse", chk("st"), chk("hn"),
 print("<p>Ihre Bestellung: Pizza", chk("pt"))
 
 # Beginn Berechnung Preis
-preisliste = {"Salami": 6, "Thunfisch": 6.5,
-              "Quattro Stagioni": 7.5, "Python": 8.5}
+preisliste = {"Salami":6, "Thunfisch":6.5,
+              "Quattro Stagioni":7.5, "Python":8.5}
 preis = preisliste[form["pt"].value]
 
 # Zusatz
-zusatzliste = {"Pepperoni": 1, "Oliven": 1.2, "Sardellen": 1.5}
+zusatzliste = {"Pepperoni":1, "Oliven":1.2, "Sardellen":1.5}
 
 # Auswertung Zusatz
 if "zu" in form:
@@ -61,9 +58,8 @@ print("</p>")
 
 # Auswertung Express Service
 if "ex" in form:
-    try:
-        print("<p>Mit Express-Service</p>")
-        preis += 1.5
+    print("<p>Mit Express-Service</p>")
+    preis += 1.5
 
 # Bemerkung
 if "bm" in form:
@@ -72,9 +68,9 @@ if "bm" in form:
 # Rabatt
 if "kc" in form:
     if form["ku"].value == "S" \
-            and form["kc"].value "Bingo":
-        preis = preis * 0.95
-        print("<p>Rabatt 5%</p>")
+            and form["kc"].value == "Bingo":
+                preis = preis * 0.95;
+                print("<p>Rabatt 5%</p>")
 
 # Preis
 print(f"Preis (ohne Bemerkung): {preis:.2f} &euro;")
