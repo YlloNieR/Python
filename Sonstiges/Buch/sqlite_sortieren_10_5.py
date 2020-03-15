@@ -7,7 +7,7 @@ cursor = connection.cursor()
 # Sortierung absteigend
 sql = "SELECT * FROM personen ORDER BY gehalt DESC"
 cursor.execute(sql)
-print("Sortiere Gehalt absteigend:")
+print("Sortiere Gehalt absteigend (DESCending <-> ASCending):")
 for dsatz in cursor:
     print(dsatz[0],dsatz[1],dsatz[3],dsatz[4])
 print()
