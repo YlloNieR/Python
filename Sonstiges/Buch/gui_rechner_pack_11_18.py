@@ -4,9 +4,8 @@ import tkinter
 def ende():
     main.destroy()
 
+
 # Kehrwert
-
-
 def kw():
     if not lb["text"]:
         return
@@ -14,9 +13,8 @@ def kw():
     z = 1/z
     lb["text"] = str(z)
 
+
 # Quadrat
-
-
 def qu():
     if not lb["text"]:
         return
@@ -24,21 +22,18 @@ def qu():
     z = z*z
     lb["text"] = str(z)
 
+
 # Anzeige leeren
-
-
 def cl():
     lb["text"] = ""
 
+
 # Ziffern 0 bis 9
-
-
 def anz(ziffer):
     lb["text"] += str(ziffer)
 
+
 # Punkt, falls noch nicht vorhanden
-
-
 def anzp():
     if lb["text"].find(".") == -1:
         lb["text"] += "."
