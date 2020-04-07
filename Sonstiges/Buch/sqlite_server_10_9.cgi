@@ -1,4 +1,5 @@
-#!C:\Users\Oliver Rein.DESKTOP-6TPP48V\AppData\Local\Programs\Python\Python38-32\python.exe
+#!C:\Users\...\AppData\Local\Programs\Python\Python38-32\python.exe
+
 import sqlite3
 
 # Dokumententyp
