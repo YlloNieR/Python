@@ -1,12 +1,10 @@
 import tkinter
 
-
 def ende():
     main.destroy()
 
+
 # Funktion zum Quadrieren und Ausgaben
-
-
 def quad():
     eingabe = e.get()
     try:
