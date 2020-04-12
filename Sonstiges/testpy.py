@@ -1,7 +1,14 @@
-lst = [0,1,2,3,4]
+def hanoi(n,f,h,t):
+    if n == 0:
+            pass
+    else:
+        hanoi(n-1,f,t,h)
 
-print(lst[0:2])
+def test(n,f,t,h):
+    for i in range(3):
+        print(hanoi(n-1,f,t,h))
+        
+        # hanoi(n-1,h,f,t)
 
-# Button
-btest = tkinter.Button(main, text="BUTTON", command=nullsetztenwennleer)
-btest.grid(row=10, column=10)
+
+test(3,"A","B","C")
