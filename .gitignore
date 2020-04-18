@@ -78,3 +78,7 @@ Lib/site-packages/mysqlx/protobuf/mysqlx_prepare_pb2.py
 Lib/site-packages/mysqlx/protobuf/mysqlx_resultset_pb2.py
 Lib/site-packages/mysqlx/protobuf/mysqlx_session_pb2.py
 Lib/site-packages/mysqlx/protobuf/mysqlx_sql_pb2.py
+portfolio/__pycache__/pf_main_window.cpython-38.pyc
+portfolio/__pycache__/pf_t_sodoku_solver.cpython-38.pyc
+portfolio/__pycache__/pf_t_systeminfo.cpython-38.pyc
+portfolio/__pycache__/pf_t_test.cpython-38.pyc

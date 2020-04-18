@@ -4,13 +4,15 @@ from tkinter import *       # erstelle Bilddatei und verkleinere
 
 
 main = tkinter.Tk()
-main.geometry("350x360+600+200")
+# Breite 1000x Höhe 400+ X 1200+ Y 200
+main.geometry("350x310+1800+200")
 main.title("Sodoku Solver")
 
 
 # Funktionen----Beginn-----
-def ende():
+def back():
     main.destroy()
+    import pf_main_window
 
 
 def testergebnisse():
@@ -575,7 +577,6 @@ def solve():
                         grid[y][x] = 0
                 return
 
-
     ergebnisausgabereihe1.insert(1, grid[0:1])
     ergebnisausgabereihe2.insert(1, grid[1:2])
     ergebnisausgabereihe3.insert(1, grid[2:3])
@@ -800,18 +801,24 @@ ergebnisausgabereihe7.grid(row=7, column=11)
 ergebnisausgabereihe8.grid(row=8, column=11)
 ergebnisausgabereihe9.grid(row=9, column=11)
 
+# Schaltfläche Zurück
+bback = tkinter.Button(main, text="Zurück", font='Helvetica 9 bold',
+                       compound=CENTER, command=back)
+bback.grid(row=0, column=10)
+
 # Label über Gitter
 lb2 = tkinter.Label(main, text="Ergebnis:", font='Helvetica 11 bold')
 lb2.grid(row=0, column=11, columnspan=1)
 
 # erstelle Bilddatei und verkleinere
-img_check = PhotoImage(file=r"C:\xampp\htdocs\Projekte\Python\Sonstiges\img-check.png")
+img_check = PhotoImage(
+    file=r"C:\xampp\htdocs\Projekte\Python\Sonstiges\img-check.png")
 img_check_resized = img_check.subsample(40, 40)
-img_end = PhotoImage(file=r"C:\xampp\htdocs\Projekte\Python\Sonstiges\img-end.png")
-img_end_resized = img_end.subsample(25, 25)
-img_test = PhotoImage(file=r"C:\xampp\htdocs\Projekte\Python\Sonstiges\img-test.png")
+img_test = PhotoImage(
+    file=r"C:\xampp\htdocs\Projekte\Python\Sonstiges\img-test.png")
 img_test_resized = img_test.subsample(10, 10)
-img_erase = PhotoImage(file=r"C:\xampp\htdocs\Projekte\Python\Sonstiges\img-erase.png")
+img_erase = PhotoImage(
+    file=r"C:\xampp\htdocs\Projekte\Python\Sonstiges\img-erase.png")
 img_erase_resized = img_erase.subsample(40, 40)
 
 # Solve
@@ -822,7 +829,7 @@ btest.grid(row=10, column=10)
 
 # Schaltfläche Testergebnisse
 btest = tkinter.Button(main, text="Testergebnisse",
-                        image=img_test_resized, compound=LEFT, command=testergebnisse)
+                       image=img_test_resized, compound=LEFT, command=testergebnisse)
 btest.grid(row=11, column=10)
 
 # Freifläche
@@ -838,11 +845,7 @@ berase.grid(row=13, column=10)
 lbfrei2 = tkinter.Label(main, text="")
 lbfrei2.grid(row=14, column=2, columnspan=1)
 
-# Schaltfläche Ende
-bende = tkinter.Button(main, text="",
-                        image=img_end_resized, compound=CENTER, command=ende)
 
-bende.grid(row=15, column=10)
 
 
 main.mainloop()

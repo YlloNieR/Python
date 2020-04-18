@@ -1,5 +1,11 @@
 import sys
 import tkinter as tk
+import os
+
+systeminfo = tk.Tk()
+systeminfo.title("Systeminfo")
+# mittig systeminfo.geometry("600x800+1400+400")
+systeminfo.geometry("600x800+1800+200")
 
 
 def back():
@@ -15,10 +21,11 @@ def systeminfos():
     info6 = sys.stdout
     info7 = sys.stderr
     info8 = sys.platform
-    
+    info9 = sys.executable
+
     lbanzeige = tk.Label(systeminfo, text="")
     lbanzeige.pack()
-    
+
     lbanzeige = tk.Label(systeminfo, text="info1 = sys.argv")
     lbanzeige.pack()
     lbanzeige = tk.Label(systeminfo, text=info1)
@@ -80,14 +87,18 @@ def systeminfos():
     lbanzeige = tk.Label(systeminfo, text=info8)
     lbanzeige.pack()
 
+    lbanzeige = tk.Label(systeminfo, text="")
+    lbanzeige.pack()
 
-systeminfo = tk.Tk()
-systeminfo.title("Systeminfo")
-systeminfo.geometry("600x800+1400+400")
+    lbanzeige = tk.Label(systeminfo, text="info9 = sys.executable")
+    lbanzeige.pack()
+    lbanzeige = tk.Label(systeminfo, text=info9)
+    lbanzeige.pack()
 
 # Anzeige Label
 #lbanzeige = tk.Label(systeminfo, text="test\n info1 = sys.argv\n info2 = sys.version\n info3 = sys.addaudithook")
 # lbanzeige.pack()
+
 
 # Button Hauptfunktion
 bsysteminfo = tk.Button(systeminfo, text="get Infos()", command=systeminfos)
