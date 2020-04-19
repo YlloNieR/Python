@@ -1,19 +1,19 @@
 import tkinter as tk
 
-blackJack = tk.Tk()
-blackJack.title('Black Jack')
-blackJack.geometry("400x400+1800+200")
+pyExcelReader = tk.Tk()
+pyExcelReader.title('Excel Reader')
+pyExcelReader.geometry("400x400+1800+200")
 
 
 def back():
-    blackJack.destroy()
+    pyExcelReader.destroy()
 
 def rebootMain():
     main.destroy()                  # Beendet jetzige Session
     os.system("pf_main_window.py")  # Startet neue Session
 
 # Frame 1
-rahmenreihe1 = tk.Frame(blackJack)
+rahmenreihe1 = tk.Frame(pyExcelReader)
 rahmenreihe1.pack(fill='x', padx=10, ipady=10)
 
 # Label 1
@@ -28,19 +28,15 @@ eingabefeld.pack(side='left')
 bback = tk.Button(rahmenreihe1, width=10, text="Zurück", command=back)
 bback.pack(side="left", padx=10, pady=5)
 
-# Button Reboot
-bback = tk.Button(rahmenreihe1, width=10, text="Zurück", command=back)
-bback.pack(side="left", padx=10, pady=5)
-
 # Button Lösche Ausgabefeld
-bdelete = tk.Button(blackJack, text='clear')
+bdelete = tk.Button(pyExcelReader, text='clear')
 bdelete.pack(side='bottom', anchor='w', padx=10, pady=5)
 
 # Ausgabefeld 1
-ausgabefeld = tk.Text(blackJack)
+ausgabefeld = tk.Text(pyExcelReader)
 ausgabefeld.insert('end', "Start Game")
 ausgabefeld.pack(padx=10)
 
 
 
-blackJack.mainloop()
+pyExcelReader.mainloop()
