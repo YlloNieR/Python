@@ -12,8 +12,9 @@ def back():
 
 
 def tester():
-    ausgabe="NULL"
-    ausgabefeld.insert(0, ausgabe)
+    eingabe.delete(0,10)
+    ausgabefeld.delete(0,10)
+
 
 rahmenreihe1 = tk.Frame(testinfo, relief="sunken")
 rahmenreihe2 = tk.Frame(testinfo, relief="sunken")
@@ -27,9 +28,10 @@ rahmenreihe4.pack(anchor="w")
 
 eingabe = tk.Entry(rahmenreihe4, width=10)
 eingabe.pack(side="left")
+eingabe.insert("end","test")
 ausgabefeld = tk.Entry(rahmenreihe4, width=10)
-
 ausgabefeld.pack(side="left")
+ausgabefeld.insert("end","test")
 
 
 z1 = tk.Entry(rahmenreihe1, width=2)
@@ -71,3 +73,5 @@ btestinfo.pack(side="bottom")
 # Button Zürück
 btestinfo = tk.Button(testinfo, text="Zurück", command=back)
 btestinfo.pack(side="bottom")
+
+testinfo.mainloop()

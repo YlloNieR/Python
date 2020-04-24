@@ -95,11 +95,6 @@ def systeminfos():
     lbanzeige = tk.Label(systeminfo, text=info9)
     lbanzeige.pack()
 
-# Anzeige Label
-#lbanzeige = tk.Label(systeminfo, text="test\n info1 = sys.argv\n info2 = sys.version\n info3 = sys.addaudithook")
-# lbanzeige.pack()
-
-
 # Button Hauptfunktion
 bsysteminfo = tk.Button(systeminfo, text="get Infos()", command=systeminfos)
 bsysteminfo.pack()
