@@ -8,6 +8,8 @@ def fenster():
         return
     status = "neu"
     neu = tkinter.Toplevel(main)
+    neu.title('Registrierung')
+    neu.geometry("260x250+2000+400")
     tkinter.Button(neu, text="Ende Neu", command=endeneu).pack()
 
 
@@ -27,6 +29,8 @@ def ende():
 # Hauptfenster
 main = tkinter.Tk()
 status = "main"
+main.title('Registrierung')
+main.geometry("260x250+1900+300")
 tkinter.Button(main, text="Neu", command=fenster).pack()
 tkinter.Button(main, text="Ende", command=ende).pack()
 

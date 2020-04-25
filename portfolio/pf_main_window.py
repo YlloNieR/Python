@@ -127,17 +127,15 @@ rahmenreihe2.pack(side='right', anchor="ne", padx=25, pady=3)
 projektListeCheck = ["Sudoku Solver",
                      "System Info",
                      "tkinter view",
+                     "Py Excel reader",
                      "Altersrechner"]
 projektListeNot = ["Black Jack",
                    "Rommé",
                    "Tic Tac Toe",
-                   "Spiel4",
-                   "tkinter view",
+                   "Spiel4",                   
                    "Tool3",
                    "Turtle Zeichnung",
-                   "Login System",
-                   "Py Excel reader",
-                   "otpr4"]
+                   "Login System"]
 CheckVar = [IntVar(),
             IntVar(),
             IntVar(),
