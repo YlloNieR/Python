@@ -24,7 +24,7 @@ def leereTextfeld():
     eingabeGeburtstagMM.delete(first=0, last=10)
     eingabeGeburtstagYY.delete(first=0, last=10)
     ausgabefeld.delete(1.0, tk.END)
-    heutigertag
+    heutigertag()
 
 
 def testdats():
