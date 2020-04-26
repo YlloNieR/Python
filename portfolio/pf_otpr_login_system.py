@@ -2,12 +2,13 @@ import tkinter as tk
 import os
 from datetime import datetime
 import tkinter.messagebox
+from tkinter import * 
+
 loginSystem = tk.Tk()
 loginSystem.title('Login System')
-loginSystem.geometry("280x280+1800+200")
+loginSystem.geometry("280x480+1800+200")
 
 status = "login"
-
 
 def back():
     if status == "login":
@@ -21,38 +22,114 @@ def rebootLoginSystem():
 def deleteEntries():
     if status == "login":
         eingabeUsername.delete(first=0, last=100)
-        eingabePasswort.delete(first=0, last=100)
+        eingabePasswort.delete(first=0, last=100)        
 
 def tesdat():
     if status == "login":
         eingabeUsername.insert('end',"Admin")
         eingabePasswort.insert('end',"1234")
 
-def checkPWD():
+def checkUsername():
     if status == "login":
-        usern = eingabeUsername.get()
-        pwd = eingabePasswort.get()
-        csv = open("pf_otpr_login_system.csv", "r")
-        data =[]
+        usern = eingabeUsername.get()                       # hole Username
+        data =[]                                            # ertselle data Liste (leer)
         import csv
-        with open("pf_otpr_login_system.csv") as csvfile:
-            reader = csv.reader(csvfile)
+        with open("pf_otpr_login_system.csv") as csvfile:   # öffne csv anschließend VAR csvfile
+            reader = csv.reader(csvfile)                    # 
             for row in reader:
                 data.append(row)
-        #print(data)
-
-        col = [x[3] for x in data]
-
+        #print(data)       
+        col = [x[3] for x in data]                          # suche in 3. Tabelle = User
+        #print(col.index(usern))
         if usern in col:
             for x in range(0,len(data)):
                 if usern == data[x][3]:
-                    print(data[x])
-        else:
-            print("Name doesn't exist")
+                    return True
 
+
+def checkPWD():
+    if status == "login":
+        pwd = eingabePasswort.get() 
+        data =[]                                            # ertselle data Liste (leer)
+        import csv
+        with open("pf_otpr_login_system.csv") as csvfile:   # öffne csv anschließend VAR csvfile
+            reader = csv.reader(csvfile)                    # 
+            for row in reader:
+                data.append(row)
+        col = [x[4] for x in data]                          # suche in 3. Tabelle = User
+        if pwd in col:
+            for x in range(0,len(data)):
+                if pwd == data[x][4]:
+                    return True   
+
+def pwdUsernVergl():
+    if status == "login":
+        usern = eingabeUsername.get()                       # hole Username
+        pwd = eingabePasswort.get() 
+        data =[]                                            # ertselle data Liste (leer)
+        import csv
+        with open("pf_otpr_login_system.csv") as csvfile:   # öffne csv anschließend VAR csvfile
+            reader = csv.reader(csvfile)                    # 
+            for row in reader:
+                data.append(row)
+
+        col1 = [x[3] for x in data]                          # suche in 3. Tabelle = User
+        checkinstanz1 = col1.index(usern)
+                    
+        col2 = [x[4] for x in data]                 #Hier STEHEN Geblieben, letzter Punkt############################################
+        checkinstanz2 = col2[checkinstanz1] 
+        if checkinstanz2 == pwd:
+            return True
         
-        labelausgabe = tk.Label(rahmenreihe6, text="asd") #lcsv[2]
-        labelausgabe.pack(side="left")
+        #print(usern)
+        #print(pwd)
+        #print(checkinstanz1)
+        #print(checkinstanz2)
+                            
+
+def loggedIn():
+    global status, loggedIn,img1,img2
+    if status != "login":
+        return
+    status = "loggedIn"
+    loggedIn = tk.Toplevel(loginSystem)
+    loggedIn.title('logged In')
+    loggedIn.geometry("300x300+1900+300")
+
+    rahmenreihe = tk.Frame(loggedIn)
+    rahmenreihe.pack()
+    tk.Button(loggedIn, text="Zurück", command=quitloggedIn).pack(side="left",anchor="nw",padx=5,pady=5)
+
+    img1 = PhotoImage(file="C:/xampp/htdocs/Projekte/Python/portfolio/img_beer.png")
+    
+    lb1 = tk.Label(loggedIn,image=img1)
+    lb1.pack(padx=5,pady=5)
+    lb2 = tk.Label(loggedIn,font="Helvetica 16 bold", fg="#09750b",text="You Are Logged In") # grün
+    lb2.pack(padx=5,pady=5)
+
+def checkUSER_PWD():    
+    if status == "login":
+        usern = eingabeUsername.get()                       # hole Username
+        pwd = eingabePasswort.get()                         # hole Passwort        
+
+        if usern == "":
+            tk.messagebox.showerror(title="Login",message="Username fehlt!")        
+        else:
+            if pwd == "":
+                tk.messagebox.showerror(title="Login",message="Passwort fehlt!")        
+            else:                    
+                if checkUsername == True:
+                    tk.messagebox.showerror(title="Login",message="Username und Passwort stimmen nicht überein!")        
+                else:
+                    if checkPWD == True:
+                        tk.messagebox.showerror(title="Login",message="Username und Passwort stimmen nicht überein!")
+                    else:                
+                        if pwdUsernVergl() == True:
+                            disableEntries()
+                            loggedIn() 
+                        else:       
+                            tk.messagebox.showerror(title="Login",message="Username und Passwort stimmen nicht überein!")
+
 
 def countRows():
     with open("pf_otpr_login_system.csv") as csv:
@@ -116,7 +193,27 @@ def quitRegister():
     status = "login"
     enableEntries()
 
+def quitloggedIn():
+    global status
+    loggedIn.destroy()
+    status = "login"
+    enableEntries()
+
+def checkRegUsername():
+    data =[]                                            # ertselle data Liste (leer)
+    import csv
+    with open("pf_otpr_login_system.csv") as csvfile:   # öffne csv anschließend VAR csvfile
+        reader = csv.reader(csvfile)                    # 
+        for row in reader:
+            data.append(row)    
+    col = [x[3] for x in data]                          # suche in 3. Tabelle = User    
+    if ruser in col:
+        for x in range(0,len(data)):
+            if ruser == data[x][3]:                                
+                return True
+
 def enterRegistry():
+    global ruser
     status = "registry"
     csv = open("pf_otpr_login_system.csv", "a")
     datum = datetime.today().strftime('%Y.%m.%d')
@@ -130,27 +227,30 @@ def enterRegistry():
     if ruser == "":
         tk.messagebox.showinfo(title="Registrierung",message="Bitte geben Sie einen Nutzernamen ein!")
     else:
-        if rpw == "":
-            tk.messagebox.showinfo(title="Registrierung",message="Bitte geben Sie das Passwort ein das Sie verwenden möchten!")
-        else: 
-            if rpw2 == "":
-                tk.messagebox.showinfo(title="Registrierung",message="Bitte wiederholen Sie die Passworteingabe!")
-            else:
-                if rpw != rpw2:
-                    tk.messagebox.showerror(title="Registrierung", message="Passwörter stimmen nicht überein!")        
+        if checkRegUsername() == True:
+            tk.messagebox.showerror(title="Registrierung",message="Leider ist der Nutzername bereits vergeben!")
+        else:        
+            if rpw == "":
+                tk.messagebox.showinfo(title="Registrierung",message="Bitte geben Sie das Passwort ein das Sie verwenden möchten!")
+            else: 
+                if rpw2 == "":
+                    tk.messagebox.showinfo(title="Registrierung",message="Bitte wiederholen Sie die Passworteingabe!")
                 else:
-                    #csv.write("Datum,Uhrzeit,Event,Username,Passwort\n")
-                    csv.write(datum)
-                    csv.write(komma)    
-                    csv.write(uhrzeit)
-                    csv.write(komma)
-                    csv.write("Registrierung")
-                    csv.write(komma)
-                    csv.write(ruser)
-                    csv.write(komma)
-                    csv.write(rpw)
-                    csv.write(nLine)
-                    labelErfolg.pack(side='bottom')
+                    if rpw != rpw2:
+                        tk.messagebox.showerror(title="Registrierung", message="Passwörter stimmen nicht überein!")        
+                    else:
+                        #csv.write("Datum,Uhrzeit,Event,Username,Passwort\n")
+                        csv.write(datum)
+                        csv.write(komma)    
+                        csv.write(uhrzeit)
+                        csv.write(komma)
+                        csv.write("Registrierung")
+                        csv.write(komma)
+                        csv.write(ruser)
+                        csv.write(komma)
+                        csv.write(rpw)
+                        csv.write(nLine)
+                        labelErfolg.pack(side='bottom')
 
     csv.close()
 
@@ -203,7 +303,7 @@ eingabePasswort = tk.Entry(rahmenreihe3, width=20, show="*")
 eingabePasswort.pack(side='left')
 
 # Button Passwort überprüfung
-bCheckPassword = tk.Button(rahmenreihe4, text="PasswordCheck", command=checkPWD)
+bCheckPassword = tk.Button(rahmenreihe4, text="PasswordCheck", command=checkUSER_PWD)
 bCheckPassword.pack(side="left",anchor="nw", padx=10, pady=5)
 
 # Button Lösche Ausgabefeld
@@ -220,7 +320,7 @@ bRegistrierung.pack(side='right', padx=10)
 
 # Label 2 Result
 labelausgabe = tk.Label(rahmenreihe6, text="Result: ")
-labelausgabe.pack(side="left")
+labelausgabe.pack(side="top")
 
 
 loginSystem.mainloop()
