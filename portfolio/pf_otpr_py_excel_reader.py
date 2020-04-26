@@ -216,7 +216,7 @@ bclearEntries.pack(side='left', anchor='w', pady=5)
 
 # Button Füge Testergebnisse ein
 btestErg = tk.Button(rahmenreihe6, text='Test Eingabe',
-                     command=testEntries)  # grün
+                     command=testEntries)  
 btestErg.pack(side='left', anchor='w', padx=10, pady=5)
 
 # Button entferne aus csv

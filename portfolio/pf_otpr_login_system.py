@@ -115,7 +115,7 @@ def loggedIn():
     status = "loggedIn"
     loggedIn = tk.Toplevel(loginSystem)
     loggedIn.title('logged In')
-    loggedIn.geometry("280x480+1800+200")  # großer Monitor
+    loggedIn.geometry("280x280+1800+200")  # großer Monitor
     # loggedIn.geometry("280x480+100+0") # kleiner Monitor
 
     rahmenreihe = tk.Frame(loggedIn)
@@ -335,6 +335,9 @@ def quitloggedIn():
     csv.write("loggedOut")
     csv.write(nLine)
 
+def openCSV():
+    os.startfile("pf_otpr_login_system.csv")
+
 # Frame 1
 rahmenreihe1 = tk.Frame(loginSystem)
 rahmenreihe1.pack(fill='x', padx=10, ipady=10)
@@ -401,6 +404,11 @@ btestDat.pack(side='left', anchor='nw', padx=10, pady=5)
 bRegistrierung = tk.Button(
     rahmenreihe5, text='Registrierung', command=register)
 bRegistrierung.pack(side='right', padx=10)
+
+# Button Öffner CSV
+bopenCSV = tk.Button(
+    rahmenreihe5, fg="#169c21", font="Times 10 bold", text='CSV', command=openCSV)
+bopenCSV.pack(side='right', padx=10)
 
 # Label 2 Result
 labelausgabe = tk.Label(rahmenreihe6, text="Result: ")

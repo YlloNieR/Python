@@ -1,10 +1,16 @@
 import tkinter as tk
 import os
+import turtle
 
 dTurtle = tk.Tk()
 dTurtle.title('Turtle Zeichnung')
-dTurtle.geometry("200x200+1800+200")  # großer Monitor
-# dTurtle.geometry("200x200+100+0") # kleiner Monitor
+# dTurtle.geometry("200x200+1800+200")  # großer Monitor
+dTurtle.geometry("260x450+100+0")  # kleiner Monitor
+
+
+def end():
+    dTurtle.destroy()
+    turtle.bye()
 
 
 def back():
@@ -12,35 +18,140 @@ def back():
     os.system("pf_main_window.py")    # Startet neue Session
 
 
-def rebootMain():
-    main.destroy()                  # Beendet jetzige Session
-    os.system("pf_main_window.py")  # Startet neue Session
+def rebootdTurtle():
+    dTurtle.destroy()                  # Beendet jetzige Session
+    os.system("pf_otpr_draw_with_turtle.py")  # Startet neue Session
 
+turtle.setheading(0)
+# 0 - east
+# 90 - north
+# 180 - west
+# 270 - south
+
+def lookNW():
+    turtle.setheading(135) 
+
+def lookW():
+    turtle.setheading(180)
+
+def lookSW():
+    turtle.setheading(225)
+
+def lookN():
+    turtle.setheading(90)
+
+def moveForward():
+    turtle.forward(5)
+
+def lookS():
+    turtle.setheading(270)
+
+def lookNE():
+    turtle.setheading(45)
+
+def lookE():
+    turtle.setheading(0)
+
+def lookSE():
+    turtle.setheading(310)  
+
+def pic1():
+    for i in range(4):
+        turtle.forward(25)
+        turtle.left(90)
+        for i in range(100):
+            x = i+2
+            turtle.forward(25+x)
+            turtle.left(90)
+
+
+def pic2():
+    turtle.forward(25)
+
+def pic3():
+    turtle.forward(25)
 
 # Frame 1
 rahmenreihe1 = tk.Frame(dTurtle)
-rahmenreihe1.pack(fill='x', padx=10, ipady=10)
+bback = tk.Button(rahmenreihe1, width=10, text="Zurück", command=back)
+bende = tk.Button(rahmenreihe1, text='Ende', command=end)
+brebootdTurtle = tk.Button(
+    rahmenreihe1, text='Neustart', command=rebootdTurtle)
 
-# Label 1
-labeleingabe = tk.Label(rahmenreihe1, text='Eingabe:')
-labeleingabe.pack(side='left')
+rahmenreihe1.pack(fill='x',padx=10)
+bback.pack(padx=10, pady=5)
+bende.pack(padx=10, pady=5)
+brebootdTurtle.pack(padx=10, pady=5)
 
-# Eingabefeld 1
-eingabefeld = tk.Entry(rahmenreihe1, width=10)
-eingabefeld.pack(side='left')
+
 
 # Button Zurück
-bback = tk.Button(rahmenreihe1, width=10, text="Zurück", command=back)
-bback.pack(side="left", padx=10, pady=5)
 
-# Button Lösche Ausgabefeld
-bdelete = tk.Button(dTurtle, text='clear')
-bdelete.pack(side='bottom', anchor='w', padx=10, pady=5)
+# Button Ende
 
-# Ausgabefeld 1
-ausgabefeld = tk.Text(dTurtle)
-ausgabefeld.insert('end', "Start Game")
-ausgabefeld.pack(padx=10)
+# Button reboot d Turtle
+
+###################################################################################
+# Frame 2 Pfeile links
+spaltenreiheL = tk.Frame(dTurtle)
+spaltenreiheL.pack(fill='y', side="left", padx=5)
+
+# Frame 3 Pfeile Mitte
+spaltenreiheM = tk.Frame(dTurtle)
+spaltenreiheM.pack(fill='y',side="left", padx=5)
+
+# Frame 4 Pfeile rechts
+spaltenreiheR = tk.Frame(dTurtle)
+spaltenreiheR.pack(fill='y',side="left", padx=5)
+
+# Button Pfeil
+barrowNW = tk.Button(spaltenreiheL, text='↖️',width="6", command=lookNW)
+barrowW = tk.Button(spaltenreiheL, text='⬅️',width="6", command=lookW)
+barrowSW = tk.Button(spaltenreiheL, text='↙️',width="6", command=lookSW)
+
+barrowN = tk.Button(spaltenreiheM, text='⬆️',width="6", command=lookN)
+bmoveForward = tk.Button(spaltenreiheM, text='🐢',width="6", command=moveForward)
+barrowS = tk.Button(spaltenreiheM, text='⬇️',width="6", command=lookS)
+
+barrowNE = tk.Button(spaltenreiheR, text='↗️',width="6", command=lookNE)
+barrowE = tk.Button(spaltenreiheR, text='➡️',width="6", command=lookE)
+barrowSE = tk.Button(spaltenreiheR, text='↘️',width="6", command=lookSE)
+
+barrowNW.pack(padx=5, pady=5)
+barrowW.pack(padx=5, pady=5)
+barrowSW.pack( padx=5, pady=5)
+
+barrowN.pack(padx=5, pady=5)
+bmoveForward.pack(padx=5, pady=5)
+barrowS.pack(padx=5, pady=5)
+
+barrowNE.pack(padx=5, pady=5)
+barrowE.pack(padx=5, pady=5)
+barrowSE.pack(padx=5, pady=5)
+
+# Frame 5 Pfeile rechts
+spaltenreihePic = tk.Frame(dTurtle)
+spaltenreihePic.pack(fill='y',side="left", padx=5)
+
+bpic1 = tk.Button(spaltenreihePic, text='pic1', command=pic1, fg="#4287f5")
+bpic2 = tk.Button(spaltenreihePic, text='pic2', command=pic2, fg="#a442f5")
+bpic3 = tk.Button(spaltenreihePic, text='pic3', command=pic3, fg="#2b6318")
+
+bpic1.pack(padx=5, pady=5)
+bpic2.pack(padx=5, pady=5)
+bpic3.pack(padx=5, pady=5)
+
+# Frame 5
+#rahmenreihe5 = tk.Frame(dTurtle)
+#rahmenreihe5.pack(fill='x', padx=10, ipady=10)
+
+# Label 1
+#labeleingabe = tk.Label(rahmenreihe1, text='Eingabe:')
+# labeleingabe.pack(side='left')
+
+# Eingabefeld 1
+#eingabefeld = tk.Entry(rahmenreihe1, width=10)
+# eingabefeld.pack(side='left')
 
 
 dTurtle.mainloop()

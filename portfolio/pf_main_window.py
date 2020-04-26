@@ -80,6 +80,7 @@ def openTester():
     main.destroy()                  # Beendet jetzige Session
     os.system("pf_m_test.py")  # Startet neue Session
 
+
 # Menüleiste erzeugen
 mBar = tk.Menu(main)
 main["menu"] = mBar
@@ -102,21 +103,21 @@ mBar.add_cascade(label="sonstige Projekte", menu=motpr)
 mGames.add_command(label="Black Jack", command=openBlackJack)
 mGames.add_command(label="Rommé", command=openRomme)
 mGames.add_command(label="Tic Tac Toe", command=openTicTacToe)
-mGames.add_command(label="Spiel4")
+# mGames.add_command(label="Spiel4")
 
 # Untermenü 2 Tools
 mTools.add_command(label="Altersrechner", command=openAgeCounter)
-mTools.add_command(label="Sudoku Solver", command=openSodokuSolver)
+mTools.add_command(label="Sodoku Solver", command=openSodokuSolver)
 mTools.add_command(label="SystemInfo", command=openSystemInfo)
 mTools.add_command(label="tkinter view", command=openTkinterView)
-mTools.add_command(label="Tool4")
+# mTools.add_command(label="Tool4")
 
 
 # Untermenü 3 sontige Projekte
 motpr.add_command(label="Turtle Zeichnung", command=openDrawWithTurtle)
 motpr.add_command(label="Login System", command=openLoginSystem)
 motpr.add_command(label="Py Excel reader", command=openPyExcelReader)
-motpr.add_command(label="otpr4")
+# motpr.add_command(label="otpr4")
 
 
 # Frame 1
