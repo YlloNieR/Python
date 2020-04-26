@@ -104,3 +104,5 @@ bsysteminfo.pack()
 # Button Zürück
 bsysteminfo = tk.Button(systeminfo, text="Zurück", command=back)
 bsysteminfo.pack()
+
+systeminfo.mainloop()

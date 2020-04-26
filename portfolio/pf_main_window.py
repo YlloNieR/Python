@@ -77,8 +77,8 @@ def rebootMain():
 
 
 def openTester():
-    import pf_m_test
-
+    main.destroy()                  # Beendet jetzige Session
+    os.system("pf_m_test.py")  # Startet neue Session
 
 # Menüleiste erzeugen
 mBar = tk.Menu(main)
