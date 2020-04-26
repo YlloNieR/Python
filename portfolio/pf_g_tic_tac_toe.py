@@ -1,4 +1,5 @@
 import tkinter as tk
+import os
 
 ticTacToe = tk.Tk()
 ticTacToe.title('Tic Tac Toe')
@@ -8,12 +9,12 @@ ticTacToe.geometry("400x400+1800+200")  # großer Monitor
 
 def back():
     ticTacToe.destroy()
-    import pf_main_window    # Startet neue Session
+    os.system("pf_main_window.py")    # Startet neue Session
 
 
 def rebootMain():
-    main.destroy()                  # Beendet jetzige Session
-    os.system("pf_main_window.py")  # Startet neue Session
+    ticTacToe.destroy()                  # Beendet jetzige Session
+    os.system("pf_g_tic_tac_toe.py")  # Startet neue Session
 
 
 # Frame 1

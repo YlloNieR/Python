@@ -1,5 +1,6 @@
 import sys
 import tkinter as tk
+import os
 
 testinfo = tk.Tk()
 testinfo.title("Test")
@@ -9,7 +10,7 @@ testinfo.geometry("200x200+1800+200")  # großer Monitor
 
 def back():
     testinfo.destroy()
-    import pf_main_window    # Startet neue Session
+    os.system("pf_main_window.py")    # Startet neue Session
 
 
 def tester():

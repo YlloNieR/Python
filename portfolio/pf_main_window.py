@@ -16,59 +16,54 @@ main.geometry("260x460+1800+200")  # großer Monitor
 # Spiele
 def openBlackJack():
     main.destroy()
-    import pf_g_black_jack
+    os.system("pf_g_black_jack.py")  # Startet neue Session
 
 
 def openRomme():
     main.destroy()
-    import pf_g_romme
+    os.system("pf_g_romme.py")  # Startet neue Session
 
 
 def openTicTacToe():
     main.destroy()
-    import pf_g_tic_tac_toe
+    os.system("pf_g_tic_tac_toe.py")  # Startet neue Session
 
 
 # Tools
 def openAgeCounter():
     main.destroy()
-    import pf_t_age_counter
+    os.system("pf_t_age_counter.py")  # Startet neue Session
 
 
 def openSodokuSolver():
     main.destroy()
-    import pf_t_sodoku_solver
+    os.system("pf_t_sodoku_solver.py")  # Startet neue Session
 
 
 def openSystemInfo():
     main.destroy()
-    import pf_t_systeminfo
-
-
-def openPyExcelReader():
-    main.destroy()
-    import pf_otpr_py_excel_reader
+    os.system("pf_t_systeminfo.py")  # Startet neue Session
 
 
 def openTkinterView():
     main.destroy()
-    import pf_t_tkinter_views
+    os.system("pf_t_tkinter_views.py")  # Startet neue Session
 
 
 # andere Projekte
 def openDrawWithTurtle():
     main.destroy()
-    import pf_otpr_draw_with_turtle
+    os.system("pf_otpr_draw_with_turtle.py")  # Startet neue Session
 
 
 def openLoginSystem():
     main.destroy()
-    import pf_otpr_login_system
+    os.system("pf_otpr_login_system.py")  # Startet neue Session
 
 
 def openPyExcelReader():
     main.destroy()
-    import pf_otpr_py_excel_reader
+    os.system("pf_otpr_py_excel_reader.py")  # Startet neue Session
 
 
 # Funktionen binnen MAIN Fenster

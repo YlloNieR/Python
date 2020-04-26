@@ -10,7 +10,7 @@ tkinterViews.geometry("550x500+1800+200")  # großer Monitor
 
 def back():
     tkinterViews.destroy()
-    import pf_main_window    # Startet neue Session
+    os.system("pf_main_window.py")    # Startet neue Session
 
 
 def reboottkinterViews():

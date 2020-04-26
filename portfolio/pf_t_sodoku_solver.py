@@ -1,19 +1,20 @@
 import tkinter
 import numpy as np
 from tkinter import *       # erstelle Bilddatei und verkleinere
+import os
 
 
-main = tkinter.Tk()
-main.title("Sodoku Solver")
+sodokuS = tkinter.Tk()
+sodokuS.title("Sodoku Solver")
 # Breite 1000x Höhe 400+ X 1200+ Y 200
-main.geometry("350x310+1800+200")  # großer Monitor
-# main.geometry("350x310+100+0") # kleiner Monitor
+sodokuS.geometry("350x310+1800+200")  # großer Monitor
+# sodokuS.geometry("350x310+100+0") # kleiner Monitor
 
 
 # Funktionen----Beginn-----
 def back():
-    main.destroy()
-    import pf_main_window
+    sodokuS.destroy()
+    os.system("pf_main_window.py")    # Startet neue Session
 
 
 def testergebnisse():
@@ -782,15 +783,15 @@ z80.grid(row=9, column=8)
 z81.grid(row=9, column=9)
 
 # Ergebnisreihen
-ergebnisausgabereihe1 = tkinter.Entry(main, width=15)
-ergebnisausgabereihe2 = tkinter.Entry(main, width=15)
-ergebnisausgabereihe3 = tkinter.Entry(main, width=15)
-ergebnisausgabereihe4 = tkinter.Entry(main, width=15)
-ergebnisausgabereihe5 = tkinter.Entry(main, width=15)
-ergebnisausgabereihe6 = tkinter.Entry(main, width=15)
-ergebnisausgabereihe7 = tkinter.Entry(main, width=15)
-ergebnisausgabereihe8 = tkinter.Entry(main, width=15)
-ergebnisausgabereihe9 = tkinter.Entry(main, width=15)
+ergebnisausgabereihe1 = tkinter.Entry(sodokuS, width=15)
+ergebnisausgabereihe2 = tkinter.Entry(sodokuS, width=15)
+ergebnisausgabereihe3 = tkinter.Entry(sodokuS, width=15)
+ergebnisausgabereihe4 = tkinter.Entry(sodokuS, width=15)
+ergebnisausgabereihe5 = tkinter.Entry(sodokuS, width=15)
+ergebnisausgabereihe6 = tkinter.Entry(sodokuS, width=15)
+ergebnisausgabereihe7 = tkinter.Entry(sodokuS, width=15)
+ergebnisausgabereihe8 = tkinter.Entry(sodokuS, width=15)
+ergebnisausgabereihe9 = tkinter.Entry(sodokuS, width=15)
 
 ergebnisausgabereihe1.grid(row=1, column=11)
 ergebnisausgabereihe2.grid(row=2, column=11)
@@ -803,48 +804,48 @@ ergebnisausgabereihe8.grid(row=8, column=11)
 ergebnisausgabereihe9.grid(row=9, column=11)
 
 # Schaltfläche Zurück
-bback = tkinter.Button(main, text="Zurück", font='Helvetica 9 bold',
+bback = tkinter.Button(sodokuS, text="Zurück", font='Helvetica 9 bold',
                        compound=CENTER, command=back)
 bback.grid(row=0, column=10)
 
 # Label über Gitter
-lb2 = tkinter.Label(main, text="Ergebnis:", font='Helvetica 11 bold')
+lb2 = tkinter.Label(sodokuS, text="Ergebnis:", font='Helvetica 11 bold')
 lb2.grid(row=0, column=11, columnspan=1)
 
 # erstelle Bilddatei und verkleinere
 img_check = PhotoImage(
-    file=r"C:\xampp\htdocs\Projekte\Python\Sonstiges\img-check.png")
+    file=r"img-check.png")
 img_check_resized = img_check.subsample(40, 40)
 img_test = PhotoImage(
-    file=r"C:\xampp\htdocs\Projekte\Python\Sonstiges\img-test.png")
+    file=r"img-test.png")
 img_test_resized = img_test.subsample(10, 10)
 img_erase = PhotoImage(
-    file=r"C:\xampp\htdocs\Projekte\Python\Sonstiges\img-erase.png")
+    file=r"img-erase.png")
 img_erase_resized = img_erase.subsample(40, 40)
 
 # Solve
-btest = tkinter.Button(main, text='Solve', font='Helvetica 11 bold',
+btest = tkinter.Button(sodokuS, text='Solve', font='Helvetica 11 bold',
                        image=img_check_resized, compound=LEFT, command=nullsetztenwennleer)
 btest.grid(row=10, column=10)
 
 
 # Schaltfläche Testergebnisse
-btest = tkinter.Button(main, text="Testergebnisse",
+btest = tkinter.Button(sodokuS, text="Testergebnisse",
                        image=img_test_resized, compound=LEFT, command=testergebnisse)
 btest.grid(row=11, column=10)
 
 # Freifläche
-lbfrei1 = tkinter.Label(main, text="")
+lbfrei1 = tkinter.Label(sodokuS, text="")
 lbfrei1.grid(row=12, column=2, columnspan=1)
 
 # Schaltfläche Löschen
-berase = tkinter.Button(main, text="Löschen", foreground="red", font='Helvetica 9 bold',
+berase = tkinter.Button(sodokuS, text="Löschen", foreground="red", font='Helvetica 9 bold',
                         image=img_erase_resized, compound=LEFT, command=zellenleeren)
 berase.grid(row=13, column=10)
 
 # Freifläche
-lbfrei2 = tkinter.Label(main, text="")
+lbfrei2 = tkinter.Label(sodokuS, text="")
 lbfrei2.grid(row=14, column=2, columnspan=1)
 
 
-main.mainloop()
+sodokuS.mainloop()

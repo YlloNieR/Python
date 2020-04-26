@@ -1,4 +1,5 @@
 import tkinter as tk
+import os
 
 blackJack = tk.Tk()
 blackJack.title('Black Jack')
@@ -8,12 +9,12 @@ blackJack.geometry("400x400+1800+200")  # großer Monitor
 
 def back():
     blackJack.destroy()
-    import pf_main_window    # Startet neue Session
+    os.system("pf_main_window.py")    # Startet neue Session
 
 
 def rebootMain():
-    main.destroy()                  # Beendet jetzige Session
-    os.system("pf_main_window.py")  # Startet neue Session
+    blackJack.destroy()                  # Beendet jetzige Session
+    os.system("pf_g_black_jack.py")  # Startet neue Session
 
 
 # Frame 1

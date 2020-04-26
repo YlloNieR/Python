@@ -12,7 +12,7 @@ pyExcelReader.geometry("450x400+1800+200")  # großer Monitor
 
 def back():
     pyExcelReader.destroy()
-    import pf_main_window    # Startet neue Session
+    os.system("pf_main_window.py")    # Startet neue Session
 
 
 def rebootPyExRead():

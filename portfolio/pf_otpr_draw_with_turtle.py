@@ -1,4 +1,5 @@
 import tkinter as tk
+import os
 
 dTurtle = tk.Tk()
 dTurtle.title('Turtle Zeichnung')
@@ -8,7 +9,7 @@ dTurtle.geometry("200x200+1800+200")  # großer Monitor
 
 def back():
     dTurtle.destroy()
-    import pf_main_window    # Startet neue Session
+    os.system("pf_main_window.py")    # Startet neue Session
 
 
 def rebootMain():
