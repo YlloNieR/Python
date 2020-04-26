@@ -2,7 +2,9 @@ import tkinter as tk
 
 blackJack = tk.Tk()
 blackJack.title('Black Jack')
-blackJack.geometry("400x400+1800+200")
+blackJack.geometry("400x400+1800+200") # großer Monitor
+# blackJack.geometry("400x400+100+0") # kleiner Monitor
+
 
 
 def back():

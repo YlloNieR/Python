@@ -6,7 +6,9 @@ from tkinter import *
 
 loginSystem = tk.Tk()
 loginSystem.title('Login System')
-loginSystem.geometry("280x480+1800+200")
+loginSystem.geometry("280x480+1800+200") # großer Monitor
+# loginSystem.geometry("280x480+100+0") # kleiner Monitor
+
 
 status = "login"
 
@@ -94,7 +96,8 @@ def loggedIn():
     status = "loggedIn"
     loggedIn = tk.Toplevel(loginSystem)
     loggedIn.title('logged In')
-    loggedIn.geometry("300x300+1900+300")
+    loggedIn.geometry("280x480+1800+200") # großer Monitor
+    # loggedIn.geometry("280x480+100+0") # kleiner Monitor
 
     rahmenreihe = tk.Frame(loggedIn)
     rahmenreihe.pack()
@@ -151,7 +154,8 @@ def register():
     status = "registry"
     registry = tk.Toplevel(loginSystem)
     registry.title('Registrierung')
-    registry.geometry("260x210+1900+300")
+    registry.geometry("260x210+1800+200") # großer Monitor
+    # registry.geometry("260x210+100+0") # kleiner Monitor
 
     rahmenreiheREG1 = tk.Frame(registry)
     rahmenreiheREG2 = tk.Frame(registry)

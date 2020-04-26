@@ -2,8 +2,8 @@ import tkinter as tk
 
 ticTacToe = tk.Tk()
 ticTacToe.title('Tic Tac Toe')
-ticTacToe.geometry("400x400+1800+200")
-
+ticTacToe.geometry("400x400+1800+200") # großer Monitor
+# ticTacToe.geometry("400x400+100+0") # kleiner Monitor
 
 def back():
     ticTacToe.destroy()

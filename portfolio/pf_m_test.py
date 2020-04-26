@@ -3,8 +3,9 @@ import tkinter as tk
 
 testinfo = tk.Tk()
 testinfo.title("Test")
-# mittig testinfo.geometry("600x800+1400+400")
-testinfo.geometry("200x200+1800+200")
+testinfo.geometry("200x200+1800+200") # großer Monitor
+# testinfo.geometry("200x200+100+0") # kleiner Monitor
+
 
 
 def back():

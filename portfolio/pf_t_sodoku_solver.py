@@ -4,9 +4,10 @@ from tkinter import *       # erstelle Bilddatei und verkleinere
 
 
 main = tkinter.Tk()
-# Breite 1000x Höhe 400+ X 1200+ Y 200
-main.geometry("350x310+1800+200")
 main.title("Sodoku Solver")
+# Breite 1000x Höhe 400+ X 1200+ Y 200
+main.geometry("350x310+1800+200") # großer Monitor
+# main.geometry("350x310+100+0") # kleiner Monitor
 
 
 # Funktionen----Beginn-----

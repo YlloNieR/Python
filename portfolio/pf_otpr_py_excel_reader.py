@@ -6,8 +6,8 @@ import csv
 
 pyExcelReader = tk.Tk()
 pyExcelReader.title('Excel Reader')
-pyExcelReader.geometry("450x400+1800+200")
-
+pyExcelReader.geometry("450x400+1800+200") # großer Monitor
+# pyExcelReader.geometry("450x400+100+0") # kleiner Monitor
 
 def back():
     pyExcelReader.destroy()

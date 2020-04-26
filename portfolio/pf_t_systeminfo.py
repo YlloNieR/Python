@@ -4,8 +4,8 @@ import os
 
 systeminfo = tk.Tk()
 systeminfo.title("Systeminfo")
-# mittig systeminfo.geometry("600x800+1400+400")
-systeminfo.geometry("600x800+1800+200")
+systeminfo.geometry("600x800+1800+200") # großer Monitor
+# systeminfo.geometry("600x800+100+0") # kleiner Monitor
 
 
 def back():

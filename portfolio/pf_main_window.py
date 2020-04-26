@@ -8,8 +8,8 @@ main.title("PyFolio")
 # Hauptfenster
 status = "main"
 # Breite 1000x Höhe 400+ X 1200+ Y 200
-# main.geometry("1000x700+1200+200")
-main.geometry("260x460+1800+200")
+main.geometry("260x460+1800+200") # großer Monitor
+# main.geometry("260x460+100+0") # kleiner Monitor
 
 
 # Funktionen öffne
@@ -132,7 +132,7 @@ projektListeCheck = ["Sudoku Solver",
 projektListeNot = ["Black Jack",
                    "Rommé",
                    "Tic Tac Toe",
-                   "Spiel4",                   
+                   "Spiel4",
                    "Tool3",
                    "Turtle Zeichnung",
                    "Login System"]

@@ -2,7 +2,9 @@ import tkinter as tk
 
 dTurtle = tk.Tk()
 dTurtle.title('Turtle Zeichnung')
-dTurtle.geometry("400x400+1800+200")
+dTurtle.geometry("200x200+1800+200") # großer Monitor
+# dTurtle.geometry("200x200+100+0") # kleiner Monitor
+
 
 
 def back():

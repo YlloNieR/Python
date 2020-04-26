@@ -2,7 +2,8 @@ import tkinter as tk
 
 romme = tk.Tk()
 romme.title('Rommé')
-romme.geometry("400x400+1800+200")
+romme.geometry("400x400+1800+200") # großer Monitor
+# romme.geometry("400x400+100+0") # kleiner Monitor
 
 
 def back():
