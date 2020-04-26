@@ -15,6 +15,8 @@ status = "login"
 def back():
     if status == "login":
         loginSystem.destroy()
+        import pf_main_window    # Startet neue Session
+
 
 def rebootLoginSystem():
     if status == "login":

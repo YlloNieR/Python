@@ -6,11 +6,13 @@ import csv
 
 pyExcelReader = tk.Tk()
 pyExcelReader.title('Excel Reader')
-pyExcelReader.geometry("450x400+1800+200") # großer Monitor
+pyExcelReader.geometry("450x400+1800+200")  # großer Monitor
 # pyExcelReader.geometry("450x400+100+0") # kleiner Monitor
+
 
 def back():
     pyExcelReader.destroy()
+    import pf_main_window    # Startet neue Session
 
 
 def rebootPyExRead():
@@ -120,16 +122,17 @@ def countRows():
         nRows = sum(1 for row in csv)
 
 
-def deleteLastEntry():  
+def deleteLastEntry():
     import csv
     inputs = open("pf_otpr_py_excel_reader_file.csv")
     all_lines = inputs.readlines()
     all_lines.pop(len(all_lines)-1)
-    inputs.close() 
+    inputs.close()
 
     with open("pf_otpr_py_excel_reader_file.csv", "w") as out:
         for line in all_lines:
             out.write(line.strip() + "\n")
+
 
 # Frame 1
 rahmenreihe1 = tk.Frame(pyExcelReader)

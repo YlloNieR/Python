@@ -2,17 +2,19 @@ import tkinter as tk
 
 dTurtle = tk.Tk()
 dTurtle.title('Turtle Zeichnung')
-dTurtle.geometry("200x200+1800+200") # großer Monitor
+dTurtle.geometry("200x200+1800+200")  # großer Monitor
 # dTurtle.geometry("200x200+100+0") # kleiner Monitor
-
 
 
 def back():
     dTurtle.destroy()
+    import pf_main_window    # Startet neue Session
+
 
 def rebootMain():
     main.destroy()                  # Beendet jetzige Session
     os.system("pf_main_window.py")  # Startet neue Session
+
 
 # Frame 1
 rahmenreihe1 = tk.Frame(dTurtle)
@@ -38,7 +40,6 @@ bdelete.pack(side='bottom', anchor='w', padx=10, pady=5)
 ausgabefeld = tk.Text(dTurtle)
 ausgabefeld.insert('end', "Start Game")
 ausgabefeld.pack(padx=10)
-
 
 
 dTurtle.mainloop()

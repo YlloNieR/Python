@@ -3,18 +3,18 @@ import tkinter as tk
 
 testinfo = tk.Tk()
 testinfo.title("Test")
-testinfo.geometry("200x200+1800+200") # großer Monitor
+testinfo.geometry("200x200+1800+200")  # großer Monitor
 # testinfo.geometry("200x200+100+0") # kleiner Monitor
-
 
 
 def back():
     testinfo.destroy()
+    import pf_main_window    # Startet neue Session
 
 
 def tester():
-    eingabe.delete(0,10)
-    ausgabefeld.delete(0,10)
+    eingabe.delete(0, 10)
+    ausgabefeld.delete(0, 10)
 
 
 rahmenreihe1 = tk.Frame(testinfo, relief="sunken")
@@ -29,10 +29,10 @@ rahmenreihe4.pack(anchor="w")
 
 eingabe = tk.Entry(rahmenreihe4, width=10)
 eingabe.pack(side="left")
-eingabe.insert("end","test")
+eingabe.insert("end", "test")
 ausgabefeld = tk.Entry(rahmenreihe4, width=10)
 ausgabefeld.pack(side="left")
-ausgabefeld.insert("end","test")
+ausgabefeld.insert("end", "test")
 
 
 z1 = tk.Entry(rahmenreihe1, width=2)

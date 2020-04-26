@@ -4,12 +4,13 @@ import os
 
 systeminfo = tk.Tk()
 systeminfo.title("Systeminfo")
-systeminfo.geometry("600x800+1800+200") # großer Monitor
+systeminfo.geometry("600x800+1800+200")  # großer Monitor
 # systeminfo.geometry("600x800+100+0") # kleiner Monitor
 
 
 def back():
     systeminfo.destroy()
+    import pf_main_window    # Startet neue Session
 
 
 def systeminfos():
@@ -94,6 +95,7 @@ def systeminfos():
     lbanzeige.pack()
     lbanzeige = tk.Label(systeminfo, text=info9)
     lbanzeige.pack()
+
 
 # Button Hauptfunktion
 bsysteminfo = tk.Button(systeminfo, text="get Infos()", command=systeminfos)

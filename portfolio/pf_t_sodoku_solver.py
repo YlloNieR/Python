@@ -6,7 +6,7 @@ from tkinter import *       # erstelle Bilddatei und verkleinere
 main = tkinter.Tk()
 main.title("Sodoku Solver")
 # Breite 1000x Höhe 400+ X 1200+ Y 200
-main.geometry("350x310+1800+200") # großer Monitor
+main.geometry("350x310+1800+200")  # großer Monitor
 # main.geometry("350x310+100+0") # kleiner Monitor
 
 
@@ -845,8 +845,6 @@ berase.grid(row=13, column=10)
 # Freifläche
 lbfrei2 = tkinter.Label(main, text="")
 lbfrei2.grid(row=14, column=2, columnspan=1)
-
-
 
 
 main.mainloop()

@@ -8,26 +8,30 @@ main.title("PyFolio")
 # Hauptfenster
 status = "main"
 # Breite 1000x Höhe 400+ X 1200+ Y 200
-main.geometry("260x460+1800+200") # großer Monitor
+main.geometry("260x460+1800+200")  # großer Monitor
 # main.geometry("260x460+100+0") # kleiner Monitor
 
 
 # Funktionen öffne
 # Spiele
 def openBlackJack():
+    main.destroy()
     import pf_g_black_jack
 
 
 def openRomme():
+    main.destroy()
     import pf_g_romme
 
 
 def openTicTacToe():
+    main.destroy()
     import pf_g_tic_tac_toe
 
 
 # Tools
 def openAgeCounter():
+    main.destroy()
     import pf_t_age_counter
 
 
@@ -37,27 +41,33 @@ def openSodokuSolver():
 
 
 def openSystemInfo():
+    main.destroy()
     import pf_t_systeminfo
 
 
 def openPyExcelReader():
+    main.destroy()
     import pf_otpr_py_excel_reader
 
 
 def openTkinterView():
+    main.destroy()
     import pf_t_tkinter_views
 
 
 # andere Projekte
 def openDrawWithTurtle():
+    main.destroy()
     import pf_otpr_draw_with_turtle
 
 
 def openLoginSystem():
+    main.destroy()
     import pf_otpr_login_system
 
 
 def openPyExcelReader():
+    main.destroy()
     import pf_otpr_py_excel_reader
 
 
@@ -128,14 +138,12 @@ projektListeCheck = ["Sudoku Solver",
                      "System Info",
                      "tkinter view",
                      "Py Excel reader",
-                     "Altersrechner"]
+                     "Altersrechner",
+                     "Login System"]
 projektListeNot = ["Black Jack",
                    "Rommé",
                    "Tic Tac Toe",
-                   "Spiel4",
-                   "Tool3",
-                   "Turtle Zeichnung",
-                   "Login System"]
+                   "Turtle Zeichnung"]
 CheckVar = [IntVar(),
             IntVar(),
             IntVar(),

@@ -6,12 +6,13 @@ import os
 
 age_counter = tk.Tk()
 age_counter.title('Alter Zähler')
-age_counter.geometry("400x400+1800+200") # großer Monitor
+age_counter.geometry("400x400+1800+200")  # großer Monitor
 # age_counter.geometry("400x400+100+0") # kleiner Monitor
 
 
 def back():
     age_counter.destroy()
+    import pf_main_window    # Startet neue Session
 
 
 def rebootAgeCounter():

@@ -4,11 +4,13 @@ import webbrowser
 
 tkinterViews = tk.Tk()
 tkinterViews.title('Tkinter Views')
-tkinterViews.geometry("550x500+1800+200") # großer Monitor
+tkinterViews.geometry("550x500+1800+200")  # großer Monitor
 # tkinterViews.geometry("550x500+100+0") # kleiner Monitor
+
 
 def back():
     tkinterViews.destroy()
+    import pf_main_window    # Startet neue Session
 
 
 def reboottkinterViews():

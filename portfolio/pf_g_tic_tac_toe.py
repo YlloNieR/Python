@@ -2,15 +2,19 @@ import tkinter as tk
 
 ticTacToe = tk.Tk()
 ticTacToe.title('Tic Tac Toe')
-ticTacToe.geometry("400x400+1800+200") # großer Monitor
+ticTacToe.geometry("400x400+1800+200")  # großer Monitor
 # ticTacToe.geometry("400x400+100+0") # kleiner Monitor
+
 
 def back():
     ticTacToe.destroy()
+    import pf_main_window    # Startet neue Session
+
 
 def rebootMain():
     main.destroy()                  # Beendet jetzige Session
     os.system("pf_main_window.py")  # Startet neue Session
+
 
 # Frame 1
 rahmenreihe1 = tk.Frame(ticTacToe)
@@ -36,7 +40,6 @@ bdelete.pack(side='bottom', anchor='w', padx=10, pady=5)
 ausgabefeld = tk.Text(ticTacToe)
 ausgabefeld.insert('end', "Start Game")
 ausgabefeld.pack(padx=10)
-
 
 
 ticTacToe.mainloop()
