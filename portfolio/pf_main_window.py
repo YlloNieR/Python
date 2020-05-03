@@ -135,11 +135,11 @@ projektListeCheck = ["Sudoku Solver",
                      "tkinter view",
                      "Py Excel reader",
                      "Altersrechner",
-                     "Login System"]
+                     "Login System",
+                   "Turtle Zeichnung"]
 projektListeNot = ["Black Jack",
                    "Rommé",
-                   "Tic Tac Toe",
-                   "Turtle Zeichnung"]
+                   "Tic Tac Toe"]
 CheckVar = [IntVar(),
             IntVar(),
             IntVar(),

@@ -4,8 +4,8 @@ import turtle
 
 dTurtle = tk.Tk()
 dTurtle.title('Turtle Zeichnung')
-# dTurtle.geometry("200x200+1800+200")  # großer Monitor
-dTurtle.geometry("260x450+100+0")  # kleiner Monitor
+dTurtle.geometry("270x225+1800+200")  # großer Monitor
+# dTurtle.geometry("270x225+100+0")  # kleiner Monitor
 
 
 def end():
@@ -15,11 +15,13 @@ def end():
 
 def back():
     dTurtle.destroy()
+    turtle.bye()
     os.system("pf_main_window.py")    # Startet neue Session
 
 
 def rebootdTurtle():
     dTurtle.destroy()                  # Beendet jetzige Session
+    turtle.bye()
     os.system("pf_otpr_draw_with_turtle.py")  # Startet neue Session
 
 turtle.setheading(0)
@@ -63,13 +65,33 @@ def pic1():
             x = i+2
             turtle.forward(25+x)
             turtle.left(90)
+    turtle.done()
 
 
 def pic2():
-    turtle.forward(25)
+    star = turtle.Turtle()
+
+    for i in range(5):
+        star.forward(50)
+        star.right(144)
+    turtle.done()
+
 
 def pic3():
-    turtle.forward(25)
+    painter = turtle.Turtle()
+
+    painter.pencolor("blue")
+
+    for i in range(50):
+        painter.forward(50)
+        painter.left(123) # Let's go counterclockwise this time 
+        
+    painter.pencolor("red")
+    for i in range(50):
+        painter.forward(100)
+        painter.left(123)
+    turtle.done()
+
 
 # Frame 1
 rahmenreihe1 = tk.Frame(dTurtle)
