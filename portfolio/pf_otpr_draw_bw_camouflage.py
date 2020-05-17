@@ -4,8 +4,8 @@ import turtle
 
 Bw_camouflage = tk.Tk()
 Bw_camouflage.title('Turtle Zeichnung')
-Bw_camouflage.geometry("270x225+1800+200")  # großer Monitor
-# Bw_camouflage.geometry("270x225+100+0")  # kleiner Monitor
+Bw_camouflage.geometry("290x225+1800+100")  # großer Monitor
+# Bw_camouflage.geometry("290x225+100+0")  # kleiner Monitor
 
 def end():
     Bw_camouflage.destroy()
@@ -23,7 +23,7 @@ def rebootBw_camouflage():
     turtle.bye()
     os.system("pf_otpr_draw_bw_camouflage.py")  # Startet neue Session
 
-turtle.setheading(0)
+#turtle.setheading(0)
 # 0 - east
 # 90 - north
 # 180 - west
@@ -42,6 +42,7 @@ def lookN():
     turtle.setheading(90)
 
 def moveForward():
+    turtle.setheading(0)
     turtle.forward(5)
 
 def lookS():
@@ -68,36 +69,63 @@ def pic1():
 
 
 def pic2():
-    star = turtle.Turtle()
+    linie = "white"
+    colorlisteGreen = ["#626844","#424C34","#373E2C","#546241","#5B6644"]
 
-    for i in range(5):
-        star.forward(50)
-        star.right(144)
+    turtle.color(linie,colorlisteGreen[0])
+    turtle.begin_fill()
+    for i in range(2):
+        turtle.color(linie,colorlisteGreen[0])
+        turtle.forward(500)
+        turtle.left(120)
+    turtle.end_fill()
+    turtle.goto(0,0)
+    turtle.setheading(60)
+
+    turtle.color(linie,colorlisteGreen[0])
+    turtle.begin_fill()
+    for i in range(2):
+        turtle.color(linie,colorlisteGreen[1])
+        turtle.forward(500)
+        turtle.left(120)
+    turtle.end_fill()
+    turtle.setheading(180)
+    turtle.goto(0,0)
+
+
+def dreieckmuster():    
+    linie = "white"
+    colorlisteGreen = ["#626844","#424C34","#373E2C","#546241","#5B6644"]
+
+    #for x in colorlisteGreen:
+    
+    # e-nw-s
+    turtle.color(linie,colorlisteGreen[0])
+    turtle.begin_fill()
+    for i in range(2):
+        turtle.forward(50)
+        turtle.left(120)
+    turtle.end_fill()
+
+    # sw-e
+    turtle.color(linie,colorlisteGreen[1])
+    turtle.begin_fill()    
+    for i in range(2):
+        turtle.forward(100)
+        turtle.setheading(45)
+    turtle.end_fill()
     turtle.done()
 
-
-def pic3():
-    painter = turtle.Turtle()
-    painter.pencolor("blue")
-
-    for i in range(50):
-        painter.forward(50)
-        painter.left(123) # Let's go counterclockwise this time 
-        
-    painter.pencolor("red")
-    for i in range(50):
-        painter.forward(100)
-        painter.left(123)
-    turtle.done()
 
 
 def dreieckerstellen():
-    painter = turtle.Turtle()
+    turtle.color("white","#48553B")
+    turtle.begin_fill()
     for i in range(3):
-        painter.forward(50)
-        painter.left(120)
-    painter.color("red")
-    painter.dot(50)
+        turtle.forward(-50)
+        turtle.setheading(-120)
+    turtle.end_fill()
+        
 
 
 # Frame 1
@@ -162,9 +190,9 @@ barrowSE.pack(padx=5, pady=5)
 spaltenreihePic = tk.Frame(Bw_camouflage)
 spaltenreihePic.pack(fill='y',side="left", padx=5)
 
-bpic1 = tk.Button(spaltenreihePic, text='Dreieck', command=dreieckerstellen, fg="#4287f5")
+bpic1 = tk.Button(spaltenreihePic, width="6", text='Eins', command=dreieckerstellen, fg="#4287f5")
 bpic2 = tk.Button(spaltenreihePic, text='pic2', command=pic2, fg="#a442f5")
-bpic3 = tk.Button(spaltenreihePic, text='pic3', command=pic3, fg="#2b6318")
+bpic3 = tk.Button(spaltenreihePic, text='Muster', command=dreieckmuster, fg="#2b6318")
 
 bpic1.pack(padx=5, pady=5)
 bpic2.pack(padx=5, pady=5)
