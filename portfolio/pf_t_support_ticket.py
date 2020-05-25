@@ -8,20 +8,104 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QMessageBox
+import datetime
+from PyQt5.QtCore import *
+
+
 
 
 class Ui_Support(object):
+    def ProblemeFehlerCheck(self):
+        pass
+    
+    def countTickets(self):
+        with open("pf_t_support_ticket.csv") as csv:
+            nRows = sum(1 for row in csv)
+        nRows = nRows+1
+        return nRows
+    
+    def WachmannLogiPmCheck(self):  
+        if self.radioButtonWachmann.isChecked():
+            WertRadioButton = "Wachmann"
+            return (WertRadioButton)
+        elif self.radioButtonLogistiker.isChecked():
+            WertRadioButton = "Logistiker"
+            return (WertRadioButton)
+        elif self.radioButton_Projektmanager.isChecked():
+            WertRadioButton = "Projektmanager"
+            return (WertRadioButton)
+        else:
+            WertRadioButton = "nicht angegeben"
+            return (WertRadioButton)
+
+    def hinweisBox(self):
+        msg = QtWidgets.QMessageBox()
+        msg.setWindowTitle("Hinweis")
+        msg.setText("This is the main Text")
+
+    def datumZeitCheck(self):
+        #Baustelle else klappt, aber if noch nicht
+        print(self.dateTimeEditZeitpunkFehler.dateTime())
+        if self.dateTimeEditZeitpunkFehler.date() > QDate(2019,1,1):
+            datum = self.dateTimeEditZeitpunkFehler.date()
+            return datum
+        else:
+            datum = datetime.datetime.today().strftime('%Y.%m.%d')
+            return datum
+
+        #self.dateTimeEditZeitpunkFehler.setMinimumDate(QDate(2019, 1, 1))
+        #self.dateTimeEditZeitpunkFehler.setMinimumDate(QDate.currentDate())
+        #setDateTimeRange(min, max)
+
+
+    
+
+
+    def erstelle_Support_ticket(self):
+        komma = ","
+        nLine = "\n"
+
+        csv = open("pf_t_support_ticket.csv", "a")
+        datum = self.datumZeitCheck()
+        uhrzeit = datetime.datetime.now().strftime("%H:%M:%S")
+        vorname = self.lineEdit_Name.text()
+        name = self.lineEdit_Name.text()
+        baustelle = self.lineEdit_Baustelle.text()
+        bauprojekt = self.lineEdit_Bauprojekt.text()
+        telefonnummer = self.lineEdit_Telefonnummer.text()
+        self.WachmannLogiPmCheck()
+        x = self.WachmannLogiPmCheck()
+        
+        csv.write(datum)
+        csv.write(komma)
+        csv.write(uhrzeit)
+        csv.write(komma)
+        csv.write(vorname)
+        csv.write(komma)
+        csv.write(name)
+        csv.write(komma)
+        csv.write(bauprojekt)
+        csv.write(komma)
+        csv.write(telefonnummer)
+        csv.write(komma)
+        csv.write(x)
+        csv.write(nLine)
+        
+        self.TicketNummer.setProperty("value", self.countTickets())
+
     def setupUi(self, Support):
         Support.setObjectName("Support")
         Support.resize(838, 846)
         self.erstelleSupportticket = QtWidgets.QPushButton(Support)
         self.erstelleSupportticket.setGeometry(QtCore.QRect(610, 760, 171, 61))
         self.erstelleSupportticket.setObjectName("erstelleSupportticket")
+        self.erstelleSupportticket.clicked.connect(
+            self.erstelle_Support_ticket)
         self.TicketNummer = QtWidgets.QLCDNumber(Support)
         self.TicketNummer.setGeometry(QtCore.QRect(760, 10, 64, 23))
         self.TicketNummer.setFrameShape(QtWidgets.QFrame.Panel)
         self.TicketNummer.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.TicketNummer.setProperty("value", 1.0)
         self.TicketNummer.setObjectName("TicketNummer")
         self.groupBoxKontakt = QtWidgets.QGroupBox(Support)
         self.groupBoxKontakt.setGeometry(QtCore.QRect(540, 50, 291, 321))
@@ -185,6 +269,11 @@ class Ui_Support(object):
             QtCore.QRect(60, 40, 194, 22))
         self.dateTimeEditZeitpunkFehler.setObjectName(
             "dateTimeEditZeitpunkFehler")
+        self.dateTimeEditZeitpunkFehler.setMinimumDate(QDate(2019, 1, 1))
+
+        #self.dateTimeEditZeitpunkFehler.setMinimumDate(QDate.currentDate())
+
+
         self.label_Datum_Zeit = QtWidgets.QLabel(self.frame_2)
         self.label_Datum_Zeit.setGeometry(QtCore.QRect(0, 0, 291, 31))
         self.label_Datum_Zeit.setAlignment(
@@ -196,7 +285,7 @@ class Ui_Support(object):
 
     def retranslateUi(self, Support):
         _translate = QtCore.QCoreApplication.translate
-        Support.setWindowTitle(_translate("Support", "Dialog"))
+        Support.setWindowTitle(_translate("Support", "Supportticket erstellen"))
         self.erstelleSupportticket.setText(
             _translate("Support", "Erstelle Supportticket"))
         self.groupBoxKontakt.setTitle(_translate(
@@ -238,7 +327,6 @@ class Ui_Support(object):
             "Support", "freie Beschreibung des Problems:"))
         self.label_Datum_Zeit.setText(_translate("Support", "Seit wann besteht der Fehler?\n"
                                                  "(Nur Zeit eintragen bei Systemfehlern, Fehlermeldungen)"))
-
 
 
 if __name__ == "__main__":
