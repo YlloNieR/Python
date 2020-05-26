@@ -16,8 +16,41 @@ from PyQt5.QtCore import *
 
 
 class Ui_Support(object):
+    # Baustelle
     def ProblemeFehlerCheck(self):
-        pass
+        if self.radioBProblemeFehler.isChecked() == True:                            
+            self.textfreieBeschreibungBestellungen.setDisabled(True)
+            self.dropDownBestellungen.setDisabled(True)
+            self.spinBox.setDisabled(True)   
+            ###########
+        else:
+            self.textfreieBeschreibungBestellungen.setDisabled(False)
+            self.dropDownBestellungen.setDisabled(False)
+            self.spinBox.setDisabled(False)   
+            ###########
+            
+            #self.radioBBestellungen.setCheckable(True) 
+            #self.radioBProblemeFehler.setChecked(False) 
+            
+            
+
+    def BestellungenCheck(self):
+        if self.radioBBestellungen.isChecked() == True:            
+            self.radioBAlgo.setDisabled(True)
+            self.radioBOAS.setDisabled(True)
+            self.radioBwederOASnochAlgo.setDisabled(True)
+            self.groupBoxProblemeMit.setDisabled(True)
+            ###########
+        else:
+            self.radioBAlgo.setDisabled(False)
+            self.radioBOAS.setDisabled(False)
+            self.radioBwederOASnochAlgo.setDisabled(False)
+            self.groupBoxProblemeMit.setDisabled(False)
+            ###########
+            #self.radioBProblemeFehler.setCheckable(True) 
+
+          
+            
     
     def countTickets(self):
         with open("pf_t_support_ticket.csv") as csv:
@@ -63,7 +96,6 @@ class Ui_Support(object):
             uhrzeit = datetime.datetime.now().strftime("%H:%M:%S")
             return uhrzeit
 
-        
         # Format 2020.05.26,20:00:59,      
         # print(self.dateTimeEditZeitpunkFehler.date().toString())       
         # print(self.dateTimeEditZeitpunkFehler.displayFormat())        
@@ -71,10 +103,7 @@ class Ui_Support(object):
         # print(self.dateTimeEditZeitpunkFehler.setDisplayFormat("yyyy.MM.dd")) 
         # self.dateTimeEditZeitpunkFehler.setMinimumDate(QDate(2019, 1, 1))
         # self.dateTimeEditZeitpunkFehler.setMinimumDate(QDate.currentDate())
-        # setDateTimeRange(min, max)
-
-
-    
+        # setDateTimeRange(min, max)  
 
 
     def erstelle_Support_ticket(self):
@@ -106,22 +135,30 @@ class Ui_Support(object):
         csv.write(komma)
         csv.write(x)
         csv.write(nLine)
-        
+
+        # Zähle Ticket pro Klick
         self.TicketNummer.setProperty("value", self.countTickets())
+
+        
 
     def setupUi(self, Support):
         Support.setObjectName("Support")
         Support.resize(838, 846)
+        # Erstelle Supportticket
         self.erstelleSupportticket = QtWidgets.QPushButton(Support)
         self.erstelleSupportticket.setGeometry(QtCore.QRect(610, 760, 171, 61))
         self.erstelleSupportticket.setObjectName("erstelleSupportticket")
         self.erstelleSupportticket.clicked.connect(
             self.erstelle_Support_ticket)
+
+        # Zähle Ticketnummer
         self.TicketNummer = QtWidgets.QLCDNumber(Support)
         self.TicketNummer.setGeometry(QtCore.QRect(760, 10, 64, 23))
         self.TicketNummer.setFrameShape(QtWidgets.QFrame.Panel)
         self.TicketNummer.setFrameShadow(QtWidgets.QFrame.Raised)
         self.TicketNummer.setObjectName("TicketNummer")
+
+        # Kontaktinfos
         self.groupBoxKontakt = QtWidgets.QGroupBox(Support)
         self.groupBoxKontakt.setGeometry(QtCore.QRect(540, 50, 291, 321))
         self.groupBoxKontakt.setObjectName("groupBoxKontakt")
@@ -169,9 +206,11 @@ class Ui_Support(object):
         self.radioButton_Projektmanager.setObjectName(
             "radioButton_Projektmanager")
         self.verticalLayout.addWidget(self.radioButton_Projektmanager)
+
+        # Bestellungen
         self.groupBoxBestellungen = QtWidgets.QGroupBox(Support)
         self.groupBoxBestellungen.setGeometry(QtCore.QRect(0, 520, 361, 289))
-        self.groupBoxBestellungen.setObjectName("groupBoxBestellungen")
+        self.groupBoxBestellungen.setObjectName("groupBoxBestellungen")        
         self.label_BestellungenDrodown = QtWidgets.QLabel(
             self.groupBoxBestellungen)
         self.label_BestellungenDrodown.setGeometry(
@@ -210,6 +249,9 @@ class Ui_Support(object):
         self.spinBox = QtWidgets.QSpinBox(self.groupBoxBestellungen)
         self.spinBox.setGeometry(QtCore.QRect(290, 40, 39, 20))
         self.spinBox.setObjectName("spinBox")
+
+
+        # Probleme Fehler
         self.groupBox_4 = QtWidgets.QGroupBox(Support)
         self.groupBox_4.setGeometry(QtCore.QRect(0, 10, 331, 491))
         self.groupBox_4.setObjectName("groupBox_4")
@@ -286,17 +328,21 @@ class Ui_Support(object):
             "dateTimeEditZeitpunkFehler")
         self.dateTimeEditZeitpunkFehler.setMinimumDate(QDate(2019, 1, 1))
 
-        #self.dateTimeEditZeitpunkFehler.setMinimumDate(QDate.currentDate())
-
-
+        # Zeit Änderungs Widget
         self.label_Datum_Zeit = QtWidgets.QLabel(self.frame_2)
         self.label_Datum_Zeit.setGeometry(QtCore.QRect(0, 0, 291, 31))
         self.label_Datum_Zeit.setAlignment(
             QtCore.Qt.AlignJustify | QtCore.Qt.AlignVCenter)
         self.label_Datum_Zeit.setObjectName("label_Datum_Zeit")
-
         self.retranslateUi(Support)
         QtCore.QMetaObject.connectSlotsByName(Support)
+
+        
+        # Aufruf Funktionen während Nutzung
+        self.radioBProblemeFehler.clicked.connect(self.ProblemeFehlerCheck)
+        self.radioBBestellungen.clicked.connect(self.BestellungenCheck)
+        self.TicketNummer.setProperty("value", self.countTickets())         # Zähle Ticket beim Programmstart
+
 
     def retranslateUi(self, Support):
         _translate = QtCore.QCoreApplication.translate
@@ -342,6 +388,8 @@ class Ui_Support(object):
             "Support", "freie Beschreibung des Problems:"))
         self.label_Datum_Zeit.setText(_translate("Support", "Seit wann besteht der Fehler?\n"
                                                  "(Nur Zeit eintragen bei Systemfehlern, Fehlermeldungen)"))
+
+
 
 
 if __name__ == "__main__":
