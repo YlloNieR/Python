@@ -44,19 +44,34 @@ class Ui_Support(object):
         msg.setWindowTitle("Hinweis")
         msg.setText("This is the main Text")
 
-    def datumZeitCheck(self):
-        #Baustelle else klappt, aber if noch nicht
-        print(self.dateTimeEditZeitpunkFehler.dateTime())
+    def datumCheck(self):
+        print(self.dateTimeEditZeitpunkFehler.date().toString('yyyy.MM.dd'))  
+        print(self.dateTimeEditZeitpunkFehler.time().toString('hh:mm:ss')) 
+        
         if self.dateTimeEditZeitpunkFehler.date() > QDate(2019,1,1):
-            datum = self.dateTimeEditZeitpunkFehler.date()
+            datum = self.dateTimeEditZeitpunkFehler.date().toString('yyyy.MM.dd')
             return datum
         else:
             datum = datetime.datetime.today().strftime('%Y.%m.%d')
-            return datum
+            return datum        
+    
+    def zeitCheck(self):  
+        if self.dateTimeEditZeitpunkFehler.date() > QDate(2019,1,1):
+            uhrzeit = self.dateTimeEditZeitpunkFehler.time().toString('hh:mm:ss')
+            return uhrzeit
+        else:
+            uhrzeit = datetime.datetime.now().strftime("%H:%M:%S")
+            return uhrzeit
 
-        #self.dateTimeEditZeitpunkFehler.setMinimumDate(QDate(2019, 1, 1))
-        #self.dateTimeEditZeitpunkFehler.setMinimumDate(QDate.currentDate())
-        #setDateTimeRange(min, max)
+        
+        # Format 2020.05.26,20:00:59,      
+        # print(self.dateTimeEditZeitpunkFehler.date().toString())       
+        # print(self.dateTimeEditZeitpunkFehler.displayFormat())        
+        # print(self.dateTimeEditZeitpunkFehler(QDate.currentDate()))
+        # print(self.dateTimeEditZeitpunkFehler.setDisplayFormat("yyyy.MM.dd")) 
+        # self.dateTimeEditZeitpunkFehler.setMinimumDate(QDate(2019, 1, 1))
+        # self.dateTimeEditZeitpunkFehler.setMinimumDate(QDate.currentDate())
+        # setDateTimeRange(min, max)
 
 
     
@@ -67,8 +82,8 @@ class Ui_Support(object):
         nLine = "\n"
 
         csv = open("pf_t_support_ticket.csv", "a")
-        datum = self.datumZeitCheck()
-        uhrzeit = datetime.datetime.now().strftime("%H:%M:%S")
+        datum = self.datumCheck()
+        uhrzeit = self.zeitCheck()
         vorname = self.lineEdit_Name.text()
         name = self.lineEdit_Name.text()
         baustelle = self.lineEdit_Baustelle.text()
