@@ -258,6 +258,7 @@ class Ui_Support(object):
             "radioButton_Projektmanager")
         self.verticalLayout.addWidget(self.radioButton_Projektmanager)
 
+
         # Bestellungen
         self.groupBoxBestellungen = QtWidgets.QGroupBox(Support)
         self.groupBoxBestellungen.setGeometry(QtCore.QRect(0, 520, 361, 289))
@@ -274,10 +275,18 @@ class Ui_Support(object):
             QtCore.QRect(10, 87, 256, 192))
         self.textfreieBeschreibungBestellungen.setObjectName(
             "textfreieBeschreibungBestellungen")
+
+
+        ## Dropdown bei Bestellungen
         self.dropDownBestellungen = QtWidgets.QComboBox(
             self.groupBoxBestellungen)
         self.dropDownBestellungen.setGeometry(QtCore.QRect(10, 42, 251, 20))
         self.dropDownBestellungen.setObjectName("dropDownBestellungen")
+        self.dropDownBestellungen.setStyleSheet('background-color: white')
+        self.dropDownBestellungen.addItem("--- Bitte Auswählen ---")
+        listeBestellungen = ["Clips","Farbband Kartendrucker Evolis","Farbband Kartendrucker Authentys Plus","Kartenrohlinge 100 Stck"]
+        self.dropDownBestellungen.addItems(listeBestellungen)
+
         self.label_freieBeschreibungBestellungen = QtWidgets.QLabel(
             self.groupBoxBestellungen)
         self.label_freieBeschreibungBestellungen.setGeometry(
@@ -337,12 +346,13 @@ class Ui_Support(object):
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.groupBoxProblemeMit)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         
-        ## Dropdown Probleme
+        ## Dropdown bei Problemen
         self.dropDownProbleme = QtWidgets.QComboBox(self.groupBoxProblemeMit)
+        self.dropDownProbleme.setStyleSheet('background-color: white')
         self.dropDownProbleme.setObjectName("dropDownProbleme")        
-        self.dropDownProbleme.addItem("Erstes")
-        liste = ["asd1","as2","asd3"]
-        self.dropDownProbleme.addItems(liste)
+        self.dropDownProbleme.addItem("--- Bitte Auswählen ---")
+        listeProbleme = ["...dem Kartendrucker","...meinem Laptop","...Einladungen versenden"]
+        self.dropDownProbleme.addItems(listeProbleme)
 
 
 
