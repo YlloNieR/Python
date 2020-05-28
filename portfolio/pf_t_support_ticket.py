@@ -11,17 +11,70 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 import datetime
 from PyQt5.QtCore import *
+import os
 
 
 
 
 class Ui_Support(object):
+
+    def restartSupportTicket(self):
+        Support.close()
+        os.system("pf_t_support_ticket.py")    # Startet neue Session
+
+
+     
+    def welchesSystem(self):
+        if self.radioBAlgo.isChecked():
+            WertRadioButton2 = "Algo"
+            return (WertRadioButton2)
+        elif self.radioBOAS.isChecked():
+            WertRadioButton2 = "OAS"
+            return (WertRadioButton2)
+        elif self.radioBwederOASnochAlgo.isChecked():
+            WertRadioButton2 = "Keins der Systeme"
+            return (WertRadioButton2)
+        else:
+            WertRadioButton2 = "System nicht angegeben"
+            return (WertRadioButton2)
+    
+    def habeProblemeMit(self):
+        if self.radioButtonEinloggenImSystem.isChecked():
+            WertRadioButton3 = "Probleme beim Einloggen im System"            
+            return (WertRadioButton3)
+        elif self.radioButtonRegistrierenImSystem.isChecked():
+            WertRadioButton3 = "Probleme beim Registrieren"
+            return (WertRadioButton3)
+        elif self.radioButtonMAanmelden.isChecked():
+            WertRadioButton3 = "Probleme beim Mitarbeiter anmelden"
+            return (WertRadioButton3)
+        elif self.radioButtonFirmaErstellen.isChecked():
+            WertRadioButton3 = "Probleme beim Erstellen einer Firma"        
+            return (WertRadioButton3)
+        else:
+            WertRadioButton3 = self.textfreieBeschreibungdesProblems.toPlainText()    
+            return (WertRadioButton3)       
+    
+    def freifelddisable(self):
+        if self.radioButtonEinloggenImSystem.isChecked():
+            self.textfreieBeschreibungdesProblems.setDisabled(True)
+        if self.radioButtonEinloggenImSystem.isChecked():
+            self.textfreieBeschreibungdesProblems.setDisabled(True)
+        elif self.radioButtonRegistrierenImSystem.isChecked():
+            self.textfreieBeschreibungdesProblems.setDisabled(True)
+        elif self.radioButtonMAanmelden.isChecked():
+            self.textfreieBeschreibungdesProblems.setDisabled(True)
+        elif self.radioButtonFirmaErstellen.isChecked():
+            self.textfreieBeschreibungdesProblems.setDisabled(True)
+
+
     # Baustelle
     def ProblemeFehlerCheck(self):
         if self.radioBProblemeFehler.isChecked() == True:                            
             self.textfreieBeschreibungBestellungen.setDisabled(True)
             self.dropDownBestellungen.setDisabled(True)
             self.spinBox.setDisabled(True)   
+            self.radioBProblemeFehler.isCheckable()
             ###########
         else:
             self.textfreieBeschreibungBestellungen.setDisabled(False)
@@ -40,6 +93,7 @@ class Ui_Support(object):
             self.radioBOAS.setDisabled(True)
             self.radioBwederOASnochAlgo.setDisabled(True)
             self.groupBoxProblemeMit.setDisabled(True)
+            self.radioBBestellungen.isCheckable()
             ###########
         else:
             self.radioBAlgo.setDisabled(False)
@@ -120,7 +174,11 @@ class Ui_Support(object):
         telefonnummer = self.lineEdit_Telefonnummer.text()
         self.WachmannLogiPmCheck()
         x = self.WachmannLogiPmCheck()
+        y = self.welchesSystem()
+        z = self.habeProblemeMit()
+
         
+
         csv.write(datum)
         csv.write(komma)
         csv.write(uhrzeit)
@@ -134,6 +192,10 @@ class Ui_Support(object):
         csv.write(telefonnummer)
         csv.write(komma)
         csv.write(x)
+        csv.write(komma)
+        csv.write(y)
+        csv.write(komma)
+        csv.write(z)
         csv.write(nLine)
 
         # Zähle Ticket pro Klick
@@ -334,15 +396,27 @@ class Ui_Support(object):
         self.label_Datum_Zeit.setAlignment(
             QtCore.Qt.AlignJustify | QtCore.Qt.AlignVCenter)
         self.label_Datum_Zeit.setObjectName("label_Datum_Zeit")
-        self.retranslateUi(Support)
-        QtCore.QMetaObject.connectSlotsByName(Support)
 
+
+        # Neustart Button
+        self.ButtonNeustart = QtWidgets.QPushButton(Support)
+        self.ButtonNeustart.setGeometry(QtCore.QRect(390, 30, 75, 23))
+        self.ButtonNeustart.setObjectName("ButtonNeustart")
+        self.ButtonNeustart.clicked.connect(self.restartSupportTicket)
         
         # Aufruf Funktionen während Nutzung
         self.radioBProblemeFehler.clicked.connect(self.ProblemeFehlerCheck)
         self.radioBBestellungen.clicked.connect(self.BestellungenCheck)
         self.TicketNummer.setProperty("value", self.countTickets())         # Zähle Ticket beim Programmstart
+        self.radioButtonEinloggenImSystem.clicked.connect(self.freifelddisable)
+        self.radioButtonRegistrierenImSystem.clicked.connect(self.freifelddisable)
+        self.radioButtonMAanmelden.clicked.connect(self.freifelddisable)
+        self.radioButtonFirmaErstellen.clicked.connect(self.freifelddisable)
 
+
+
+        self.retranslateUi(Support)
+        QtCore.QMetaObject.connectSlotsByName(Support)
 
     def retranslateUi(self, Support):
         _translate = QtCore.QCoreApplication.translate
@@ -388,6 +462,8 @@ class Ui_Support(object):
             "Support", "freie Beschreibung des Problems:"))
         self.label_Datum_Zeit.setText(_translate("Support", "Seit wann besteht der Fehler?\n"
                                                  "(Nur Zeit eintragen bei Systemfehlern, Fehlermeldungen)"))
+        self.ButtonNeustart.setText(_translate("Support", "Neustart"))
+
 
 
 
