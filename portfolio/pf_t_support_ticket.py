@@ -110,7 +110,7 @@ class Ui_Support(object):
     def countTickets(self):
         with open("pf_t_support_ticket.csv") as csv:
             nRows = sum(1 for row in csv)
-        nRows = nRows+1
+        nRows = nRows-1
         return nRows
     
     def WachmannLogiPmCheck(self):  
@@ -133,9 +133,6 @@ class Ui_Support(object):
         msg.setText("This is the main Text")
 
     def datumCheck(self):
-        print(self.dateTimeEditZeitpunkFehler.date().toString('yyyy.MM.dd'))  
-        print(self.dateTimeEditZeitpunkFehler.time().toString('hh:mm:ss')) 
-        
         if self.dateTimeEditZeitpunkFehler.date() > QDate(2019,1,1):
             datum = self.dateTimeEditZeitpunkFehler.date().toString('yyyy.MM.dd')
             return datum
@@ -162,7 +159,7 @@ class Ui_Support(object):
 
 
         # Kontaktdaten
-        vorname = self.lineEdit_Name.text()
+        vorname = self.lineEdit_Vorname.text()
         name = self.lineEdit_Name.text()
         baustelle = self.lineEdit_Baustelle.text()
         bauprojekt = self.lineEdit_Bauprojekt.text()
@@ -461,7 +458,7 @@ class Ui_Support(object):
             "Support", "Wie können wir den Supportanfragenden kontaktieren?"))
         self.label_Vorname.setText(_translate("Support", "Vorname"))
         self.label_Name.setText(_translate("Support", "Name"))
-        self.label_Baustelle.setText(_translate("Support", "Baustelle"))
+        self.label_Baustelle.setText(_translate("Support", "Baustelle / Ort"))
         self.label_Bauprojekt.setText(_translate("Support", "Bauprojekt"))
         self.label_Telefonnummer.setText(
             _translate("Support", "Telefonnummer"))
