@@ -204,7 +204,8 @@ class Ui_Support(object):
 
         # Zähle Ticketnummer
         self.TicketNummer = QtWidgets.QLCDNumber(Support)
-        self.TicketNummer.setGeometry(QtCore.QRect(760, 10, 64, 23))
+        self.TicketNummer.setGeometry(QtCore.QRect(765, 0, 64, 30))
+        self.TicketNummer.setStyleSheet('background-color: black')
         self.TicketNummer.setFrameShape(QtWidgets.QFrame.Panel)
         self.TicketNummer.setFrameShadow(QtWidgets.QFrame.Raised)
         self.TicketNummer.setObjectName("TicketNummer")
