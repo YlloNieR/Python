@@ -68,24 +68,17 @@ class Ui_Support(object):
             self.textfreieBeschreibungdesProblems.setDisabled(True)
 
 
-    # Baustelle
+    # Baustelle (Entweder oder Entscheidung)
     def ProblemeFehlerCheck(self):
         if self.radioBProblemeFehler.isChecked() == True:                            
             self.textfreieBeschreibungBestellungen.setDisabled(True)
             self.dropDownBestellungen.setDisabled(True)
             self.spinBox.setDisabled(True)   
             self.radioBProblemeFehler.isCheckable()
-            ###########
         else:
             self.textfreieBeschreibungBestellungen.setDisabled(False)
             self.dropDownBestellungen.setDisabled(False)
             self.spinBox.setDisabled(False)   
-            ###########
-            
-            #self.radioBBestellungen.setCheckable(True) 
-            #self.radioBProblemeFehler.setChecked(False) 
-            
-            
 
     def BestellungenCheck(self):
         if self.radioBBestellungen.isChecked() == True:            
@@ -94,14 +87,11 @@ class Ui_Support(object):
             self.radioBwederOASnochAlgo.setDisabled(True)
             self.groupBoxProblemeMit.setDisabled(True)
             self.radioBBestellungen.isCheckable()
-            ###########
         else:
             self.radioBAlgo.setDisabled(False)
             self.radioBOAS.setDisabled(False)
             self.radioBwederOASnochAlgo.setDisabled(False)
             self.groupBoxProblemeMit.setDisabled(False)
-            ###########
-            #self.radioBProblemeFehler.setCheckable(True) 
 
           
             
@@ -172,7 +162,6 @@ class Ui_Support(object):
         baustelle = self.lineEdit_Baustelle.text()
         bauprojekt = self.lineEdit_Bauprojekt.text()
         telefonnummer = self.lineEdit_Telefonnummer.text()
-        self.WachmannLogiPmCheck()
         x = self.WachmannLogiPmCheck()
         y = self.welchesSystem()
         z = self.habeProblemeMit()
@@ -347,8 +336,16 @@ class Ui_Support(object):
         self.groupBoxProblemeMit.setObjectName("groupBoxProblemeMit")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.groupBoxProblemeMit)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
+        
+        ## Dropdown Probleme
         self.dropDownProbleme = QtWidgets.QComboBox(self.groupBoxProblemeMit)
-        self.dropDownProbleme.setObjectName("dropDownProbleme")
+        self.dropDownProbleme.setObjectName("dropDownProbleme")        
+        self.dropDownProbleme.addItem("Erstes")
+        liste = ["asd1","as2","asd3"]
+        self.dropDownProbleme.addItems(liste)
+
+
+
         self.verticalLayout_2.addWidget(self.dropDownProbleme)
         self.radioButtonEinloggenImSystem = QtWidgets.QRadioButton(
             self.groupBoxProblemeMit)
