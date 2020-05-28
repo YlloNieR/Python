@@ -21,8 +21,6 @@ class Ui_Support(object):
     def restartSupportTicket(self):
         Support.close()
         os.system("pf_t_support_ticket.py")    # Startet neue Session
-
-
      
     def welchesSystem(self):
         if self.radioBAlgo.isChecked():
@@ -35,25 +33,33 @@ class Ui_Support(object):
             WertRadioButton2 = "Keins der Systeme"
             return (WertRadioButton2)
         else:
-            WertRadioButton2 = "System nicht angegeben"
-            return (WertRadioButton2)
-    
+            WertRadioButton2 = "-"
+            return (WertRadioButton2)    
+
     def habeProblemeMit(self):
-        if self.radioButtonEinloggenImSystem.isChecked():
-            WertRadioButton3 = "Probleme beim Einloggen im System"            
-            return (WertRadioButton3)
-        elif self.radioButtonRegistrierenImSystem.isChecked():
-            WertRadioButton3 = "Probleme beim Registrieren"
-            return (WertRadioButton3)
-        elif self.radioButtonMAanmelden.isChecked():
-            WertRadioButton3 = "Probleme beim Mitarbeiter anmelden"
-            return (WertRadioButton3)
-        elif self.radioButtonFirmaErstellen.isChecked():
-            WertRadioButton3 = "Probleme beim Erstellen einer Firma"        
+        if self.radioBBestellungen.isChecked() == True:
+            WertRadioButton3 = "-"
             return (WertRadioButton3)
         else:
-            WertRadioButton3 = self.textfreieBeschreibungdesProblems.toPlainText()    
-            return (WertRadioButton3)       
+            if self.dropDownProbleme.currentText() != "--- Bitte Selektieren ---":
+                WertRadioButton3 = self.dropDownProbleme.currentText()
+                return (WertRadioButton3)
+            else:
+                if self.radioButtonEinloggenImSystem.isChecked():
+                    WertRadioButton3 = "Probleme beim Einloggen im System"            
+                    return (WertRadioButton3)
+                elif self.radioButtonRegistrierenImSystem.isChecked():
+                    WertRadioButton3 = "Probleme beim Registrieren"
+                    return (WertRadioButton3)
+                elif self.radioButtonMAanmelden.isChecked():
+                    WertRadioButton3 = "Probleme beim Mitarbeiter anmelden"
+                    return (WertRadioButton3)
+                elif self.radioButtonFirmaErstellen.isChecked():
+                    WertRadioButton3 = "Probleme beim Erstellen einer Firma"        
+                    return (WertRadioButton3)
+                else:
+                    WertRadioButton3 = self.textfreieBeschreibungdesProblems.toPlainText()    
+                    return (WertRadioButton3)       
     
     def freifelddisable(self):
         if self.radioButtonEinloggenImSystem.isChecked():
@@ -66,8 +72,15 @@ class Ui_Support(object):
             self.textfreieBeschreibungdesProblems.setDisabled(True)
         elif self.radioButtonFirmaErstellen.isChecked():
             self.textfreieBeschreibungdesProblems.setDisabled(True)
-
-
+    
+    def bestellungenAuswahl(self):
+        if self.dropDownBestellungen.currentText() != "--- Bitte Selektieren ---":
+            auswahlSelektiert = self.dropDownBestellungen.currentText()
+            return (auswahlSelektiert)
+        else:
+            freiflaeche = self.textfreieBeschreibungBestellungen.toPlainText()           
+            return (freiflaeche)
+    
     # Baustelle (Entweder oder Entscheidung)
     def ProblemeFehlerCheck(self):
         if self.radioBProblemeFehler.isChecked() == True:                            
@@ -91,9 +104,7 @@ class Ui_Support(object):
             self.radioBAlgo.setDisabled(False)
             self.radioBOAS.setDisabled(False)
             self.radioBwederOASnochAlgo.setDisabled(False)
-            self.groupBoxProblemeMit.setDisabled(False)
-
-          
+            self.groupBoxProblemeMit.setDisabled(False)         
             
     
     def countTickets(self):
@@ -140,15 +151,6 @@ class Ui_Support(object):
             uhrzeit = datetime.datetime.now().strftime("%H:%M:%S")
             return uhrzeit
 
-        # Format 2020.05.26,20:00:59,      
-        # print(self.dateTimeEditZeitpunkFehler.date().toString())       
-        # print(self.dateTimeEditZeitpunkFehler.displayFormat())        
-        # print(self.dateTimeEditZeitpunkFehler(QDate.currentDate()))
-        # print(self.dateTimeEditZeitpunkFehler.setDisplayFormat("yyyy.MM.dd")) 
-        # self.dateTimeEditZeitpunkFehler.setMinimumDate(QDate(2019, 1, 1))
-        # self.dateTimeEditZeitpunkFehler.setMinimumDate(QDate.currentDate())
-        # setDateTimeRange(min, max)  
-
 
     def erstelle_Support_ticket(self):
         komma = ","
@@ -157,21 +159,33 @@ class Ui_Support(object):
         csv = open("pf_t_support_ticket.csv", "a")
         datum = self.datumCheck()
         uhrzeit = self.zeitCheck()
+
+
+        # Kontaktdaten
         vorname = self.lineEdit_Name.text()
         name = self.lineEdit_Name.text()
         baustelle = self.lineEdit_Baustelle.text()
         bauprojekt = self.lineEdit_Bauprojekt.text()
-        telefonnummer = self.lineEdit_Telefonnummer.text()
-        x = self.WachmannLogiPmCheck()
-        y = self.welchesSystem()
-        z = self.habeProblemeMit()
+        telefonnummer = self.lineEdit_Telefonnummer.text()        
+        wachlogpm = self.WachmannLogiPmCheck()
+        
 
+        # Probleme Fehler
+        system = self.welchesSystem()
+        problememit = self.habeProblemeMit()
+        
+        # Bestellungen
+        bestellungenWas = self.bestellungenAuswahl()
+        bestellungenWieviel = self.spinBox.text()   
+        
         
 
         csv.write(datum)
         csv.write(komma)
         csv.write(uhrzeit)
         csv.write(komma)
+
+        # Kontaktdaten
         csv.write(vorname)
         csv.write(komma)
         csv.write(name)
@@ -180,11 +194,20 @@ class Ui_Support(object):
         csv.write(komma)
         csv.write(telefonnummer)
         csv.write(komma)
-        csv.write(x)
+        csv.write(wachlogpm)
         csv.write(komma)
-        csv.write(y)
+
+        # Probleme
+        csv.write(system)
         csv.write(komma)
-        csv.write(z)
+        csv.write(problememit)
+        
+        # Bestellungen
+        csv.write(komma)
+        csv.write(bestellungenWas)
+        csv.write(komma)
+        csv.write(bestellungenWieviel)
+        
         csv.write(nLine)
 
         # Zähle Ticket pro Klick
@@ -205,7 +228,10 @@ class Ui_Support(object):
         # Zähle Ticketnummer
         self.TicketNummer = QtWidgets.QLCDNumber(Support)
         self.TicketNummer.setGeometry(QtCore.QRect(765, 0, 64, 30))
-        self.TicketNummer.setStyleSheet('background-color: black')
+        self.TicketNummer.setStyleSheet("""QLCDNumber 
+                                                   { background-color: green; 
+                                                     color: yellow;
+                                                   }""")
         self.TicketNummer.setFrameShape(QtWidgets.QFrame.Panel)
         self.TicketNummer.setFrameShadow(QtWidgets.QFrame.Raised)
         self.TicketNummer.setObjectName("TicketNummer")
@@ -284,7 +310,7 @@ class Ui_Support(object):
         self.dropDownBestellungen.setGeometry(QtCore.QRect(10, 42, 251, 20))
         self.dropDownBestellungen.setObjectName("dropDownBestellungen")
         self.dropDownBestellungen.setStyleSheet('background-color: white')
-        self.dropDownBestellungen.addItem("--- Bitte Auswählen ---")
+        self.dropDownBestellungen.addItem("--- Bitte Selektieren ---")
         listeBestellungen = ["Clips","Farbband Kartendrucker Evolis","Farbband Kartendrucker Authentys Plus","Kartenrohlinge 100 Stck"]
         self.dropDownBestellungen.addItems(listeBestellungen)
 
@@ -351,7 +377,7 @@ class Ui_Support(object):
         self.dropDownProbleme = QtWidgets.QComboBox(self.groupBoxProblemeMit)
         self.dropDownProbleme.setStyleSheet('background-color: white')
         self.dropDownProbleme.setObjectName("dropDownProbleme")        
-        self.dropDownProbleme.addItem("--- Bitte Auswählen ---")
+        self.dropDownProbleme.addItem("--- Bitte Selektieren ---")
         listeProbleme = ["...dem Kartendrucker","...meinem Laptop","...Einladungen versenden"]
         self.dropDownProbleme.addItems(listeProbleme)
 
@@ -407,10 +433,10 @@ class Ui_Support(object):
 
 
         # Neustart Button
-        self.ButtonNeustart = QtWidgets.QPushButton(Support)
-        self.ButtonNeustart.setGeometry(QtCore.QRect(390, 30, 75, 23))
-        self.ButtonNeustart.setObjectName("ButtonNeustart")
-        self.ButtonNeustart.clicked.connect(self.restartSupportTicket)
+        #self.ButtonNeustart = QtWidgets.QPushButton(Support)
+        #self.ButtonNeustart.setGeometry(QtCore.QRect(390, 30, 75, 23))
+        #self.ButtonNeustart.setObjectName("ButtonNeustart")
+        #self.ButtonNeustart.clicked.connect(self.restartSupportTicket)
         
         # Aufruf Funktionen während Nutzung
         self.radioBProblemeFehler.clicked.connect(self.ProblemeFehlerCheck)
@@ -420,7 +446,7 @@ class Ui_Support(object):
         self.radioButtonRegistrierenImSystem.clicked.connect(self.freifelddisable)
         self.radioButtonMAanmelden.clicked.connect(self.freifelddisable)
         self.radioButtonFirmaErstellen.clicked.connect(self.freifelddisable)
-
+        self.erstelleSupportticket.clicked.connect(self.restartSupportTicket)
 
 
         self.retranslateUi(Support)
@@ -470,7 +496,7 @@ class Ui_Support(object):
             "Support", "freie Beschreibung des Problems:"))
         self.label_Datum_Zeit.setText(_translate("Support", "Seit wann besteht der Fehler?\n"
                                                  "(Nur Zeit eintragen bei Systemfehlern, Fehlermeldungen)"))
-        self.ButtonNeustart.setText(_translate("Support", "Neustart"))
+        #self.ButtonNeustart.setText(_translate("Support", "Neustart"))
 
 
 
