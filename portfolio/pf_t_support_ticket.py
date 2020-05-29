@@ -150,7 +150,7 @@ class Ui_Support(object):
 
 
     def erstelle_Support_ticket(self):
-        komma = ","
+        trennung = ";"
         nLine = "\n"
 
         csv = open("pf_t_support_ticket.csv", "a")
@@ -178,31 +178,31 @@ class Ui_Support(object):
         
 
         csv.write(datum)
-        csv.write(komma)
+        csv.write(trennung)
         csv.write(uhrzeit)
-        csv.write(komma)
+        csv.write(trennung)
 
         # Kontaktdaten
         csv.write(vorname)
-        csv.write(komma)
+        csv.write(trennung)
         csv.write(name)
-        csv.write(komma)
+        csv.write(trennung)
         csv.write(bauprojekt)
-        csv.write(komma)
+        csv.write(trennung)
         csv.write(telefonnummer)
-        csv.write(komma)
+        csv.write(trennung)
         csv.write(wachlogpm)
-        csv.write(komma)
+        csv.write(trennung)
 
         # Probleme
         csv.write(system)
-        csv.write(komma)
+        csv.write(trennung)
         csv.write(problememit)
         
         # Bestellungen
-        csv.write(komma)
+        csv.write(trennung)
         csv.write(bestellungenWas)
-        csv.write(komma)
+        csv.write(trennung)
         csv.write(bestellungenWieviel)
         
         csv.write(nLine)
