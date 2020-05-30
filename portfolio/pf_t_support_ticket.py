@@ -61,7 +61,7 @@ class Ui_Support(object):
                     WertRadioButton3 = self.textfreieBeschreibungdesProblems.toPlainText()    
                     return (WertRadioButton3)       
     
-    def freifelddisable(self):
+    def freifeldDisable(self):
         if self.radioButtonEinloggenImSystem.isChecked():
             self.textfreieBeschreibungdesProblems.setDisabled(True)
         if self.radioButtonEinloggenImSystem.isChecked():
@@ -82,7 +82,7 @@ class Ui_Support(object):
             return (freiflaeche)
     
     # Baustelle (Entweder oder Entscheidung)
-    def ProblemeFehlerCheck(self):
+    def problemeFehlerCheck(self):
         if self.radioBProblemeFehler.isChecked() == True:                            
             self.textfreieBeschreibungBestellungen.setDisabled(True)
             self.dropDownBestellungen.setDisabled(True)
@@ -93,7 +93,7 @@ class Ui_Support(object):
             self.dropDownBestellungen.setDisabled(False)
             self.spinBox.setDisabled(False)   
 
-    def BestellungenCheck(self):
+    def bestellungenCheck(self):
         if self.radioBBestellungen.isChecked() == True:            
             self.radioBAlgo.setDisabled(True)
             self.radioBOAS.setDisabled(True)
@@ -113,7 +113,7 @@ class Ui_Support(object):
         nRows = nRows-1
         return nRows
     
-    def WachmannLogiPmCheck(self):  
+    def wachmannLogiPmCheck(self):  
         if self.radioButtonWachmann.isChecked():
             WertRadioButton = "Wachmann"
             return (WertRadioButton)
@@ -149,7 +149,7 @@ class Ui_Support(object):
             return uhrzeit
 
 
-    def erstelle_Support_ticket(self):
+    def erstelleSupportTicket(self):
         trennung = ";"
         nLine = "\n"
 
@@ -164,7 +164,7 @@ class Ui_Support(object):
         baustelle = self.lineEdit_Baustelle.text()
         bauprojekt = self.lineEdit_Bauprojekt.text()
         telefonnummer = self.lineEdit_Telefonnummer.text()        
-        wachlogpm = self.WachmannLogiPmCheck()
+        wachlogpm = self.wachmannLogiPmCheck()
         
 
         # Probleme Fehler
@@ -220,7 +220,7 @@ class Ui_Support(object):
         self.erstelleSupportticket.setGeometry(QtCore.QRect(610, 760, 171, 61))
         self.erstelleSupportticket.setObjectName("erstelleSupportticket")
         self.erstelleSupportticket.clicked.connect(
-            self.erstelle_Support_ticket)
+            self.erstelleSupportTicket)
 
         # Zähle Ticketnummer
         self.TicketNummer = QtWidgets.QLCDNumber(Support)
@@ -436,13 +436,13 @@ class Ui_Support(object):
         #self.ButtonNeustart.clicked.connect(self.restartSupportTicket)
         
         # Aufruf Funktionen während Nutzung
-        self.radioBProblemeFehler.clicked.connect(self.ProblemeFehlerCheck)
-        self.radioBBestellungen.clicked.connect(self.BestellungenCheck)
+        self.radioBProblemeFehler.clicked.connect(self.problemeFehlerCheck)
+        self.radioBBestellungen.clicked.connect(self.bestellungenCheck)
         self.TicketNummer.setProperty("value", self.countTickets())         # Zähle Ticket beim Programmstart
-        self.radioButtonEinloggenImSystem.clicked.connect(self.freifelddisable)
-        self.radioButtonRegistrierenImSystem.clicked.connect(self.freifelddisable)
-        self.radioButtonMAanmelden.clicked.connect(self.freifelddisable)
-        self.radioButtonFirmaErstellen.clicked.connect(self.freifelddisable)
+        self.radioButtonEinloggenImSystem.clicked.connect(self.freifeldDisable)
+        self.radioButtonRegistrierenImSystem.clicked.connect(self.freifeldDisable)
+        self.radioButtonMAanmelden.clicked.connect(self.freifeldDisable)
+        self.radioButtonFirmaErstellen.clicked.connect(self.freifeldDisable)
         self.erstelleSupportticket.clicked.connect(self.restartSupportTicket)
 
 
