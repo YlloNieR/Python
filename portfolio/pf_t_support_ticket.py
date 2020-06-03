@@ -11,6 +11,7 @@ import os
 class Ui_Support(object):
     def restartSupportTicket(self):
         self.clearAll()
+        self.TicketNummer.setProperty("value", self.countTickets())
         #Support.close()
         #os.system("pf_t_support_ticket.py")    # Startet neue Session
      
@@ -238,6 +239,7 @@ class Ui_Support(object):
         self.radioButton_Projektmanager.setAutoExclusive(True)
 
         self.dateTimeEditZeitpunkFehler.setDateTime(datetime.datetime(year=2019, month=1, day=1, hour=0, minute=0))
+        self.TicketNummer.setProperty("value", self.countTickets())
 
 
     def erstelleSupportTicket(self):
