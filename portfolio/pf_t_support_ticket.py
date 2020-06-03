@@ -1,10 +1,8 @@
-# -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ticketsupport.ui'
-#
-# Created by: PyQt5 UI code generator 5.14.2
-#
-# WARNING! All changes made in this file will be lost!
+# coding=utf-8
+#!/usr/bin/env python3
+
+
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -14,15 +12,12 @@ from PyQt5.QtCore import *
 import os
 
 
-
-
 class Ui_Support(object):
-
     def restartSupportTicket(self):
         Support.close()
         os.system("pf_t_support_ticket.py")    # Startet neue Session
      
-    def welchesSystem(self):
+    def welchesSystem(self):        
         if self.radioBAlgo.isChecked():
             WertRadioButton2 = "Algo"
             return (WertRadioButton2)
@@ -33,45 +28,52 @@ class Ui_Support(object):
             WertRadioButton2 = "Keins der Systeme"
             return (WertRadioButton2)
         else:
-            WertRadioButton2 = "-"
+            WertRadioButton2 = "NULL"
             return (WertRadioButton2)    
 
+    def disableProblemeMitGruppe(self):
+         if self.radioBAlgo.isChecked() == True or self.radioBOAS.isChecked() == True or self.radioBwederOASnochAlgo.isChecked() == True:
+            self.groupBoxProblemeMit.setDisabled(False)            
+        
     def habeProblemeMit(self):
         if self.radioBBestellungen.isChecked() == True:
-            WertRadioButton3 = "-"
+            WertRadioButton3 = "NULL"
             return (WertRadioButton3)
         else:
             if self.dropDownProbleme.currentText() != "--- Bitte Selektieren ---":
                 WertRadioButton3 = self.dropDownProbleme.currentText()
                 return (WertRadioButton3)
             else:
-                if self.radioButtonEinloggenImSystem.isChecked():
-                    WertRadioButton3 = "Probleme beim Einloggen im System"            
-                    return (WertRadioButton3)
-                elif self.radioButtonRegistrierenImSystem.isChecked():
-                    WertRadioButton3 = "Probleme beim Registrieren"
-                    return (WertRadioButton3)
-                elif self.radioButtonMAanmelden.isChecked():
-                    WertRadioButton3 = "Probleme beim Mitarbeiter anmelden"
-                    return (WertRadioButton3)
-                elif self.radioButtonFirmaErstellen.isChecked():
-                    WertRadioButton3 = "Probleme beim Erstellen einer Firma"        
-                    return (WertRadioButton3)
-                else:
-                    WertRadioButton3 = self.textfreieBeschreibungdesProblems.toPlainText()    
-                    return (WertRadioButton3)       
+                #if self.radioButtonEinloggenImSystem.isChecked():
+                #    WertRadioButton3 = "Probleme beim Einloggen im System"            
+                #    return (WertRadioButton3)
+                #elif self.radioButtonRegistrierenImSystem.isChecked():
+                #    WertRadioButton3 = "Probleme beim Registrieren"
+                #    return (WertRadioButton3)
+                #elif self.radioButtonMAanmelden.isChecked():
+                #    WertRadioButton3 = "Probleme beim Mitarbeiter anmelden"
+                #    return (WertRadioButton3)
+                #elif self.radioButtonFirmaErstellen.isChecked():
+                #    WertRadioButton3 = "Probleme beim Erstellen einer Firma"        
+                #    return (WertRadioButton3)
+                #else:
+                WertRadioButton3 = self.textfreieBeschreibungdesProblems.toPlainText()    
+                return (WertRadioButton3)       
     
     def freifeldDisable(self):
-        if self.radioButtonEinloggenImSystem.isChecked():
-            self.textfreieBeschreibungdesProblems.setDisabled(True)
-        if self.radioButtonEinloggenImSystem.isChecked():
-            self.textfreieBeschreibungdesProblems.setDisabled(True)
-        elif self.radioButtonRegistrierenImSystem.isChecked():
-            self.textfreieBeschreibungdesProblems.setDisabled(True)
-        elif self.radioButtonMAanmelden.isChecked():
-            self.textfreieBeschreibungdesProblems.setDisabled(True)
-        elif self.radioButtonFirmaErstellen.isChecked():
-            self.textfreieBeschreibungdesProblems.setDisabled(True)
+        if self.radioButtonWachmann.isChecked() == True or self.radioButtonLogistiker.isChecked() == True or self.radioButton_Projektmanager.isChecked() == True:
+            self.lineEdit_Sonstige.setDisabled(True)
+
+        #if self.radioButtonEinloggenImSystem.isChecked():
+        #    self.textfreieBeschreibungdesProblems.setDisabled(True)
+        #if self.radioButtonEinloggenImSystem.isChecked():
+        #    self.textfreieBeschreibungdesProblems.setDisabled(True)
+        #elif self.radioButtonRegistrierenImSystem.isChecked():
+        #    self.textfreieBeschreibungdesProblems.setDisabled(True)
+        #elif self.radioButtonMAanmelden.isChecked():
+        #    self.textfreieBeschreibungdesProblems.setDisabled(True)
+        #elif self.radioButtonFirmaErstellen.isChecked():
+        #    self.textfreieBeschreibungdesProblems.setDisabled(True)
     
     def bestellungenAuswahl(self):
         if self.dropDownBestellungen.currentText() != "--- Bitte Selektieren ---":
@@ -86,12 +88,15 @@ class Ui_Support(object):
         if self.radioBProblemeFehler.isChecked() == True:                            
             self.textfreieBeschreibungBestellungen.setDisabled(True)
             self.dropDownBestellungen.setDisabled(True)
-            self.spinBox.setDisabled(True)   
-            self.radioBProblemeFehler.isCheckable()
+            #self.spinBox.setDisabled(True)   
+            self.radioBProblemeFehler.isCheckable()            
+            self.radioBAlgo.setDisabled(False)
+            self.radioBOAS.setDisabled(False)
+            self.radioBwederOASnochAlgo.setDisabled(False)            
         else:
             self.textfreieBeschreibungBestellungen.setDisabled(False)
             self.dropDownBestellungen.setDisabled(False)
-            self.spinBox.setDisabled(False)   
+            #self.spinBox.setDisabled(False)   
 
     def bestellungenCheck(self):
         if self.radioBBestellungen.isChecked() == True:            
@@ -100,6 +105,8 @@ class Ui_Support(object):
             self.radioBwederOASnochAlgo.setDisabled(True)
             self.groupBoxProblemeMit.setDisabled(True)
             self.radioBBestellungen.isCheckable()
+            self.textfreieBeschreibungBestellungen.setDisabled(False)
+            self.dropDownBestellungen.setDisabled(False)
         else:
             self.radioBAlgo.setDisabled(False)
             self.radioBOAS.setDisabled(False)
@@ -113,7 +120,7 @@ class Ui_Support(object):
         nRows = nRows-1
         return nRows
     
-    def wachmannLogiPmCheck(self):  
+    def wachmannLogiPmCheck(self):          
         if self.radioButtonWachmann.isChecked():
             WertRadioButton = "Wachmann"
             return (WertRadioButton)
@@ -124,7 +131,7 @@ class Ui_Support(object):
             WertRadioButton = "Projektmanager"
             return (WertRadioButton)
         else:
-            WertRadioButton = "nicht angegeben"
+            WertRadioButton = self.lineEdit_Sonstige.text()  
             return (WertRadioButton)
 
     def hinweisBox(self):
@@ -132,21 +139,40 @@ class Ui_Support(object):
         msg.setWindowTitle("Hinweis")
         msg.setText("This is the main Text")
 
-    def datumCheck(self):
+    #def datumCheck(self):
+    #   if self.dateTimeEditZeitpunkFehler.date() > QDate(2019,1,1):
+    #        datum = self.dateTimeEditZeitpunkFehler.date().toString('yyyy.MM.dd')
+    #        return datum
+    #    else:
+    #        datum = datetime.datetime.today().strftime('%Y.%m.%d')
+    #        return datum        
+    
+    #def zeitCheck(self):  
+    #    if self.dateTimeEditZeitpunkFehler.date() > QDate(2019,1,1):
+    #        uhrzeit = self.dateTimeEditZeitpunkFehler.time().toString('hh:mm:ss')
+    #        return uhrzeit
+    #    else:
+    #        uhrzeit = datetime.datetime.now().strftime("%H:%M:%S")
+    #        return uhrzeit
+
+    def problemDatumCheck(self):
         if self.dateTimeEditZeitpunkFehler.date() > QDate(2019,1,1):
             datum = self.dateTimeEditZeitpunkFehler.date().toString('yyyy.MM.dd')
             return datum
         else:
-            datum = datetime.datetime.today().strftime('%Y.%m.%d')
+            datum = "NULL"
             return datum        
     
-    def zeitCheck(self):  
+    def problemZeitCheck(self):  
         if self.dateTimeEditZeitpunkFehler.date() > QDate(2019,1,1):
             uhrzeit = self.dateTimeEditZeitpunkFehler.time().toString('hh:mm:ss')
             return uhrzeit
         else:
-            uhrzeit = datetime.datetime.now().strftime("%H:%M:%S")
+            uhrzeit = "NULL"
             return uhrzeit
+
+
+
 
 
     def erstelleSupportTicket(self):
@@ -154,8 +180,13 @@ class Ui_Support(object):
         nLine = "\n"
 
         csv = open("pf_t_support_ticket.csv", "a")
-        datum = self.datumCheck()
-        uhrzeit = self.zeitCheck()
+        
+
+        erstellDatum = datetime.datetime.today().strftime('%Y.%m.%d')
+        erstellUhrzeit = datetime.datetime.now().strftime("%H:%M:%S")
+
+        problemSeitDatum = self.problemDatumCheck()
+        problemSeitUhrzeit = self.problemZeitCheck()
 
 
         # Kontaktdaten
@@ -166,20 +197,42 @@ class Ui_Support(object):
         telefonnummer = self.lineEdit_Telefonnummer.text()        
         wachlogpm = self.wachmannLogiPmCheck()
         
-
         # Probleme Fehler
         system = self.welchesSystem()
         problememit = self.habeProblemeMit()
         
         # Bestellungen
         bestellungenWas = self.bestellungenAuswahl()
-        bestellungenWieviel = self.spinBox.text()   
-        
-        
+        #bestellungenWieviel = self.spinBox.text()   
 
-        csv.write(datum)
+        if vorname == "":
+            vorname = "NULL" 
+        if name == "":
+            name = "NULL" 
+        if baustelle == "":
+            baustelle = "NULL" 
+        if bauprojekt == "":
+            bauprojekt = "NULL" 
+        if telefonnummer == "":
+            telefonnummer = "NULL" 
+        if wachlogpm == "":
+            wachlogpm = "NULL" 
+        if problememit == "":
+            problememit = "NULL"
+        if bestellungenWas == "":
+            bestellungenWas = "NULL" 
+               
+        
+        # Erstell Datum
+        csv.write(erstellDatum)
         csv.write(trennung)
-        csv.write(uhrzeit)
+        csv.write(erstellUhrzeit)
+        csv.write(trennung)
+
+        # Problem besteht seit
+        csv.write(problemSeitDatum)
+        csv.write(trennung)
+        csv.write(problemSeitUhrzeit)
         csv.write(trennung)
 
         # Kontaktdaten
@@ -202,11 +255,9 @@ class Ui_Support(object):
         # Bestellungen
         csv.write(trennung)
         csv.write(bestellungenWas)
-        csv.write(trennung)
-        csv.write(bestellungenWieviel)
+        #csv.write(bestellungenWieviel)
         
         csv.write(nLine)
-
         # Zähle Ticket pro Klick
         self.TicketNummer.setProperty("value", self.countTickets())
 
@@ -221,6 +272,7 @@ class Ui_Support(object):
         self.erstelleSupportticket.setObjectName("erstelleSupportticket")
         self.erstelleSupportticket.clicked.connect(
             self.erstelleSupportTicket)
+               
 
         # Zähle Ticketnummer
         self.TicketNummer = QtWidgets.QLCDNumber(Support)
@@ -235,7 +287,7 @@ class Ui_Support(object):
 
         # Kontaktinfos
         self.groupBoxKontakt = QtWidgets.QGroupBox(Support)
-        self.groupBoxKontakt.setGeometry(QtCore.QRect(540, 50, 291, 321))
+        self.groupBoxKontakt.setGeometry(QtCore.QRect(540, 50, 291, 351))
         self.groupBoxKontakt.setObjectName("groupBoxKontakt")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.groupBoxKontakt)
         self.verticalLayout.setObjectName("verticalLayout")
@@ -281,11 +333,17 @@ class Ui_Support(object):
         self.radioButton_Projektmanager.setObjectName(
             "radioButton_Projektmanager")
         self.verticalLayout.addWidget(self.radioButton_Projektmanager)
+        self.label_Sonstige = QtWidgets.QLabel(self.groupBoxKontakt)
+        self.label_Sonstige.setObjectName("label_Sonstige")
+        self.verticalLayout.addWidget(self.label_Sonstige)
+        self.lineEdit_Sonstige = QtWidgets.QLineEdit(self.groupBoxKontakt)
+        self.lineEdit_Sonstige.setObjectName("lineEdit_Sonstige")
+        self.verticalLayout.addWidget(self.lineEdit_Sonstige)
 
 
         # Bestellungen
         self.groupBoxBestellungen = QtWidgets.QGroupBox(Support)
-        self.groupBoxBestellungen.setGeometry(QtCore.QRect(0, 520, 361, 289))
+        self.groupBoxBestellungen.setGeometry(QtCore.QRect(0, 520, 280, 289))
         self.groupBoxBestellungen.setObjectName("groupBoxBestellungen")        
         self.label_BestellungenDrodown = QtWidgets.QLabel(
             self.groupBoxBestellungen)
@@ -308,7 +366,13 @@ class Ui_Support(object):
         self.dropDownBestellungen.setObjectName("dropDownBestellungen")
         self.dropDownBestellungen.setStyleSheet('background-color: white')
         self.dropDownBestellungen.addItem("--- Bitte Selektieren ---")
-        listeBestellungen = ["Clips","Farbband Kartendrucker Evolis","Farbband Kartendrucker Authentys Plus","Kartenrohlinge 100 Stck"]
+        listeBestellungen = [
+            "Karten",
+            "Karten & Kartusche Authentys",
+            "Karten & Evolis",
+            "Kartusche Authentys (Drucker schwarz)",
+            "Kartusche Evolis (Drucker weiß)"]
+
         self.dropDownBestellungen.addItems(listeBestellungen)
 
         self.label_freieBeschreibungBestellungen = QtWidgets.QLabel(
@@ -330,9 +394,9 @@ class Ui_Support(object):
             QtCore.Qt.AlignCenter)
         self.label_freieBeschreibungBestellungen_2.setObjectName(
             "label_freieBeschreibungBestellungen_2")
-        self.spinBox = QtWidgets.QSpinBox(self.groupBoxBestellungen)
-        self.spinBox.setGeometry(QtCore.QRect(290, 40, 39, 20))
-        self.spinBox.setObjectName("spinBox")
+        #self.spinBox = QtWidgets.QSpinBox(self.groupBoxBestellungen)
+        #self.spinBox.setGeometry(QtCore.QRect(290, 40, 39, 20))
+        #self.spinBox.setObjectName("spinBox")
 
 
         # Probleme Fehler
@@ -375,34 +439,37 @@ class Ui_Support(object):
         self.dropDownProbleme.setStyleSheet('background-color: white')
         self.dropDownProbleme.setObjectName("dropDownProbleme")        
         self.dropDownProbleme.addItem("--- Bitte Selektieren ---")
-        listeProbleme = ["...dem Kartendrucker","...meinem Laptop","...Einladungen versenden"]
+        listeProbleme = [
+            "Internet",
+            "Kartendrucker",
+            "Laptop"]
         self.dropDownProbleme.addItems(listeProbleme)
 
 
 
         self.verticalLayout_2.addWidget(self.dropDownProbleme)
-        self.radioButtonEinloggenImSystem = QtWidgets.QRadioButton(
-            self.groupBoxProblemeMit)
-        self.radioButtonEinloggenImSystem.setObjectName(
-            "radioButtonEinloggenImSystem")
-        self.verticalLayout_2.addWidget(self.radioButtonEinloggenImSystem)
-        self.radioButtonRegistrierenImSystem = QtWidgets.QRadioButton(
-            self.groupBoxProblemeMit)
-        self.radioButtonRegistrierenImSystem.setObjectName(
-            "radioButtonRegistrierenImSystem")
-        self.verticalLayout_2.addWidget(self.radioButtonRegistrierenImSystem)
-        self.radioButtonMAanmelden = QtWidgets.QRadioButton(
-            self.groupBoxProblemeMit)
-        self.radioButtonMAanmelden.setObjectName("radioButtonMAanmelden")
-        self.verticalLayout_2.addWidget(self.radioButtonMAanmelden)
-        self.radioButtonFirmaErstellen = QtWidgets.QRadioButton(
-            self.groupBoxProblemeMit)
-        self.radioButtonFirmaErstellen.setObjectName(
-            "radioButtonFirmaErstellen")
-        self.verticalLayout_2.addWidget(self.radioButtonFirmaErstellen)
-        self.label_6 = QtWidgets.QLabel(self.groupBoxProblemeMit)
-        self.label_6.setObjectName("label_6")
-        self.verticalLayout_2.addWidget(self.label_6)
+        #self.radioButtonEinloggenImSystem = QtWidgets.QRadioButton(
+            #self.groupBoxProblemeMit)
+        #self.radioButtonEinloggenImSystem.setObjectName(
+            #"radioButtonEinloggenImSystem")
+        #self.verticalLayout_2.addWidget(self.radioButtonEinloggenImSystem)
+        #self.radioButtonRegistrierenImSystem = QtWidgets.QRadioButton(
+        #    self.groupBoxProblemeMit)
+        #self.radioButtonRegistrierenImSystem.setObjectName(
+        #    "radioButtonRegistrierenImSystem")
+        #self.verticalLayout_2.addWidget(self.radioButtonRegistrierenImSystem)
+        #self.radioButtonMAanmelden = QtWidgets.QRadioButton(
+        #    self.groupBoxProblemeMit)
+        #self.radioButtonMAanmelden.setObjectName("radioButtonMAanmelden")
+        #self.verticalLayout_2.addWidget(self.radioButtonMAanmelden)
+        #self.radioButtonFirmaErstellen = QtWidgets.QRadioButton(
+        #    self.groupBoxProblemeMit)
+        #self.radioButtonFirmaErstellen.setObjectName(
+        #    "radioButtonFirmaErstellen")
+        #self.verticalLayout_2.addWidget(self.radioButtonFirmaErstellen)
+        self.label_textfreieBeschreibungdesProblems = QtWidgets.QLabel(self.groupBoxProblemeMit)
+        self.label_textfreieBeschreibungdesProblems.setObjectName("label_textfreieBeschreibungdesProblems")
+        self.verticalLayout_2.addWidget(self.label_textfreieBeschreibungdesProblems)
         self.textfreieBeschreibungdesProblems = QtWidgets.QTextEdit(
             self.groupBoxProblemeMit)
         self.textfreieBeschreibungdesProblems.setObjectName(
@@ -430,19 +497,26 @@ class Ui_Support(object):
 
 
         # Neustart Button
-        #self.ButtonNeustart = QtWidgets.QPushButton(Support)
-        #self.ButtonNeustart.setGeometry(QtCore.QRect(390, 30, 75, 23))
-        #self.ButtonNeustart.setObjectName("ButtonNeustart")
-        #self.ButtonNeustart.clicked.connect(self.restartSupportTicket)
+        self.ButtonNeustart = QtWidgets.QPushButton(Support)
+        self.ButtonNeustart.setGeometry(QtCore.QRect(665, 5, 83, 43))
+        self.ButtonNeustart.setObjectName("ButtonNeustart")
+        self.ButtonNeustart.clicked.connect(self.restartSupportTicket)
         
         # Aufruf Funktionen während Nutzung
         self.radioBProblemeFehler.clicked.connect(self.problemeFehlerCheck)
+        self.radioBAlgo.clicked.connect(self.disableProblemeMitGruppe)
+        self.radioBOAS.clicked.connect(self.disableProblemeMitGruppe)
+        self.radioBwederOASnochAlgo.clicked.connect(self.disableProblemeMitGruppe)
         self.radioBBestellungen.clicked.connect(self.bestellungenCheck)
         self.TicketNummer.setProperty("value", self.countTickets())         # Zähle Ticket beim Programmstart
-        self.radioButtonEinloggenImSystem.clicked.connect(self.freifeldDisable)
-        self.radioButtonRegistrierenImSystem.clicked.connect(self.freifeldDisable)
-        self.radioButtonMAanmelden.clicked.connect(self.freifeldDisable)
-        self.radioButtonFirmaErstellen.clicked.connect(self.freifeldDisable)
+
+        #self.radioButtonEinloggenImSystem.clicked.connect(self.freifeldDisable)
+        #self.radioButtonRegistrierenImSystem.clicked.connect(self.freifeldDisable)
+        #self.radioButtonMAanmelden.clicked.connect(self.freifeldDisable)
+        #self.radioButtonFirmaErstellen.clicked.connect(self.freifeldDisable)
+        self.radioButtonWachmann.clicked.connect(self.freifeldDisable)
+        self.radioButtonLogistiker.clicked.connect(self.freifeldDisable)
+        self.radioButton_Projektmanager.clicked.connect(self.freifeldDisable)
         self.erstelleSupportticket.clicked.connect(self.restartSupportTicket)
 
 
@@ -452,6 +526,20 @@ class Ui_Support(object):
     def retranslateUi(self, Support):
         _translate = QtCore.QCoreApplication.translate
         Support.setWindowTitle(_translate("Support", "Supportticket erstellen"))
+
+        # add Window Icon
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("ico_pf_t_support_ticket.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        Support.setWindowIcon(icon)
+
+        # von Beginn an disabled
+        self.groupBoxProblemeMit.setDisabled(True)
+        self.dropDownBestellungen.setDisabled(True)
+        self.textfreieBeschreibungBestellungen.setDisabled(True)
+        self.radioBAlgo.setDisabled(True)
+        self.radioBOAS.setDisabled(True)
+        self.radioBwederOASnochAlgo.setDisabled(True)
+
         self.erstelleSupportticket.setText(
             _translate("Support", "Erstelle Supportticket"))
         self.groupBoxKontakt.setTitle(_translate(
@@ -466,14 +554,17 @@ class Ui_Support(object):
         self.radioButtonLogistiker.setText(_translate("Support", "Logistiker"))
         self.radioButton_Projektmanager.setText(
             _translate("Support", "Projektmanager"))
+        self.label_Sonstige.setText(
+            _translate("Support", "Sonstige Rolle:"))
+            
         self.groupBoxBestellungen.setTitle(
             _translate("Support", "Bestellungen"))
         self.label_BestellungenDrodown.setText(_translate(
             "Support", "Auf der Baustelle wird folgendes benötigt:"))
         self.label_freieBeschreibungBestellungen.setText(
             _translate("Support", "freie Beschreibung was wird benötigt:"))
-        self.label_freieBeschreibungBestellungen_2.setText(_translate("Support", "Wieviel Stück \n"
-                                                                      "werden benötigt?"))
+        #self.label_freieBeschreibungBestellungen_2.setText(_translate("Support", "Wieviel Stück \n"
+                                                                      #"werden benötigt?"))
         self.groupBox_4.setTitle(_translate("Support", "Probleme Fehler"))
         self.radioBAlgo.setText(_translate("Support", "Algo"))
         self.radioBOAS.setText(_translate("Support", "OAS"))
@@ -481,19 +572,19 @@ class Ui_Support(object):
             "Support", "betrifft weder OAS noch Algo"))
         self.groupBoxProblemeMit.setTitle(_translate(
             "Support", "Ich habe /  hatte ein Problem mit:"))
-        self.radioButtonEinloggenImSystem.setText(
-            _translate("Support", "Einloggen im System"))
-        self.radioButtonRegistrierenImSystem.setText(
-            _translate("Support", "Registrieren im System"))
-        self.radioButtonMAanmelden.setText(
-            _translate("Support", "Mitarbeiter anzumelden"))
-        self.radioButtonFirmaErstellen.setText(
-            _translate("Support", "eine Firma zu erstellen"))
-        self.label_6.setText(_translate(
+        #self.radioButtonEinloggenImSystem.setText(
+            #_translate("Support", "Einloggen im System"))
+        #self.radioButtonRegistrierenImSystem.setText(
+            #_translate("Support", "Registrieren im System"))
+        #self.radioButtonMAanmelden.setText(
+            #_translate("Support", "Mitarbeiter anzumelden"))
+        #self.radioButtonFirmaErstellen.setText(
+            #_translate("Support", "eine Firma zu erstellen"))
+        self.label_textfreieBeschreibungdesProblems.setText(_translate(
             "Support", "freie Beschreibung des Problems:"))
         self.label_Datum_Zeit.setText(_translate("Support", "Seit wann besteht der Fehler?\n"
                                                  "(Nur Zeit eintragen bei Systemfehlern, Fehlermeldungen)"))
-        #self.ButtonNeustart.setText(_translate("Support", "Neustart"))
+        self.ButtonNeustart.setText(_translate("Support", "Neustart \n ohne Änderung"))
 
 
 
@@ -507,3 +598,11 @@ if __name__ == "__main__":
     ui.setupUi(Support)
     Support.show()
     sys.exit(app.exec_())
+
+
+__author__ = "Oliver Rein"
+__copyright__ = "Copyright 2020, Ticket from hell"
+__credits__ = ["Willi Döhring"]
+__version__ = "0.0.1"
+__maintainer__ = "Oliver Rein"
+__status__ = "Dev"
