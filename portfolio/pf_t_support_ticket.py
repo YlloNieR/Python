@@ -1,12 +1,8 @@
-
 # coding=utf-8
 #!/usr/bin/env python3
 
-
-
-
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QMessageBox
+#from PyQt5.QtWidgets import QMessageBox
 import datetime
 from PyQt5.QtCore import *
 import os
@@ -14,8 +10,9 @@ import os
 
 class Ui_Support(object):
     def restartSupportTicket(self):
-        Support.close()
-        os.system("pf_t_support_ticket.py")    # Startet neue Session
+        self.clearAll()
+        #Support.close()
+        #os.system("pf_t_support_ticket.py")    # Startet neue Session
      
     def welchesSystem(self):        
         if self.radioBAlgo.isChecked():
@@ -92,7 +89,10 @@ class Ui_Support(object):
             self.radioBProblemeFehler.isCheckable()            
             self.radioBAlgo.setDisabled(False)
             self.radioBOAS.setDisabled(False)
-            self.radioBwederOASnochAlgo.setDisabled(False)            
+            self.radioBwederOASnochAlgo.setDisabled(False)  
+            self.radioBBestellungen.setAutoExclusive(False)
+            self.radioBBestellungen.setChecked(False)
+            self.radioBBestellungen.setAutoExclusive(True)          
         else:
             self.textfreieBeschreibungBestellungen.setDisabled(False)
             self.dropDownBestellungen.setDisabled(False)
@@ -107,6 +107,9 @@ class Ui_Support(object):
             self.radioBBestellungen.isCheckable()
             self.textfreieBeschreibungBestellungen.setDisabled(False)
             self.dropDownBestellungen.setDisabled(False)
+            self.radioBProblemeFehler.setAutoExclusive(False)
+            self.radioBProblemeFehler.setChecked(False)
+            self.radioBProblemeFehler.setAutoExclusive(True)
         else:
             self.radioBAlgo.setDisabled(False)
             self.radioBOAS.setDisabled(False)
@@ -171,8 +174,70 @@ class Ui_Support(object):
             uhrzeit = "NULL"
             return uhrzeit
 
+    def clearAll(self):
+        # wie beginn an disabled
+        self.groupBoxProblemeMit.setDisabled(True)
+        self.dropDownBestellungen.setDisabled(True)
+        self.textfreieBeschreibungBestellungen.setDisabled(True)
+        self.radioBAlgo.setDisabled(True)
+        self.radioBOAS.setDisabled(True)
+        self.radioBwederOASnochAlgo.setDisabled(True)
+        
+        # Probleme
+        self.radioBProblemeFehler.setAutoExclusive(False)
+        self.radioBProblemeFehler.setChecked(False)
+        self.radioBProblemeFehler.setAutoExclusive(True)
 
+        self.radioBAlgo.setAutoExclusive(False)
+        self.radioBAlgo.setChecked(False)
+        self.radioBAlgo.setAutoExclusive(True)
+        
+        self.radioBOAS.setAutoExclusive(False)
+        self.radioBOAS.setChecked(False)
+        self.radioBOAS.setAutoExclusive(True)
 
+        self.radioBOAS.setAutoExclusive(False)
+        self.radioBOAS.setChecked(False)
+        self.radioBOAS.setAutoExclusive(True)
+
+        self.radioBwederOASnochAlgo.setAutoExclusive(False)
+        self.radioBwederOASnochAlgo.setChecked(False)
+        self.radioBwederOASnochAlgo.setAutoExclusive(True)
+
+        self.dropDownProbleme.setCurrentIndex(0)
+
+        self.textfreieBeschreibungdesProblems.clear()
+
+        # Bestellungen
+        self.radioBBestellungen.setAutoExclusive(False)
+        self.radioBBestellungen.setChecked(False)
+        self.radioBBestellungen.setAutoExclusive(True)
+
+        self.dropDownBestellungen.setCurrentIndex(0)
+        
+        self.textfreieBeschreibungBestellungen.clear()
+
+        # Kontakt
+        self.lineEdit_Vorname.clear()
+        self.lineEdit_Name.clear()
+        self.lineEdit_Baustelle.clear()
+        self.lineEdit_Bauprojekt.clear()
+        self.lineEdit_Telefonnummer.clear()
+        self.lineEdit_Sonstige.clear()
+
+        self.radioButtonWachmann.setAutoExclusive(False)
+        self.radioButtonWachmann.setChecked(False)
+        self.radioButtonWachmann.setAutoExclusive(True)
+
+        self.radioButtonLogistiker.setAutoExclusive(False)
+        self.radioButtonLogistiker.setChecked(False)
+        self.radioButtonLogistiker.setAutoExclusive(True)
+
+        self.radioButton_Projektmanager.setAutoExclusive(False)
+        self.radioButton_Projektmanager.setChecked(False)
+        self.radioButton_Projektmanager.setAutoExclusive(True)
+
+        self.dateTimeEditZeitpunkFehler.setDateTime(datetime.datetime(year=2019, month=1, day=1, hour=0, minute=0))
 
 
     def erstelleSupportTicket(self):
@@ -517,8 +582,8 @@ class Ui_Support(object):
         self.radioButtonWachmann.clicked.connect(self.freifeldDisable)
         self.radioButtonLogistiker.clicked.connect(self.freifeldDisable)
         self.radioButton_Projektmanager.clicked.connect(self.freifeldDisable)
-        self.erstelleSupportticket.clicked.connect(self.restartSupportTicket)
-
+        #self.erstelleSupportticket.clicked.connect(self.restartSupportTicket) # neustart / delete
+        self.erstelleSupportticket.clicked.connect(self.clearAll) # neustart / delete
 
         self.retranslateUi(Support)
         QtCore.QMetaObject.connectSlotsByName(Support)
