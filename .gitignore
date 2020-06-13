@@ -1,5 +1,10 @@
 .vscode/launch.json
-Sonstiges/Buch/#Hinweise.txt
+*.txt
+*.pyd
+*.pyc
+*.dll
+*.csv
+
 get-pip.py
 Lib/site-packages/_mysql_connector.cp37-win_amd64.pyd
 Lib/site-packages/_mysqlxpb.cp37-win_amd64.pyd
