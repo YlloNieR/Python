@@ -307,6 +307,8 @@ class Ui_Support(object):
         csv.write(trennung)
         csv.write(name)
         csv.write(trennung)
+        csv.write(baustelle)
+        csv.write(trennung)
         csv.write(bauprojekt)
         csv.write(trennung)
         csv.write(telefonnummer)
