@@ -1,4 +1,8 @@
-print("Shift cipher")
+
+
+
+
+
 
 
 def shiftcypherfileReadOnly(filename):
@@ -47,16 +51,23 @@ def shiftcypherString(cipherString, shiftCountEnd):
 def split(x):
     return list(x)
 
+print("Decoder")
+print("Choose an option")
+options1 = int(input("option 1 - Shift cipher alias Caesar Cipher\n"))
+if options1 == 1:
+    print("Shift cipher")    
+    options2 = int(input("option 1 - file\noption 2 - String\n"))
+    if options2 == 1:
+        filename = input("filename? ")
+        shiftcypherfileReadOnly(filename)
+        shiftCountStart = int(input("shift starts at? "))
+        shiftCountEnd = int(input("shift ends at? "))
+        shiftcypherfile(filename, shiftCountStart, shiftCountEnd)
+    else:
+        cipherString = input("String? ")
+        shiftCountEnd = int(input("shift ends at? "))
 
-options = int(input("option 1 - file\noption 2 - String\n"))
-if options == 1:
-    filename = input("filename? ")
-    shiftcypherfileReadOnly(filename)
-    shiftCountStart = int(input("shift starts at? "))
-    shiftCountEnd = int(input("shift ends at? "))
-    shiftcypherfile(filename, shiftCountStart, shiftCountEnd)
+        shiftcypherString(cipherString, shiftCountEnd)
 else:
-    cipherString = input("String? ")
-    shiftCountEnd = int(input("shift ends at? "))
+    print("Unfortunately this does not exist, yet!")
 
-    shiftcypherString(cipherString, shiftCountEnd)
