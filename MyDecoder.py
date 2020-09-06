@@ -1,10 +1,5 @@
 
-
-
-
-
-
-
+# begin shift cypher
 def shiftcypherfileReadOnly(filename):
     with open(filename, 'rb') as f:
         content = f.read()
@@ -33,7 +28,6 @@ def shiftcypherfile(filename, shiftStart, shiftEnd):
         add += 1
         arr = []
 
-
 def shiftcypherString(cipherString, shiftCountEnd):
     content = cipherString
     splitContent = split(content)
@@ -47,9 +41,9 @@ def shiftcypherString(cipherString, shiftCountEnd):
         add += 1
         arr = []
 
-
 def split(x):
     return list(x)
+# end shift cypher
 
 print("Decoder")
 print("Choose an option")
