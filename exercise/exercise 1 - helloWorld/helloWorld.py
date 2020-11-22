@@ -6,8 +6,8 @@ print("Hello, ",str)
 print("")
 
 # 2. part of exercise
-#name = input("Hallo wie ist ihr Name?")
-#print("Hallo ",name)
+name = input("Hallo wie ist ihr Name?")
+print("Hallo ",name)
 
 zahl1 = int(5)
 print("Hier sollte 5 stehen:\n",zahl1)
