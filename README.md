@@ -3,7 +3,7 @@
 **on Windows**
 1. check Version via cmd
 ```
-python --vesion
+python --version
 ```
 2. update command
 ```
