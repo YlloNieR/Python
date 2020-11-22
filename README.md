@@ -22,14 +22,13 @@ sudo apt install python3.7
 ```
 
 ### QR Code erstellen
-C:\Users\USERNAME\AppData\Local\Programs\Python\Python37-32\Scripts>
 [pypi.org Download](https://pypi.org/project/qrcode/)
-via console und o.g. Pfad
+via console in C:\Users\USERNAME\AppData\Local\Programs\Python\Python37-32\Scripts>
 ```
 pip install qrcode
 ```
 
-*Lib for Image editor*
+**Lib for Image editor**
 ```
 pip install qrcode[pil]
 ``` 
